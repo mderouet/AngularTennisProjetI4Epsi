@@ -11,7 +11,7 @@ import { personne } from '../../services/personne';
 })
 export class Home  {
   name = 'Angular';
-  p = new personne("Consonni", "Ugo","26");
+  p = new personne("Consonni", "Ugo",26);
 
 }
 

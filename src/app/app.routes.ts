@@ -4,7 +4,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
 import { Home } from './pages/home/home';
 
 export const router: Routes = [

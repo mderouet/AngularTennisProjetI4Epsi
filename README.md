@@ -1,21 +1,9 @@
 # Angular 2 Ugo Edition
 [![Build Status][travis-badge]][travis-badge-url]
 
-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
+This repository holds the TypeScript source code of start are the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
 the foundation for most of the documentation samples and potentially a good starting point for your application.
 
-It's been extended with testing support so you can start writing tests immediately.
-
-**This is not the perfect arrangement for your application. It is not designed for production.
-It exists primarily to get you started quickly with learning and prototyping in Angular**
-
-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.
-Please keep that in mind before posting issues and PRs.
-
-## Updating to a newer version of the Quickstart Repo
-
-From time to time the QuickStart will add be enhanced with support for new features or to reflect
-changes to the [official Style Guide](https://angular.io/docs/ts/latest/guide/style-guide.html).
 
 You can update your existing project to an up-to-date QuickStart by following these instructions:
 - Create a new project using the [instructions below](#create-a-new-project-based-on-the-quickstart)

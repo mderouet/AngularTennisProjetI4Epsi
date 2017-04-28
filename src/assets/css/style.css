@@ -1,0 +1,733 @@
+body, h1, h2, h3, h4, h5, p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+header {
+    position: relative;
+    z-index: 2;
+}
+
+.container-full {
+    width: 100%;
+}
+
+.container {
+    max-width: 62.5rem;
+    margin: auto;
+    display: block;
+}
+
+/* Début : Menu Top*/
+
+.menuTop {
+    background: rgba(35, 42, 53, 0.6);
+    height: 70px;
+}
+
+#imgLogoHeader {
+    max-height: 70px;
+    padding: 10px;
+}
+
+#imgLogoHeader img {
+    max-height: 50px;
+    background: white;
+
+}
+
+.menuTop .menu {
+    height: 70px;
+}
+
+.menuTop .menu a {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+
+/* Fin : Menu Top*/
+
+/* Début : Section 1*/
+
+.matchAVenir {
+    margin-top: 20px;
+}
+
+.section1 {
+    position: relative;
+    z-index: 1;
+    background: url("../img/section1Bg.jpg");
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 600px;
+    width: 100%;
+    margin-top: -70px;
+    padding-top: 70px;
+}
+
+.matchs h1, .matchs h2, .matchs h3, .matchs div {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+
+.matchs a {
+    background: rgba(35, 42, 53, 0.8);
+    padding: 10px 20px;
+    line-height: 3;
+    color: white;
+}
+
+.matchs a:hover {
+    background: rgba(35, 42, 53, 1);
+    color: white;
+    transition: all 0.3s;
+    padding: 10px 30px;
+}
+
+.matchs h1 {
+    margin-top: -80px;
+}
+
+.matchs h1 span {
+    position: relative;
+    top: 32px;
+}
+
+/* Fin : Section 1*/
+
+/* Début : Section 2*/
+
+.section2 {
+    position: relative;
+    z-index: 2;
+    top: -110px;
+}
+
+.captionResultat {
+    background: #232a35;
+    padding: 10px 30px;
+}
+
+.captionResultat h2 {
+    color: #ffeb3b;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.captionResultat h3 {
+    color: white;
+    font-size: 1.4em;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.txtResultat {
+    padding: 20px;
+    font-size: 0.9em;
+    color: #232a35;
+    border-bottom: 4px solid #232a35;
+}
+
+.blockResultat {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.blockResultat:hover .txtResultat {
+    border-bottom: 10px solid #232a35;
+    transition: all 0.3s;
+}
+
+/* Fin : Section 2*/
+
+/* Debut : Section 3 */
+
+.featuredArticle {
+    max-height: 300px;
+    margin-bottom: 20px;
+}
+
+.snip1579 {
+    font-family: 'Lato', Arial, sans-serif;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    /*margin: 8px;*/
+    /*min-width: 250px;*/
+    /*max-width: 310px;*/
+    width: 100%;
+    background-color: #232a35;
+    color: #ffffff;
+    text-align: left;
+    font-size: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+.snip1579 * {
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.snip1579 img {
+    max-width: 100%;
+    vertical-align: top;
+    object-fit: cover;
+    max-height: 300px;
+    width: 100%;
+}
+
+.snip1579 figcaption {
+    position: absolute;
+    height: 75px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    overflow: hidden;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.snip1579 h3 {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 3px 0;
+}
+
+.snip1579 h5 {
+    font-weight: 400;
+    margin: 0;
+    text-transform: uppercase;
+    color: #bbb;
+    letter-spacing: 1px;
+    font-size: 0.8em;
+}
+
+.snip1579 blockquote {
+    padding: 0 0 0 5px;
+    margin: 10px 0 0px 0px;
+    font-style: italic;
+    font-size: 1em;
+
+}
+
+.snip1579 a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.snip1579:hover figcaption,
+.snip1579.hover figcaption {
+    height: calc(85%);
+}
+
+.article {
+    margin: 10px 0;
+}
+
+.article h3 {
+    Font-size: 0.8em;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+.article h3 span {
+    border: 2px solid #232a35;
+    display: inline-block;
+    padding: 0 5px;
+    margin: 0 5px;
+}
+
+.article h4 {
+    font-size: 1em;
+}
+
+.article h5 {
+    font-size: 0.8em;
+}
+
+.section3 h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+.prochainMatch {
+    background: #F7F8FC;
+    padding: 5px 15px;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    margin: 10px 0;
+}
+
+.jourProchainMatch, .moisProchainMatch {
+    color: #232a35;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
+.jourProchainMatch {
+    font-size: 2rem;
+}
+
+.moisProchainMatch {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.dateProchainMatch, .txtProchainMatch {
+    display: inline-block;
+}
+
+.txtProchainMatch {
+    padding-left: 20px;
+    align-self: center;
+}
+
+.joueurProchainMatch {
+    color: #232a35;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.horaireProchainMatch {
+    color: #ffeb3b;
+    font-size: 0.8rem;
+    background: #232a35;
+    padding: 1px 10px;
+}
+
+/* Fin : Section 3 */
+
+/* Début : Section 4 */
+
+.section4 {
+    /*background: url("../img/Séparation.jpg") no-repeat center center;*/
+    /*background-size: cover;*/
+    /*min-height: 400px;*/
+    /*margin: 20px 0 0;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+
+    width: 100%;
+    background: white;
+    padding: 20px;
+    margin: auto;
+    display: block;
+}
+
+.section4 h1 {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+    color: white;
+    background: rgba(35, 42, 53, 0.7);
+    padding: 50px;
+}
+
+.section4 h1:hover {
+    /*background: rgba(35, 42, 53, 1);*/
+    background: rgba(235, 235, 52, 0.8);
+    color: #232a35;
+    transition: all 0.3s;
+}
+
+footer {
+    background: #232a35;
+    COLOR: white;
+    padding: 20px;
+    display: block;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    color: #ffeb3b;
+}
+
+footer div {
+    display: inline-block;
+}
+
+/*#copyright {*/
+/*float: left;*/
+/*}*/
+
+#mentionLegale {
+    float: right;
+}
+
+/* Fin : Section 4 */
+
+/*Début : Contact */
+
+textarea {
+    resize: none;
+}
+
+.form-label {
+    font-size: 12px;
+    color: #5e9bfc;
+    margin: 0;
+    display: block;
+    opacity: 1;
+    -webkit-transition: .333s ease top, .333s ease opacity;
+    transition: .333s ease top, .333s ease opacity;
+}
+
+.form-control {
+    border-radius: 0;
+    border-color: #ccc;
+    border-width: 0 0 2px 0;
+    border-style: none none solid none;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #5e9bfc;
+}
+
+.js-hide-label {
+    opacity: 0;
+}
+
+.js-unhighlight-label {
+    color: #999
+}
+
+.btn-start-order {
+    background: 0 0 #ffffff;
+    border: 1px solid #2f323a;
+    border-radius: 3px;
+    color: #2f323a;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    line-height: inherit;
+    margin: 30px 0;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    transition: all 0.25s ease 0s;
+}
+
+.btn-start-order:hover, .btn-start-order:active, .btn-start-order:focus {
+    border-color: #5e9bfc;
+    color: #5e9bfc;
+}
+
+.blockContact {
+    width: 100%;
+    background: white;
+    padding: 20px;
+}
+
+/*Fin : Contact*/
+
+/*Début : Autres */
+
+.effect2 {
+    position: relative;
+}
+
+.effect2:before, .effect2:after {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 15px;
+    left: 10px;
+    width: 50%;
+    top: 80%;
+    max-width: 300px;
+    background: #777;
+    -webkit-box-shadow: 0 15px 10px #777;
+    -moz-box-shadow: 0 15px 10px #777;
+    box-shadow: 0 15px 10px #777;
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+}
+
+.effect2:after {
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -o-transform: rotate(3deg);
+    -ms-transform: rotate(3deg);
+    transform: rotate(3deg);
+    right: 10px;
+    left: auto;
+}
+
+/*Animation Tenis Contact*/
+@-webkit-keyframes ballMovement {
+    0% {
+        top: 110px;
+        left: 30px;
+    }
+    25% {
+        top: 40px;
+        left: 240px;
+    }
+    50% {
+        top: 40px;
+        left: 30px;
+    }
+    75% {
+        top: 110px;
+        left: 240px;
+    }
+    100% {
+        top: 110px;
+        left: 30px;
+    }
+}
+@keyframes ballMovement {
+    0% {
+        top: 110px;
+        left: 30px;
+    }
+    25% {
+        top: 40px;
+        left: 240px;
+    }
+    50% {
+        top: 40px;
+        left: 30px;
+    }
+    75% {
+        top: 110px;
+        left: 240px;
+    }
+    100% {
+        top: 110px;
+        left: 30px;
+    }
+}
+@-webkit-keyframes player1Movement {
+    0% {
+        top: 115px;
+        left: 18px;
+    }
+    25% {
+        top: 80px;
+        left: 18px;
+    }
+    50% {
+        top: 40px;
+        left: 18px;
+    }
+    75% {
+        top: 80px;
+        left: 18px;
+    }
+    100% {
+        top: 115px;
+        left: 18px;
+    }
+}
+@keyframes player1Movement {
+    0% {
+        top: 115px;
+        left: 18px;
+    }
+    25% {
+        top: 80px;
+        left: 18px;
+    }
+    50% {
+        top: 40px;
+        left: 18px;
+    }
+    75% {
+        top: 80px;
+        left: 18px;
+    }
+    100% {
+        top: 115px;
+        left: 18px;
+    }
+}
+@-webkit-keyframes player2Movement {
+    0% {
+        top: 40px;
+        right: 18px;
+    }
+    25% {
+        top: 80px;
+        right: 18px;
+    }
+    50% {
+        top: 115px;
+        right: 18px;
+    }
+    75% {
+        top: 80px;
+        right: 18px;
+    }
+    100% {
+        top: 40px;
+        right: 18px;
+    }
+}
+@keyframes player2Movement {
+    0% {
+        top: 40px;
+        right: 18px;
+    }
+    25% {
+        top: 80px;
+        right: 18px;
+    }
+    50% {
+        top: 115px;
+        right: 18px;
+    }
+    75% {
+        top: 80px;
+        right: 18px;
+    }
+    100% {
+        top: 40px;
+        right: 18px;
+    }
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #efefef;
+}
+
+.wrapper {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: #27ae60;
+    margin: 60px auto;
+    box-shadow: 0 0 0 2px white, 0 0 7px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+}
+.wrapper:before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    top: 25px;
+    left: 0;
+    border-top: 2px solid #ecf0f1;
+    border-bottom: 2px solid #ecf0f1;
+}
+.wrapper:after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 200px;
+    background-color: #ecf0f1;
+    left: 148px;
+    top: 0;
+    box-shadow: 5px 1px 3px rgba(0, 0, 0, 0.2);
+}
+.wrapper .court1 {
+    width: 100px;
+    height: 150px;
+    float: left;
+    margin-left: 50px;
+    margin-top: 25px;
+    border-left: 2px solid #ecf0f1;
+    border-right: 2px solid #ecf0f1;
+}
+.wrapper .court1:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background-color: #ecf0f1;
+    top: 100px;
+    left: 50px;
+}
+.wrapper .court2 {
+    width: 100px;
+    height: 150px;
+    float: left;
+    margin-right: 50px;
+    margin-top: 25px;
+    border-left: 2px solid #ecf0f1;
+    border-right: 2px solid #ecf0f1;
+}
+.wrapper .court2:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background-color: #ecf0f1;
+    top: 100px;
+    left: 150px;
+}
+.wrapper .ball {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #f1c40f;
+    border-radius: 50%;
+    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+    top: 110px;
+    left: 30px;
+    -webkit-animation: ballMovement 2s ease-out infinite;
+    animation: ballMovement 2s ease-out infinite;
+}
+.wrapper .player1 {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    background-color: #ecf0f1;
+    top: 115px;
+    left: 18px;
+    box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.4);
+    -webkit-animation: player1Movement 2s ease-in-out infinite;
+    animation: player1Movement 2s ease-in-out infinite;
+}
+.wrapper .player2 {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    background-color: #ecf0f1;
+    top: 40px;
+    right: 18px;
+    box-shadow: 3px 4px 2px rgba(0, 0, 0, 0.4);
+    -webkit-animation: player2Movement 2s ease-in-out infinite;
+    animation: player2Movement 2s ease-in-out infinite;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
+
+
+
+
+/*Fin : Autres*/

@@ -10,6 +10,5 @@ import { Personne } from '../../services/personne';
   templateUrl: '/app/pages/home/home.html',
 })
 export class Home  {
-  name = 'Angular';
   p = new Personne('Consonni', 'Ugo' , 26 );
 }

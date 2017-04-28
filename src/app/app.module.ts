@@ -4,7 +4,6 @@ import { RouterModule  }   from '@angular/router';
 import { AppComponent }  from './app.component';
 import { Home} from './pages/home/home';
 import {VueJoueur} from './pages/vueJoueur/vueJoueur';
-
 import {APP_BASE_HREF} from '@angular/common';
 import { router  } from './app.routes';
 
@@ -13,6 +12,7 @@ import { router  } from './app.routes';
     BrowserModule,
     RouterModule.forRoot(router)
   ],
+
   declarations: [ AppComponent, Home , VueJoueur],
   providers: [{provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap:    [ AppComponent ]

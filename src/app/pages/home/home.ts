@@ -1,14 +1,68 @@
 /**
  * Created by Ugo on 30/03/2017.
  */
-import { Component } from '@angular/core';
-import { Personne } from '../../services/personne';
-
+import {Component} from '@angular/core';
+declare let $: any;
 
 @Component({
-  selector: 'home',
-  templateUrl: '/app/pages/home/home.html',
+    selector: 'home',
+    templateUrl: '/app/pages/home/home.html',
 })
-export class Home  {
-  p = new Personne('Consonni', 'Ugo' , 26 );
+
+export class Home {
+    ngOnInit() {
+        $('.matchAVenir').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+        });
+
+        // $(document).ready(function () {
+        //     console.log("sdfsdf");
+        //     // Test for placeholder support
+        //     $.support.placeholder = (function () {
+        //         var i = document.createElement('input');
+        //         return 'placeholder' in i;
+        //     })();
+        //
+        //     // Hide labels by default if placeholders are supported
+        //     if ($.support.placeholder) {
+        //
+        //         $('.form-label').each(function () {
+        //             $(this).addClass('js-hide-label');
+        //         });
+        //
+        //         // Code for adding/removing classes here
+        //         $('.form-group').find('input, textarea').on('keyup blur focus', function (e) {
+        //             console.log("sdfsdsdfsdff");
+        //             // Cache our selectors
+        //             var $this = $(this),
+        //                 $parent = $this.parent().find("label");
+        //
+        //             if (e.type == 'keyup') {
+        //                 if ($this.val() == '') {
+        //                     $parent.addClass('js-hide-label');
+        //                 } else {
+        //                     $parent.removeClass('js-hide-label');
+        //                 }
+        //             }
+        //             else if (e.type == 'blur') {
+        //                 if ($this.val() == '') {
+        //                     $parent.addClass('js-hide-label');
+        //                 }
+        //                 else {
+        //                     $parent.removeClass('js-hide-label').addClass('js-unhighlight-label');
+        //                 }
+        //             }
+        //             else if (e.type == 'focus') {
+        //                 if ($this.val() !== '') {
+        //                     $parent.removeClass('js-unhighlight-label');
+        //                 }
+        //             }
+        //         });
+        //     }
+        // });
+    }
 }
+

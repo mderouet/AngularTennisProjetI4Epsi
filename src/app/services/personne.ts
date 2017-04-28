@@ -1,6 +1,7 @@
 /**
  * Created by Ugo on 29/03/2017.
  */
+
 export class Personne {
   public nom: string;
   public prenom: string;

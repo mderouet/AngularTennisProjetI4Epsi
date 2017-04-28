@@ -5,6 +5,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { Home } from './pages/home/home';
+
 import {VueJoueur} from './pages/vueJoueur/vueJoueur';
 
 export const router: Routes = [

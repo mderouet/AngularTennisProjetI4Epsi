@@ -1,17 +1,5 @@
 
 
-jQuery(document).ready(function () {
-    jQuery('.matchAVenir').slick({
-        dots: true,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 1,
-    });
-    jQuery('.matchAVenir').slick()
-
-})
-
-
 //Subscribe
 // remap jQuery to jQuery
 

@@ -9,10 +9,11 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
-var home_1 = require("./pages/home/home");
-var vueJoueur_1 = require("./pages/vueJoueur/vueJoueur");
+var home_component_1 = require("./pages/home/home.component");
+var joueur_component_1 = require("./pages/joueur/joueur.component");
 var common_1 = require("@angular/common");
 var app_routes_1 = require("./app.routes");
+var http_1 = require("@angular/http");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -22,9 +23,10 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            router_1.RouterModule.forRoot(app_routes_1.router)
+            router_1.RouterModule.forRoot(app_routes_1.router),
+            http_1.HttpModule
         ],
-        declarations: [app_component_1.AppComponent, home_1.Home, vueJoueur_1.VueJoueur],
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, joueur_component_1.JoueurComponent],
         providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }],
         bootstrap: [app_component_1.AppComponent]
     })

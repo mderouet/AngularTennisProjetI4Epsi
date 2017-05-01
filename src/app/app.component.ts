@@ -9,11 +9,11 @@ import { Component } from '@angular/core';
   ' <li><a href="#">Contact</a></li>' +
   ' </ul> </div> </div> </div> </header><router-outlet></router-outlet>' +
   '<footer><div id="copyright">Copyright© 2017 - Make Tennis Great Again</div> <div id="mentionLegale">' +
-  ' <a href="#">Mention Légale</a></div>'+
-'<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>'+
-'<script type="text/javascript" src="assets/slickjs/js/slick.min.js"></script>'+
-'<script type="text/javascript" src="assets/foundation/js/foundation.min.js"></script>'+
-'<script type="text/javascript" src="assets/js/javascript.js"></script>'+
+  ' <a href="#">Mention Légale</a></div>' +
+'<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>' +
+'<script type="text/javascript" src="assets/slickjs/js/slick.min.js"></script>' +
+'<script type="text/javascript" src="assets/foundation/js/foundation.min.js"></script>' +
+'<script type="text/javascript" src="assets/js/javascript.js"></script>' +
   '</footer>',
 })
 export class AppComponent  {

@@ -1,7 +1,9 @@
 /**
  * Created by Ugo on 29/03/2017.
  */
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class Personne {
   public nom: string;
   public prenom: string;

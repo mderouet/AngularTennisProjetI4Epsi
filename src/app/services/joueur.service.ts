@@ -1,6 +1,9 @@
 /**
  * Created by warp on 25/04/2017.
  */
+import { Injectable } from '@angular/core';
+
+@Injectable()
 export class Joueur {
   public id: number;
   public id_pays: number;
@@ -17,9 +20,7 @@ export class Joueur {
     this.date_naissance = date_naissance;
     this.url_image = url_image;
   }
-  loadJoueurs() {
-  }
   afficheJoueur() {
-    return 'nom : ' + this.nom + ' prenom : ' + this.prenom;
+    return 'Nom : ' + this.nom + ' Prenom : ' + this.prenom;
   }
 }

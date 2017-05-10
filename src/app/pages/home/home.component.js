@@ -19,14 +19,13 @@ var HomeComponent = (function () {
         this.requestService = requestService;
     }
     HomeComponent.prototype.ngOnInit = function () {
-        this.requestService.getJoueurs().subscribe(function (joueurs) { return console.log(joueurs); });
         //A corriger, null pointer pour utiliser jquery
-        /*$('.matchAVenir').slick({
-          dots: true,
-          infinite: true,
-          speed: 300,
-          slidesToShow: 1,
-        });*/
+        //  $('.matchAVenir').slick({
+        //    dots: true,
+        //    infinite: true,
+        //    speed: 300,
+        //    slidesToShow: 1,
+        //  });
     };
     return HomeComponent;
 }());

@@ -5,6 +5,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class Config {
@@ -14,7 +15,7 @@ export class Config {
   constructor(http: Http) {
     this.http = http;
   }
-  getConfiguration(key) {
+  getConfiguration(key): Observable<any> {
     return this.http.get('./app/config/development.json').map(res => {
       this.result = res.json();
       return this.result[key];

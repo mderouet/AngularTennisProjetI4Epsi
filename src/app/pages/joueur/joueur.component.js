@@ -12,21 +12,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var request_service_1 = require("../../services/request.service");
+var config_1 = require("../../config/config");
 var joueur_service_1 = require("../../services/joueur.service");
 var JoueurComponent = (function () {
-    function JoueurComponent() {
+    function JoueurComponent(requestService) {
+        this.requestService = requestService;
     }
     JoueurComponent.prototype.ngOnInit = function () {
-        this.joueur = new joueur_service_1.Joueur(1, 1, 'Derouet', 'martin', new Date(), 'URL_IMAGE');
+        var _this = this;
+        this.requestService.listJoueur().subscribe(function (joueurs) {
+            _this.joueurs = joueurs;
+        });
+        this.requestService.showJoueur(1).subscribe(function (joueur) {
+            _this.joueur = joueur;
+        });
     };
     return JoueurComponent;
 }());
 JoueurComponent = __decorate([
     core_1.Component({
         selector: 'joueur',
-        templateUrl: '/app/pages/joueur/joueur.html'
+        templateUrl: '/app/pages/joueur/joueur.html',
+        providers: [request_service_1.RequestService, config_1.Config, joueur_service_1.Joueur]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [request_service_1.RequestService])
 ], JoueurComponent);
 exports.JoueurComponent = JoueurComponent;
 //# sourceMappingURL=joueur.component.js.map

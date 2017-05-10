@@ -20,13 +20,21 @@ var RequestService = (function () {
         this.http = http;
         this.conf = config;
     }
-    RequestService.prototype.getJoueurs = function () {
+    //retourne la liste des joueurs
+    RequestService.prototype.listJoueur = function () {
         var _this = this;
-        this.conf.getConfiguration('apiBaseUrl').subscribe(function (url) {
+        return this.getBaseUrl().switchMap(function (url) {
             return _this.http.get(url + 'joueur').map(function (res) { return res = res.json(); });
         });
     };
+    RequestService.prototype.showJoueur = function (id) {
+        var _this = this;
+        return this.getBaseUrl().switchMap(function (url) {
+            return _this.http.get(url + 'joueur/' + id).map(function (res) { return res = res.json(); });
+        });
+    };
     RequestService.prototype.getBaseUrl = function () {
+        return this.conf.getConfiguration('apiBaseUrl');
     };
     return RequestService;
 }());

@@ -3,18 +3,29 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {Joueur} from '../../services/joueur.service';
+import {RequestService} from "../../services/request.service";
+import {Config} from "../../config/config";
+import {Joueur} from "../../services/joueur.service";
 
 @Component({
   selector: 'joueur',
-  templateUrl: '/app/pages/joueur/joueur.html'
+  templateUrl: '/app/pages/joueur/joueur.html',
+  providers: [RequestService, Config, Joueur]
 })
 export class JoueurComponent implements OnInit {
-  joueur: Joueur;
+  joueurs: [any];
+  joueur: any;
+
   valueConfig: String;
-  constructor() {
+  constructor(public requestService: RequestService) {
   }
   ngOnInit() {
-    this.joueur = new Joueur(1 , 1 , 'Derouet', 'martin' , new Date() , 'URL_IMAGE');
+    this.requestService.listJoueur().subscribe((joueurs) => {
+      this.joueurs = joueurs;
+    });
+
+    this.requestService.showJoueur(1).subscribe((joueur) => {
+      this.joueur = joueur;
+    });
   }
 }

@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by warp on 25/04/2017.
  */
 var core_1 = require("@angular/core");
+var cerialize_1 = require("cerialize");
 var Joueur = (function () {
     function Joueur(id, id_pays, nom, prenom, date_naissance, url_image) {
         this.id = id;
@@ -24,8 +25,14 @@ var Joueur = (function () {
     Joueur.prototype.afficheJoueur = function () {
         return 'Nom : ' + this.nom + ' Prenom : ' + this.prenom;
     };
+    Joueur.prototype.unserialize = function () {
+    };
     return Joueur;
 }());
+__decorate([
+    cerialize_1.deserialize,
+    __metadata("design:type", Number)
+], Joueur.prototype, "id", void 0);
 Joueur = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [Number, Number, String, String, Date, String])

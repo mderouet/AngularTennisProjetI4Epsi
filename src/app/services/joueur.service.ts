@@ -2,12 +2,11 @@
  * Created by warp on 25/04/2017.
  */
 import { Injectable } from '@angular/core';
-import {deserialize} from "cerialize";
 
 @Injectable()
 export class Joueur {
 
-  @deserialize public id: number;
+  public id: number;
   public id_pays: number;
   public nom: string;
   public prenom: string;

@@ -1,2 +1,10 @@
-<p>{{joueurs | json}}</p>
-<p>{{joueur | json}}</p>
+
+<ul>
+  <li *ngFor="let joueur of joueurs">
+    {{joueur.prenom + ' ' + joueur.nom}}
+    <img src='{{joueur.url_image}}'/>
+
+    Drapeau :
+    <img src='{{joueur.pays.url_drapeau}}'/>
+  </li>
+</ul>

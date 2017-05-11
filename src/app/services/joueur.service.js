@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Created by warp on 25/04/2017.
  */
 var core_1 = require("@angular/core");
-var cerialize_1 = require("cerialize");
 var Joueur = (function () {
     function Joueur(id, id_pays, nom, prenom, date_naissance, url_image) {
         this.id = id;
@@ -29,10 +29,6 @@ var Joueur = (function () {
     };
     return Joueur;
 }());
-__decorate([
-    cerialize_1.deserialize,
-    __metadata("design:type", Number)
-], Joueur.prototype, "id", void 0);
 Joueur = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [Number, Number, String, String, Date, String])

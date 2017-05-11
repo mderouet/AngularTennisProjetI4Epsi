@@ -1,6 +1,4 @@
-/**
- * Created by warp on 25/04/2017.
- */
+
 
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../../services/request.service";
@@ -13,19 +11,24 @@ import {Joueur} from "../../services/joueur.service";
   providers: [RequestService, Config, Joueur]
 })
 export class JoueurComponent implements OnInit {
-  joueurs: [any];
-  joueur: any;
-
+  joueurs: [JSON];
+  joueur: string;
   valueConfig: String;
   constructor(public requestService: RequestService) {
+
   }
   ngOnInit() {
+    this.chargerJoueurs();
+  }
+
+  //Charge la liste des joueurs et les données qui sont liés
+  chargerJoueurs()
+  {
     this.requestService.listJoueur().subscribe((joueurs) => {
       this.joueurs = joueurs;
-    });
-
-    this.requestService.showJoueur(1).subscribe((joueur) => {
-      this.joueur = joueur;
+      for(var j in joueurs){
+        console.log(joueurs[j]);
+      }
     });
   }
 }

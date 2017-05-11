@@ -1,6 +1,4 @@
-/**
- * Created by Ugo on 30/03/2017.
- */
+
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../services/request.service';
 import {Config} from "../../config/config";

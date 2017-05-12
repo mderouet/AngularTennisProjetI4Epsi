@@ -1,0 +1,72 @@
+figure.snip1113 {
+    font-family: 'Raleway', Arial, sans-serif;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    min-width: 220px;
+    max-width: 310px;
+    width: 100%;
+    background: #ffffff;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+figure.snip1113 * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+figure.snip1113 img {
+    max-width: 65%;
+    margin: 40px auto;
+    display: block;
+    position: relative;
+    border: 3px solid #666666;
+    padding: 15px 15px 85px 15px;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+figure.snip1113 figcaption {
+    position: absolute;
+    height: 120px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    display: block;
+}
+
+figure.snip1113 h3 {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1.7em;
+    width: 100%;
+    padding: 5px 12px;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+figure.snip1113 h3 span {
+    font-weight: 800;
+}
+
+figure.snip1113 h4 {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    opacity: 0.6;
+    font-size: 1.1em;
+}
+
+figure.snip1113 img {
+    border-color: #ffeb3b;
+}
+
+figure.snip1113 h3,
+figure.snip1113 h4 {
+    color: #ffeb3b;
+}

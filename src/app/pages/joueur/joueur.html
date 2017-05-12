@@ -1,9 +1,20 @@
+<section id="vueJoueurs">
+    <h1>Liste des joueurs</h1>
+    <ul>
+        <li *ngFor="let joueur of joueurs">
 
-<ul>
-  <li *ngFor="let joueur of joueurs">
-    {{joueur.prenom + ' ' + joueur.nom}}
-    <img src='{{joueur.url_image}}'/>
-    Drapeau :
-    <img src='{{joueur.pays.url_drapeau}}'/>
-  </li>
-</ul>
+            <figure class="snip1113">
+                <img src='{{joueur.url_image}}' alt="  {{joueur.prenom + ' ' + joueur.nom}}"/>
+                <figcaption>
+                    <h3>{{joueur.prenom }}<span> {{joueur.nom}}</span></h3>
+                    <h4>
+                        <p>Orignaire de : {{joueur.pays.libelle}} <img src="{{joueur.pays.url_drapeau}}"
+                                                                       alt="{{joueur.pays.libelle}}"></p>
+                        <p>Date de naissance : {{joueur.date_naissance}}</p>
+                    </h4>
+                </figcaption>
+            </figure>
+        </li>
+    </ul>
+</section>
+

@@ -16,18 +16,43 @@ export class RequestService {
   constructor(public http: Http, config: Config) {
     this.conf = config;
   }
-  //retourne la liste des joueurs
+  /*
+    Get base url of API
+   */
+  getBaseUrl() {
+    return this.conf.getConfiguration('apiBaseUrl');
+  }
+
+  /*
+  Methodes Joueurs
+   */
+
+  // Liste tous les joueurs
   listJoueur(): Observable<any> {
     return this.getBaseUrl().switchMap((url: any) =>
       this.http.get(url + 'joueur').map(res => res = res.json()));
   }
 
+  // Récupére un joueur par ID
   showJoueur(id: number): Observable<any> {
     return this.getBaseUrl().switchMap((url: any) =>
       this.http.get(url + 'joueur/' + id).map(res => res = res.json()));
   }
 
-  getBaseUrl() {
-    return this.conf.getConfiguration('apiBaseUrl');
+  /*
+   Methodes Arbitres
+   */
+
+  // Liste tous les arbitres
+  listArbitre(): Observable<any> {
+    return this.getBaseUrl().switchMap((url: any) =>
+      this.http.get(url + 'arbitre').map(res => res = res.json()));
   }
+
+  // Récupére un arbitre par ID
+  showArbitre(id: number): Observable<any> {
+    return this.getBaseUrl().switchMap((url: any) =>
+      this.http.get(url + 'arbitre/' + id).map(res => res = res.json()));
+  }
+
 }

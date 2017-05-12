@@ -22,13 +22,13 @@ export class JoueurComponent implements OnInit {
         this.chargerJoueurs();
     }
 
-    //Charge la liste des joueurs et les données qui sont liés
-    chargerJoueurs() {
-        this.requestService.listJoueur().subscribe((joueurs) => {
-            this.joueurs = joueurs;
-            for (var j in joueurs) {
-                console.log(joueurs[j]);
-            }
-        });
-    }
+  //Charge la liste des joueurs et les données qui sont liés
+  chargerJoueurs() {
+    this.requestService.listJoueur().subscribe((joueurs) => {
+      this.joueurs = joueurs;
+      for(var j in joueurs) {
+        console.log(joueurs[j]);
+      }
+    });
+  }
 }

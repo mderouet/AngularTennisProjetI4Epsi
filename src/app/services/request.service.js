@@ -21,21 +21,45 @@ var RequestService = (function () {
         this.http = http;
         this.conf = config;
     }
-    //retourne la liste des joueurs
+    /*
+      Get base url of API
+     */
+    RequestService.prototype.getBaseUrl = function () {
+        return this.conf.getConfiguration('apiBaseUrl');
+    };
+    /*
+    Methodes Joueurs
+     */
+    // Liste tous les joueurs
     RequestService.prototype.listJoueur = function () {
         var _this = this;
         return this.getBaseUrl().switchMap(function (url) {
             return _this.http.get(url + 'joueur').map(function (res) { return res = res.json(); });
         });
     };
+    // Récupére un joueur par ID
     RequestService.prototype.showJoueur = function (id) {
         var _this = this;
         return this.getBaseUrl().switchMap(function (url) {
             return _this.http.get(url + 'joueur/' + id).map(function (res) { return res = res.json(); });
         });
     };
-    RequestService.prototype.getBaseUrl = function () {
-        return this.conf.getConfiguration('apiBaseUrl');
+    /*
+     Methodes Arbitres
+     */
+    // Liste tous les arbitres
+    RequestService.prototype.listArbitre = function () {
+        var _this = this;
+        return this.getBaseUrl().switchMap(function (url) {
+            return _this.http.get(url + 'arbitre').map(function (res) { return res = res.json(); });
+        });
+    };
+    // Récupére un arbitre par ID
+    RequestService.prototype.showArbitre = function (id) {
+        var _this = this;
+        return this.getBaseUrl().switchMap(function (url) {
+            return _this.http.get(url + 'arbitre/' + id).map(function (res) { return res = res.json(); });
+        });
     };
     return RequestService;
 }());

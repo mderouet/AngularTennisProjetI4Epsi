@@ -3,7 +3,6 @@
   <li *ngFor="let joueur of joueurs">
     {{joueur.prenom + ' ' + joueur.nom}}
     <img src='{{joueur.url_image}}'/>
-
     Drapeau :
     <img src='{{joueur.pays.url_drapeau}}'/>
   </li>

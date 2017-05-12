@@ -36,7 +36,8 @@ JoueurComponent = __decorate([
     core_1.Component({
         selector: 'joueur',
         templateUrl: '/app/pages/joueur/joueur.html',
-        providers: [request_service_1.RequestService, config_1.Config, joueur_service_1.Joueur]
+        providers: [request_service_1.RequestService, config_1.Config, joueur_service_1.Joueur],
+        styleUrls: ['./joueur.component.css']
     }),
     __metadata("design:paramtypes", [request_service_1.RequestService])
 ], JoueurComponent);

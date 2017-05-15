@@ -4,7 +4,7 @@ import {Config} from "../../config/config";
 import {Joueur} from "../../services/joueur.service";
 
 @Component({
-    selector: 'joueur',
+    selector: 'joueurs',
     templateUrl: '/app/pages/joueur/joueur.html',
     providers: [RequestService, Config, Joueur],
     styleUrls:  ['./joueur.component.css']

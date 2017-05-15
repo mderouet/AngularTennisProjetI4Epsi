@@ -6,7 +6,7 @@ var joueur_component_1 = require("./pages/joueur/joueur.component");
 exports.router = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: home_component_1.HomeComponent },
-    { path: 'joueur', component: joueur_component_1.JoueurComponent }
+    { path: 'joueurs', component: joueur_component_1.JoueurComponent }
 ];
 exports.routes = router_1.RouterModule.forRoot(exports.router);
 //# sourceMappingURL=app.routes.js.map

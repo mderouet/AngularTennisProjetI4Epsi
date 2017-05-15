@@ -34,7 +34,7 @@ var JoueurComponent = (function () {
 }());
 JoueurComponent = __decorate([
     core_1.Component({
-        selector: 'joueur',
+        selector: 'joueurs',
         templateUrl: '/app/pages/joueur/joueur.html',
         providers: [request_service_1.RequestService, config_1.Config, joueur_service_1.Joueur],
         styleUrls: ['./joueur.component.css']

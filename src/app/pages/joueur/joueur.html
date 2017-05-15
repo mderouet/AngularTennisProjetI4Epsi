@@ -1,9 +1,9 @@
 <section id="vueJoueurs">
-    <h1>Liste des joueurs</h1>
-    <ul>
-        <li *ngFor="let joueur of joueurs">
+    <h1><span>Liste des joueurs</span></h1>
+    <ul class="row">
+        <li *ngFor="let joueur of joueurs" class="large-3 medium-4 small-12">
 
-            <figure class="snip1113">
+            <figure class="snip1554">
                 <img src='{{joueur.url_image}}' alt="  {{joueur.prenom + ' ' + joueur.nom}}"/>
                 <figcaption>
                     <h3>{{joueur.prenom }}<span> {{joueur.nom}}</span></h3>
@@ -13,6 +13,7 @@
                         <p>Date de naissance : {{joueur.date_naissance}}</p>
                     </h4>
                 </figcaption>
+                <a href="#"></a>
             </figure>
         </li>
     </ul>

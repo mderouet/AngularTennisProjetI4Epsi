@@ -51,28 +51,6 @@ export class HomeComponent implements OnInit {
         var d = c[stringNbr2];
       }
     }
-<<<<<<< HEAD
-
-    chargerRencontres() {
-        this.requestService.listRencontres().subscribe((rencontres) => {
-            this.rencontres = rencontres;
-        });
-    }
-
-    chargerTournois() {
-        this.requestService.listTournois().subscribe((tournois) => {
-            this.tournois = tournois;
-            // console.log(tournois);
-        });
-    }
-
-    getPaysByTournoiId(id) {
-        for (let tournoi of this.tournois) {
-            if (tournoi["tournoi"].id == id) {
-                return tournoi["tournoi"].pays
-            }
-        }
-=======
     return d
   }
 
@@ -94,7 +72,6 @@ export class HomeComponent implements OnInit {
       if (tournoi["tournoi"].id === id) {
         return tournoi["tournoi"].pays
       }
->>>>>>> 650256e8d8a3f6c57bce913805e00ad21ef4fd06
     }
   }
 

@@ -14,13 +14,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@angular/core");
 var Resultat = (function () {
-    function Resultat() {
+    function Resultat(id, date_debut, date_fin, cours_tennis_libelle, cours_tennis_image, id_tournoi, tournoi, equipe_id, equipe_libelle, nom, prenom, uri_image) {
+        this.id = id;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.cours_tennis_libelle = cours_tennis_libelle;
+        this.cours_tennis_image = cours_tennis_image;
+        this.id_tournoi = id_tournoi;
+        this.tournoi = tournoi;
+        this.equipe_id = equipe_id;
+        this.equipe_libelle = equipe_libelle;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.uri_image = uri_image;
     }
     return Resultat;
 }());
 Resultat = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [Number, Date, Date, String, String, Number, String, Number, String, String, String, String])
 ], Resultat);
 exports.Resultat = Resultat;
 //# sourceMappingURL=resultat.service.js.map

@@ -14,7 +14,7 @@ export const router: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'joueurs', component: JoueurComponent},
     {path: 'rencontres', component: RencontresComponent},
-    {path: 'resultat', component: ResultatComponent},
+    {path: 'resultat/:id', component: ResultatComponent},
 
 
 ];

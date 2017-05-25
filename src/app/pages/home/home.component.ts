@@ -67,13 +67,9 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    trouveId(objet) {
-        return objet.tournoi.id_tournoi == 1
-    }
-
     getPaysByTournoiId(id) {
         for (let tournoi of this.tournois) {
-            if (tournoi["tournoi"].id_tournoi == id) {
+            if (tournoi["tournoi"].id == id) {
                 return tournoi["tournoi"].pays
             }
         }

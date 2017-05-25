@@ -10,7 +10,7 @@ exports.router = [
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'joueurs', component: joueur_component_1.JoueurComponent },
     { path: 'rencontres', component: rencontres_component_1.RencontresComponent },
-    { path: 'resultat', component: resultat_component_1.ResultatComponent },
+    { path: 'resultat/:id', component: resultat_component_1.ResultatComponent },
 ];
 exports.routes = router_1.RouterModule.forRoot(exports.router);
 //# sourceMappingURL=app.routes.js.map

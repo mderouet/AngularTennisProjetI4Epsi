@@ -61,13 +61,10 @@ var HomeComponent = (function () {
             // console.log(tournois);
         });
     };
-    HomeComponent.prototype.trouveId = function (objet) {
-        return objet.tournoi.id_tournoi == 1;
-    };
     HomeComponent.prototype.getPaysByTournoiId = function (id) {
         for (var _i = 0, _a = this.tournois; _i < _a.length; _i++) {
             var tournoi = _a[_i];
-            if (tournoi["tournoi"].id_tournoi == id) {
+            if (tournoi["tournoi"].id == id) {
                 return tournoi["tournoi"].pays;
             }
         }

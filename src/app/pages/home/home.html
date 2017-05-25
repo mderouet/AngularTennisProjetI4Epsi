@@ -55,7 +55,7 @@
                         <div class="imgJoueursBy2">
                             <div class="imgJoueursEquipe1">
                                 <img src="{{rencontre.rencontre.equipes[0].joueurs[0].url_image}}"
-                                     alt="image joueur {{rencontre.rencontre.equipes[1].joueurs[0].nom}}">
+                                     alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[0].nom}}">
                             </div>
                             <div class="separationImg"></div>
                             <div class="imgJoueursEquipe2">
@@ -94,7 +94,8 @@
         <h1>Prochains matchs</h1>
 
 
-        <div *ngFor="let rencontre of rencontres;let  i = index;">
+        <div *ngFor="let rencontre of rencontres;let  i = index;"
+             routerLink="/resultat/{{rencontre.rencontre.id_rencontre}}">
             <div class="row prochainMatch" *ngIf="i <4">
                 <div style="display: flex;align-items: center;">
                     <div class="dateProchainMatch">

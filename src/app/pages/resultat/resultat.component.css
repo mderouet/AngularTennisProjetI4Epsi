@@ -1,8 +1,10 @@
-#resultatBlock1 {
+.resultat {
     width: 100%;
     display: inline-flex;
-    flow-direction: row;
-    margin: 20px 0;
+    margin: 20px;
+    background: white;
+    padding: 20px;
+    bordr-left: 10px solid #232a35;
 }
 
 .vignetteTitreJoueur {
@@ -10,10 +12,54 @@
     font-weight: bold;
     text-transform: uppercase;
     margin: 10px 0;
+    background: #232a35;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    color: white;
 }
 
 .imgVignetteJoueur img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+}
+
+.imgJoueursEquipe {
+    float: left;
+    width: 75px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.imgVignetteEquipe {
+    float: left;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.nomTournoiRencontre {
+    font-size: 0.6rem;
+}
+
+.separateurResultat {
+    border-top: 3px solid black;
+    margin: 10px 0;
+}
+
+.descriptionSet {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 2px 0;
+    /* background: black; */
+    /* color: white; */
+}
+
+.nomJoueurSet {
+    padding-left: 5px;
+    font-size: 1.1rem;
+}
+
+.ligneSet {
+    padding: 5px 0;
 }

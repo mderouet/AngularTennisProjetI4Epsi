@@ -7,7 +7,8 @@ import {Rencontres} from "../../services/rencontres.service";
 @Component({
     selector: 'home',
     templateUrl: '/app/pages/home/home.html',
-    providers: [RequestService, Config, Rencontres]
+    providers: [RequestService, Config, Rencontres],
+    styleUrls: ['./home.component.css'],
 })
 
 export class HomeComponent implements OnInit {

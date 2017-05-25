@@ -63,9 +63,11 @@
                             </span>
                         </div>
                         <ng-template #resultatSimple>
-                            <span class="textBold">
-                                {{resultat.rencontre.equipes[0].joueurs[0].nom}}
-                            </span>
+                            <div class="nomJoueurSet large-7 medium-7 small-7">
+                                <span class="textBold">
+                                    {{resultat.rencontre.equipes[0].joueurs[0].nom}}
+                                </span>
+                            </div>
                         </ng-template>
                         <div class="setSet large-1 medium-1 small-1">2</div>
                         <div class="setSet large-1 medium-1 small-1">4</div>
@@ -94,10 +96,12 @@
                                 {{resultat.rencontre.equipes[1].joueurs[1].nom}}
                             </span>
                         </div>
-                        <ng-template #resultatSimpleJ2>
-                            <span class="textBold">
-                                {{resultat.rencontre.equipes[1].joueurs[0].nom}}
-                            </span>
+                        <ng-template #resultatSimpleJ2 class="nomJoueurSet large-7 medium-7 small-7">
+                            <div class="nomJoueurSet large-7 medium-7 small-7">
+                                <span class="textBold">
+                                    {{resultat.rencontre.equipes[1].joueurs[0].nom}}
+                                </span>
+                            </div>
                         </ng-template>
                         <div class="setSet large-1 medium-1 small-1">1</div>
                         <div class="setSet large-1 medium-1 small-1">5</div>
@@ -105,6 +109,9 @@
                         <div class="setSet large-1 medium-1 small-1"></div>
                         <div class="setSet large-1 medium-1 small-1"></div>
                     </div>
+                </div>
+                <div routerLink="/resultat/{{resultat.rencontre.id_rencontre}}">
+                    <button>Voir plus</button>
                 </div>
             </div>
         </div>

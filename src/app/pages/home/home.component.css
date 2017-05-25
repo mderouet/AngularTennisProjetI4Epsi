@@ -1,0 +1,13 @@
+.article {
+    background: white;
+}
+
+.descriptionArticle {
+    padding: 10px;
+}
+
+.animTennis {
+    position: relative;
+    top: 50%;
+    margin-top: -150px;
+}

@@ -112,10 +112,11 @@ header {
 .section2 {
     position: relative;
     z-index: 2;
-    top: -110px;
+    margin-top: -110px;
 }
 
 .captionResultat {
+
     background: #232a35;
     padding: 10px 30px;
 }
@@ -347,18 +348,9 @@ header {
 /* Début : Section 4 */
 
 .section4 {
-    /*background: url("../img/Séparation.jpg") no-repeat center center;*/
-    /*background-size: cover;*/
-    /*min-height: 400px;*/
-    /*margin: 20px 0 0;*/
-    /*display: flex;*/
-    /*align-items: center;*/
-
-    width: 100%;
     background: white;
     padding: 20px;
     margin: auto;
-    display: block;
 }
 
 .section4 h1 {

@@ -1,6 +1,6 @@
-<section class="row section2">
-    <div>
-        <div>
+<section class=" section2">
+    <div >
+        <div class="row">
             <div class="large-4 medium-4 small-6 columns blockResultat"
                  *ngFor="let rencontre of rencontres;  let i=index">
                 <div *ngIf=" i<3">
@@ -19,6 +19,7 @@
                                 <img src="{{rencontre.rencontre.equipes[1].joueurs[1].url_image}}"
                                      alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[1].nom}}">
                             </div>
+                            <div style="clear: both"></div>
                         </div>
                         <div class="captionResultat">
                             <h2> Résultat </h2>
@@ -42,10 +43,6 @@
                                 </span>
                             </h3>
                         </div>
-
-                        <div class="txtResultat">
-
-                        </div>
                     </div>
 
                     <!--Séparation-->
@@ -61,6 +58,8 @@
                                 <img src="{{rencontre.rencontre.equipes[1].joueurs[0].url_image}}"
                                      alt="image joueur {{rencontre.rencontre.equipes[1].joueurs[0].nom}}">
                             </div>
+                            <div style="clear: both"></div>
+
                         </div>
                         <div class="captionResultat">
                             <h2> Résultat </h2>
@@ -87,8 +86,7 @@
         <h1>Prochains matchs</h1>
 
 
-        <div *ngFor="let rencontre of rencontres;let  i = index;"
-             routerLink="/resultat/{{rencontre.rencontre.id_rencontre}}">
+        <div *ngFor="let rencontre of rencontres;let  i = index;">
             <div class="row prochainMatch" *ngIf="i <4">
                 <div style="display: flex;align-items: center;">
                     <div class="dateProchainMatch">
@@ -134,90 +132,92 @@
         </div>
     </div>
 
-  <div *ngIf="articles" class="large-8 medium-6 small-12 columns">
+    <div *ngIf="articles" class="large-8 medium-6 small-12 columns">
 
-    <div>
-          <div class="featuredArticle row">
-              <figure class="snip1579">
-                  <img src="{{articles[0].url_image}}" alt="mon image featured"/>
-                  <figcaption>
-                      <h3></h3>
-                      <h5>{{articles[0].titre}}</h5>
-                      <blockquote>
-                          <p>{{articles[0].corps | slice: 0:450}}.....</p>
-                      </blockquote>
-                  </figcaption>
-                  <a href="#"></a>
-              </figure>
-          </div>
-          <div class="row article">
-              <div class="large-4 medium-4 small-4">
-                  <img src="{{articles[1].url_image}}" alt="article 1">
-              </div>
-              <div class="large-8 medium-8 small-8 columns">
-                  <h3>{{articles[1].titre}}</h3>
-                  <h5>{{articles[1].corps | slice: 0:150}}</h5>
+        <div>
+            <div class="featuredArticle row">
+                <figure class="snip1579">
+                    <img src="{{articles[0].url_image}}" alt="mon image featured"/>
+                    <figcaption>
+                        <h3></h3>
+                        <h5>{{articles[0].titre}}</h5>
+                        <blockquote>
+                            <p>{{articles[0].corps | slice: 0:450}}.....</p>
+                        </blockquote>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
+            </div>
+            <div class="row article">
+                <div class="large-4 medium-4 small-4 imgArticle">
+                    <img src="{{articles[1].url_image}}" alt="article 1">
+                </div>
+                <div class="large-8 medium-8 small-8 columns descriptionArticle">
+                    <h3>{{articles[1].titre}}</h3>
+                    <h5>{{articles[1].corps | slice: 0:150}}</h5>
 
-              </div>
-          </div>
-          <div class="row article">
-              <div class="large-4 medium-4 small-4">
-                  <img src="{{articles[2].url_image}}" alt="article 1">
-              </div>
-              <div class="large-8 medium-8 small-8 columns">
-                  <h3>{{articles[2].titre}}</h3>
-                  <h5>{{articles[2].corps | slice: 0:150}}</h5>
-              </div>
-          </div>
-      </div>
-  </div>
+                </div>
+            </div>
+            <div class="row article">
+                <div class="large-4 medium-4 small-4">
+                    <img src="{{articles[2].url_image}}" alt="article 1">
+                </div>
+                <div class="large-8 medium-8 small-8 columns">
+                    <h3>{{articles[2].titre}}</h3>
+                    <h5>{{articles[2].corps | slice: 0:150}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <section class="container-full section4">
-
-    <div class="blockContact small-6 medium-6 large-6 ">
-        <div class="row">
-            <div class="small-12 medium-12 large-12 text-center">
-                <h2>Contact</h2>
+    <div class="row">
+        <div class="blockContact small-6 medium-6 large-6 ">
+            <div class="row">
+                <div class="small-12 medium-12 large-12 text-center">
+                    <h2>Contact</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 medium-12 large-12">
+                    <form id="contact-form" class="form" action="#" method="POST" role="form">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Votre nom</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom"
+                                   tabindex="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Votre Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Votre Email"
+                                   tabindex="2" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Sujet</label>
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Sujet"
+                                   tabindex="3">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea rows="5" cols="50" name="message" class="form-control" id="message"
+                                      placeholder="Votre message..." tabindex="4" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-start-order">Envoyer le message</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="small-12 medium-12 large-12">
-                <form id="contact-form" class="form" action="#" method="POST" role="form">
-                    <div class="form-group">
-                        <label class="form-label" for="name">Votre nom</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom"
-                               tabindex="1" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">Votre Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Votre Email"
-                               tabindex="2" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="subject">Sujet</label>
-                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Sujet"
-                               tabindex="3">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="message">Message</label>
-                        <textarea rows="5" cols="50" name="message" class="form-control" id="message"
-                                  placeholder="Votre message..." tabindex="4" required></textarea>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-start-order">Envoyer le message</button>
-                    </div>
-                </form>
+        <div class="small-6 medium-6 large-6 ">
+            <div class="animTennis">
+                <div class="wrapper">
+                    <div class="court1"></div>
+                    <div class="court2"></div>
+                    <div class="ball"></div>
+                    <div class="player1"></div>
+                    <div class="player2"></div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="small-6 medium-6 large-6 ">
-        <div class="wrapper">
-            <div class="court1"></div>
-            <div class="court2"></div>
-            <div class="ball"></div>
-            <div class="player1"></div>
-            <div class="player2"></div>
-        </div>
-    </div>
-
 </section>

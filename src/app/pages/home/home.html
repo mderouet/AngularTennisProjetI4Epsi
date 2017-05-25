@@ -42,13 +42,12 @@
                                 </span>
                             </h3>
                         </div>
+
                         <div class="txtResultat">
-                            Latius iam disseminata licentia onerosus bonis omnibus Caesar nullum post haec adhibens
-                            modum
-                            orientis
-                            latera cuncta vexabat nec honoratis parcens nec urbium primatibus nec plebeiis.
+
                         </div>
                     </div>
+
                     <!--Séparation-->
 
                     <ng-template #elseBlock>
@@ -76,12 +75,6 @@
                             <span class="textBold"> {{rencontre.rencontre.equipes[1].joueurs[0].nom}}</span>
                          </span>
                             </h3>
-                        </div>
-                        <div class="txtResultat">
-                            Latius iam disseminata licentia onerosus bonis omnibus Caesar nullum post haec adhibens
-                            modum
-                            orientis
-                            latera cuncta vexabat nec honoratis parcens nec urbium primatibus nec plebeiis.
                         </div>
                     </ng-template>
                 </div>
@@ -140,50 +133,47 @@
             </div>
         </div>
     </div>
-    <div class="large-8 medium-6 small-12 columns">
-        <div class="featuredArticle row">
-            <figure class="snip1579">
-                <img src="assets/img/featured.jpg" alt="mon image featured"/>
-                <figcaption>
-                    <h3>Roland Garros</h3>
-                    <h5>Kristina Mladenovic : «Je me suis surprise moi-même»</h5>
-                    <blockquote>
-                        <p>'Which is worse, that everyone has his price, or that the price is always so low.'</p>
-                    </blockquote>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-        </div>
-        <div class="row article">
-            <div class="large-4 medium-4 small-4">
-                <img src="assets/img/article1.jpg" alt="article 1">
-            </div>
-            <div class="large-8 medium-8 small-8 columns">
-                <h3><span>WTA</span> <span>Roland Garros</span></h3>
-                <h4>Stan Wawrinka écarte Dominic Thiem</h4>
-                <h5>Le Suisse Stan Wawrinka s'est qualifié jeudi soir pour les demi-finales du tournoi d'Indian
-                    Wells
-                    aux dépens de l'Autrichien Dominic Thiem (6-4, 4-6, 7-6 [2]).
-                </h5>
 
-            </div>
-        </div>
-        <div class="row article">
-            <div class="large-4 medium-4 small-4">
-                <img src="assets/img/article1.jpg" alt="article 1">
-            </div>
-            <div class="large-8 medium-8 small-8 columns">
-                <h3><span>WTA</span> <span>Roland Garros</span></h3>
-                <h4>Stan Wawrinka écarte Dominic Thiem</h4>
-                <h5>Le Suisse Stan Wawrinka s'est qualifié jeudi soir pour les demi-finales du tournoi d'Indian Wells
-                    aux dépens de l'Autrichien Dominic Thiem (6-4, 4-6, 7-6 [2]).
-                </h5>
-            </div>
-        </div>
-    </div>
+  <div *ngIf="articles" class="large-8 medium-6 small-12 columns">
 
+    <div>
+          <div class="featuredArticle row">
+              <figure class="snip1579">
+                  <img src="{{articles[0].url_image}}" alt="mon image featured"/>
+                  <figcaption>
+                      <h3></h3>
+                      <h5>{{articles[0].titre}}</h5>
+                      <blockquote>
+                          <p>{{articles[0].corps | slice: 0:450}}.....</p>
+                      </blockquote>
+                  </figcaption>
+                  <a href="#"></a>
+              </figure>
+          </div>
+          <div class="row article">
+              <div class="large-4 medium-4 small-4">
+                  <img src="{{articles[1].url_image}}" alt="article 1">
+              </div>
+              <div class="large-8 medium-8 small-8 columns">
+                  <h3>{{articles[1].titre}}</h3>
+                  <h5>{{articles[1].corps | slice: 0:150}}</h5>
+
+              </div>
+          </div>
+          <div class="row article">
+              <div class="large-4 medium-4 small-4">
+                  <img src="{{articles[2].url_image}}" alt="article 1">
+              </div>
+              <div class="large-8 medium-8 small-8 columns">
+                  <h3>{{articles[2].titre}}</h3>
+                  <h5>{{articles[2].corps | slice: 0:150}}</h5>
+              </div>
+          </div>
+      </div>
+  </div>
 </section>
 <section class="container-full section4">
+
     <div class="blockContact small-6 medium-6 large-6 ">
         <div class="row">
             <div class="small-12 medium-12 large-12 text-center">

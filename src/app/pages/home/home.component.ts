@@ -11,48 +11,47 @@ import {Rencontres} from "../../services/rencontres.service";
 })
 
 export class HomeComponent implements OnInit {
-    rencontres: [JSON];
-    tournois: [JSON];
-    argument: any;
+  rencontres: [JSON];
+  tournois: [JSON];
+  articles: [JSON];
 
 
-    constructor(public requestService: RequestService) {
+  constructor(public requestService: RequestService) {
+  }
+
+  ngOnInit() {
+
+    this.chargerRencontres();
+    this.chargerTournois();
+    this.chargerArticles();
+
+    //A corriger, null pointer pour utiliser jquery
+    //   jQuery('.matchAVenir').slick({
+    //     dots: true,
+    //     infinite: true,
+    //     speed: 300,
+    //     slidesToShow: 1,
+    //   });
+
+  }
+
+
+  splitDate(string, firstSplit, secondSplit, stringNbr, stringNbr2) {
+    var a = string.split(firstSplit);
+    var b = a[stringNbr];
+    if (stringNbr2 === "false") {
+      var c = a[stringNbr];
+      var d = c;
+    } else {
+      if (secondSplit === "false") {
+        var c = a[stringNbr];
+        var d = c;
+      } else {
+        var c = b.split(secondSplit);
+        var d = c[stringNbr2];
+      }
     }
-
-    ngOnInit() {
-
-        this.chargerRencontres();
-        this.chargerTournois();
-
-
-        //A corriger, null pointer pour utiliser jquery
-        //   jQuery('.matchAVenir').slick({
-        //     dots: true,
-        //     infinite: true,
-        //     speed: 300,
-        //     slidesToShow: 1,
-        //   });
-
-    }
-
-
-    splitDate(string, firstSplit, secondSplit, stringNbr, stringNbr2) {
-        var a = string.split(firstSplit);
-        var b = a[stringNbr];
-        if (stringNbr2 == "false") {
-            var c = a[stringNbr];
-            var d = c;
-        } else {
-            if (secondSplit == "false") {
-                var c = a[stringNbr];
-                var d = c;
-            } else {
-                var c = b.split(secondSplit);
-                var d = c[stringNbr2];
-            }
-        }
-        return d
-    }
+<<<<<<< HEAD
 
     chargerRencontres() {
         this.requestService.listRencontres().subscribe((rencontres) => {
@@ -73,7 +72,38 @@ export class HomeComponent implements OnInit {
                 return tournoi["tournoi"].pays
             }
         }
+=======
+    return d
+  }
+
+  chargerRencontres() {
+    this.requestService.listRencontres().subscribe((rencontres) => {
+      this.rencontres = rencontres;
+    });
+  }
+
+  chargerTournois() {
+    this.requestService.listTournois().subscribe((tournois) => {
+      this.tournois = tournois;
+      // console.log(tournois);
+    });
+  }
+
+  getPaysByTournoiId(id) {
+    for (let tournoi of this.tournois) {
+      if (tournoi["tournoi"].id === id) {
+        return tournoi["tournoi"].pays
+      }
+>>>>>>> 650256e8d8a3f6c57bce913805e00ad21ef4fd06
     }
+  }
+
+  chargerArticles() {
+    this.requestService.listArticles().subscribe((articles) => {
+      this.articles = articles;
+       console.log(articles);
+    });
+  }
 }
 
 

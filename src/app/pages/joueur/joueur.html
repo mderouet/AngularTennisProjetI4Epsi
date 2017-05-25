@@ -4,13 +4,13 @@
         <li *ngFor="let joueur of joueurs" class="large-3 medium-4 small-12 column">
 
             <figure class="snip1554">
-                <img src='{{joueur.url_image}}' alt="  {{joueur.prenom + ' ' + joueur.nom}}"/>
+                <img src='{{joueur.joueur.url_image}}' alt="  {{joueur.joueur.prenom + ' ' + joueur.joueur.nom}}"/>
                 <figcaption>
-                    <h3>{{joueur.prenom }}<span> {{joueur.nom}}</span></h3>
+                    <h3>{{joueur.joueur.prenom }}<span> {{joueur.joueur.nom}}</span></h3>
                     <h4>
-                        <p><span>Orignaire de :</span> {{joueur.pays.libelle}} <img src="{{joueur.pays.url_drapeau}}"
-                                                                       alt="{{joueur.pays.libelle}}"></p>
-                        <p><span>Date de naissance :</span> {{joueur.date_naissance}}</p>
+                        <p><span>Orignaire de :</span> {{joueur.joueur.pays.libelle}} <img src="{{joueur.joueur.pays.url_drapeau}}"
+                                                                       alt="{{joueur.joueur.pays.libelle}}"></p>
+                        <p><span>Date de naissance :</span> {{joueur.joueur.date_naissance}}</p>
                     </h4>
                 </figcaption>
                 <a href="#"></a>

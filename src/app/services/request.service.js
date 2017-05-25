@@ -22,13 +22,13 @@ var RequestService = (function () {
         this.conf = config;
     }
     /*
-      Get base url of API
+     Get base url of API
      */
     RequestService.prototype.getBaseUrl = function () {
         return this.conf.getConfiguration('apiBaseUrl');
     };
     /*
-    Methodes Joueurs
+     Methodes Joueurs
      */
     // Liste tous les joueurs
     RequestService.prototype.listJoueur = function () {
@@ -59,6 +59,40 @@ var RequestService = (function () {
         var _this = this;
         return this.getBaseUrl().switchMap(function (url) {
             return _this.http.get(url + 'arbitre/' + id).map(function (res) { return res = res.json(); });
+        });
+    };
+    /*
+     Methodes Rencontres
+     */
+    // Liste tous les arbitres
+    RequestService.prototype.listRencontres = function () {
+        var _this = this;
+        return this.getBaseUrl().switchMap(function (url) {
+            return _this.http.get(url + 'rencontre').map(function (res) { return res = res.json(); });
+        });
+    };
+    // Récupére un arbitre par ID
+    RequestService.prototype.showRencontre = function (id) {
+        var _this = this;
+        return this.getBaseUrl().switchMap(function (url) {
+            return _this.http.get(url + 'rencontres/' + id).map(function (res) { return res = res.json(); });
+        });
+    };
+    /*
+     Methodes Tournois
+     */
+    // Liste tous les tournois
+    RequestService.prototype.listTournois = function () {
+        var _this = this;
+        return this.getBaseUrl().switchMap(function (url) {
+            return _this.http.get(url + 'tournoi').map(function (res) { return res = res.json(); });
+        });
+    };
+    // Récupére un tournoi par ID
+    RequestService.prototype.showTournoi = function (id) {
+        var _this = this;
+        return this.getBaseUrl().switchMap(function (url) {
+            return _this.http.get(url + 'tournoi/' + id).map(function (res) { return res = res.json(); });
         });
     };
     return RequestService;

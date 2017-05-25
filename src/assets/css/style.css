@@ -22,6 +22,10 @@ header {
     display: block;
 }
 
+.textBold {
+    font-weight: bold;
+}
+
 /* Début : Menu Top*/
 
 .menuTop {
@@ -128,6 +132,7 @@ header {
     font-size: 1.4em;
     font-weight: 400;
     margin-bottom: 0px;
+    display: inline-block;
 }
 
 .txtResultat {
@@ -140,11 +145,27 @@ header {
 .blockResultat {
     cursor: pointer;
     padding: 10px;
+    margin: 20px 0;
+    float: left;
 }
 
 .blockResultat:hover .txtResultat {
     border-bottom: 10px solid #232a35;
     transition: all 0.3s;
+}
+
+.blockResultat img {
+    object-fit: cover;
+    height: 200px;
+    float: left;
+}
+
+.imgJoueursBy4 img {
+    width: 25%;
+}
+
+.imgJoueursBy2 img {
+    width: 50%;
 }
 
 /* Fin : Section 2*/
@@ -293,12 +314,16 @@ header {
     text-transform: uppercase;
 }
 
+.dateProchainMatch {
+    margin: 5px 20px;
+}
+
 .dateProchainMatch, .txtProchainMatch {
     display: inline-block;
 }
 
 .txtProchainMatch {
-    padding-left: 20px;
+    width: 100%;
     align-self: center;
 }
 
@@ -312,7 +337,7 @@ header {
 
 .horaireProchainMatch {
     color: #ffeb3b;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     background: #232a35;
     padding: 1px 10px;
 }
@@ -504,6 +529,7 @@ textarea {
         left: 30px;
     }
 }
+
 @keyframes ballMovement {
     0% {
         top: 110px;
@@ -526,6 +552,7 @@ textarea {
         left: 30px;
     }
 }
+
 @-webkit-keyframes player1Movement {
     0% {
         top: 115px;
@@ -548,6 +575,7 @@ textarea {
         left: 18px;
     }
 }
+
 @keyframes player1Movement {
     0% {
         top: 115px;
@@ -570,6 +598,7 @@ textarea {
         left: 18px;
     }
 }
+
 @-webkit-keyframes player2Movement {
     0% {
         top: 40px;
@@ -592,6 +621,7 @@ textarea {
         right: 18px;
     }
 }
+
 @keyframes player2Movement {
     0% {
         top: 40px;
@@ -614,6 +644,7 @@ textarea {
         right: 18px;
     }
 }
+
 *,
 *:before,
 *:after {
@@ -633,6 +664,7 @@ body {
     box-shadow: 0 0 0 2px white, 0 0 7px rgba(0, 0, 0, 0.9);
     overflow: hidden;
 }
+
 .wrapper:before {
     content: "";
     position: absolute;
@@ -643,6 +675,7 @@ body {
     border-top: 2px solid #ecf0f1;
     border-bottom: 2px solid #ecf0f1;
 }
+
 .wrapper:after {
     content: "";
     position: absolute;
@@ -653,6 +686,7 @@ body {
     top: 0;
     box-shadow: 5px 1px 3px rgba(0, 0, 0, 0.2);
 }
+
 .wrapper .court1 {
     width: 100px;
     height: 150px;
@@ -662,6 +696,7 @@ body {
     border-left: 2px solid #ecf0f1;
     border-right: 2px solid #ecf0f1;
 }
+
 .wrapper .court1:before {
     content: "";
     position: absolute;
@@ -671,6 +706,7 @@ body {
     top: 100px;
     left: 50px;
 }
+
 .wrapper .court2 {
     width: 100px;
     height: 150px;
@@ -680,6 +716,7 @@ body {
     border-left: 2px solid #ecf0f1;
     border-right: 2px solid #ecf0f1;
 }
+
 .wrapper .court2:before {
     content: "";
     position: absolute;
@@ -689,6 +726,7 @@ body {
     top: 100px;
     left: 150px;
 }
+
 .wrapper .ball {
     position: absolute;
     width: 30px;
@@ -702,6 +740,7 @@ body {
     -webkit-animation: ballMovement 2s ease-out infinite;
     animation: ballMovement 2s ease-out infinite;
 }
+
 .wrapper .player1 {
     position: absolute;
     width: 10px;
@@ -713,6 +752,7 @@ body {
     -webkit-animation: player1Movement 2s ease-in-out infinite;
     animation: player1Movement 2s ease-in-out infinite;
 }
+
 .wrapper .player2 {
     position: absolute;
     width: 10px;
@@ -726,8 +766,5 @@ body {
     -webkit-animation-delay: 0.5s;
     animation-delay: 0.5s;
 }
-
-
-
 
 /*Fin : Autres*/

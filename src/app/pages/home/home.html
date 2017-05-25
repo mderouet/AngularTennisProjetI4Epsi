@@ -1,87 +1,141 @@
 <section class="row section2">
-    <div class="large-4 small-6 columns blockResultat">
-        <img src="assets/img/blockResultat.jpg" alt="résultat match : ">
-        <div class="captionResultat">
-            <h2> Résultat </h2>
-            <h3>Nadal / Djokovic</h3>
-        </div>
-        <div class="txtResultat">
-            Latius iam disseminata licentia onerosus bonis omnibus Caesar nullum post haec adhibens modum orientis
-            latera cuncta vexabat nec honoratis parcens nec urbium primatibus nec plebeiis.
-        </div>
-    </div>
-    <div class="large-4 small-6 columns blockResultat">
-        <img src="assets/img/blockResultat.jpg" alt="résultat match : ">
-        <div class="captionResultat">
-            <h2> Résultat </h2>
-            <h3>Nadal / Djokovic</h3>
-        </div>
-        <div class="txtResultat">
-            Latius iam disseminata licentia onerosus bonis omnibus Caesar nullum post haec adhibens modum orientis
-            latera cuncta vexabat nec honoratis parcens nec urbium primatibus nec plebeiis.
-        </div>
-    </div>
-    <div class="large-4 small-6 columns blockResultat">
-        <img src="assets/img/blockResultat.jpg" alt="résultat match : ">
-        <div class="captionResultat">
-            <h2> Résultat </h2>
-            <h3>Nadal / Djokovic</h3>
-        </div>
-        <div class="txtResultat">
-            Latius iam disseminata licentia onerosus bonis omnibus Caesar nullum post haec adhibens modum orientis
-            latera cuncta vexabat nec honoratis parcens nec urbium primatibus nec plebeiis.
+    <div>
+        <div>
+            <div class="large-4 medium-4 small-6 columns blockResultat"
+                 *ngFor="let rencontre of rencontres;  let i=index">
+                <div *ngIf=" i<3">
+                    <div *ngIf="rencontre.rencontre.equipes[0].joueurs.length > 1; else elseBlock">
+                        <div class="imgJoueursBy4">
+                            <div class="imgJoueursEquipe1">
+                                <img src="{{rencontre.rencontre.equipes[0].joueurs[0].url_image}}"
+                                     alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[0].nom}}">
+                                <img src="{{rencontre.rencontre.equipes[0].joueurs[1].url_image}}"
+                                     alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[1].nom}}">
+                            </div>
+                            <div class="separationImg"></div>
+                            <div class="imgJoueursEquipe2">
+                                <img src="{{rencontre.rencontre.equipes[1].joueurs[0].url_image}}"
+                                     alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[0].nom}}">
+                                <img src="{{rencontre.rencontre.equipes[1].joueurs[1].url_image}}"
+                                     alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[1].nom}}">
+                            </div>
+                        </div>
+                        <div class="captionResultat">
+                            <h2> Résultat </h2>
+                            <h3>
+                                <span class="textBold">
+                                    {{rencontre.rencontre.equipes[0].joueurs[0].nom}}
+                                </span>
+                                &
+                                <span class="textBold">
+                                    {{rencontre.rencontre.equipes[0].joueurs[1].nom}}
+                                </span>
+                            </h3>
+                            <h3>vs</h3>
+                            <h3>
+                                <span class="textBold">
+                                    {{rencontre.rencontre.equipes[1].joueurs[0].nom}}
+                                </span>
+                                &
+                                <span class="textBold">
+                                    {{rencontre.rencontre.equipes[1].joueurs[1].nom}}
+                                </span>
+                            </h3>
+                        </div>
+                        <div class="txtResultat">
+                            Latius iam disseminata licentia onerosus bonis omnibus Caesar nullum post haec adhibens
+                            modum
+                            orientis
+                            latera cuncta vexabat nec honoratis parcens nec urbium primatibus nec plebeiis.
+                        </div>
+                    </div>
+                    <!--Séparation-->
+
+                    <ng-template #elseBlock>
+                        <div class="imgJoueursBy2">
+                            <div class="imgJoueursEquipe1">
+                                <img src="{{rencontre.rencontre.equipes[0].joueurs[0].url_image}}"
+                                     alt="image joueur {{rencontre.rencontre.equipes[1].joueurs[0].nom}}">
+                            </div>
+                            <div class="separationImg"></div>
+                            <div class="imgJoueursEquipe2">
+                                <img src="{{rencontre.rencontre.equipes[1].joueurs[0].url_image}}"
+                                     alt="image joueur {{rencontre.rencontre.equipes[1].joueurs[0].nom}}">
+                            </div>
+                        </div>
+                        <div class="captionResultat">
+                            <h2> Résultat </h2>
+                            <h3>
+                        <span>
+                            <span class="textBold"> {{rencontre.rencontre.equipes[0].joueurs[0].nom}}</span>
+                         </span>
+                            </h3>
+                            <h3>vs</h3>
+                            <h3>
+                        <span>
+                            <span class="textBold"> {{rencontre.rencontre.equipes[1].joueurs[0].nom}}</span>
+                         </span>
+                            </h3>
+                        </div>
+                        <div class="txtResultat">
+                            Latius iam disseminata licentia onerosus bonis omnibus Caesar nullum post haec adhibens
+                            modum
+                            orientis
+                            latera cuncta vexabat nec honoratis parcens nec urbium primatibus nec plebeiis.
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 <section class="row section3">
     <div class="large-4 medium-6 small-12 columns">
         <h1>Prochains matchs</h1>
-        <div class="row prochainMatch ">
-            <div class="dateProchainMatch">
-                <span class="jourProchainMatch">06</span>
-                <span class="moisProchainMatch">Juillet</span>
-            </div>
-            <div class="txtProchainMatch">
-                <span class="joueurProchainMatch">
-                    Ferry vs Young
-                </span>
-                <span class="horaireProchainMatch">12:00, LISA FERRY - FRANCE</span>
-            </div>
-        </div>
-        <div class="row prochainMatch ">
-            <div class="dateProchainMatch">
-                <span class="jourProchainMatch">06</span>
-                <span class="moisProchainMatch">Juillet</span>
-            </div>
-            <div class="txtProchainMatch">
-                <span class="joueurProchainMatch">
-                    Ferry vs Young
-                </span>
-                <span class="horaireProchainMatch">12:00, LISA FERRY - FRANCE</span>
-            </div>
-        </div>
-        <div class="row prochainMatch ">
-            <div class="dateProchainMatch">
-                <span class="jourProchainMatch">06</span>
-                <span class="moisProchainMatch">Juillet</span>
-            </div>
-            <div class="txtProchainMatch">
-                <span class="joueurProchainMatch">
-                    Ferry vs Young
-                </span>
-                <span class="horaireProchainMatch">12:00, LISA FERRY - FRANCE</span>
-            </div>
-        </div>
-        <div class="row prochainMatch ">
-            <div class="dateProchainMatch">
-                <span class="jourProchainMatch">06</span>
-                <span class="moisProchainMatch">Juillet</span>
-            </div>
-            <div class="txtProchainMatch">
-                <span class="joueurProchainMatch">
-                    Ferry vs Young
-                </span>
-                <span class="horaireProchainMatch">12:00, LISA FERRY - FRANCE</span>
+
+
+        <div *ngFor="let rencontre of rencontres;let  i = index;">
+            <div class="row prochainMatch" *ngIf="i <4">
+                <div style="display: flex;align-items: center;">
+                    <div class="dateProchainMatch">
+                        <span class="jourProchainMatch">
+                            {{splitDate(rencontre.rencontre.date_debut," ", "-",0,2)}}
+                        </span>
+                        <span class="moisProchainMatch">
+                            {{splitDate(rencontre.rencontre.date_debut_formatted," ", "",2,"false")}}
+                        </span>
+                    </div>
+                    <div class="joueurProchainMatch"
+                         *ngIf="rencontre.rencontre.equipes[0].joueurs.length > 1; else elseBlock">
+                        {{rencontre.rencontre.equipes[0].joueurs[0].nom}}
+                        <span style="font-weight: 100">&</span>
+                        {{rencontre.rencontre.equipes[0].joueurs[1].nom}}
+                        <span style="font-weight: 100">vs</span>
+                        {{rencontre.rencontre.equipes[1].joueurs[0].nom}}
+                        <span style="font-weight: 100">&</span>
+                        {{rencontre.rencontre.equipes[1].joueurs[1].nom}}
+                    </div>
+                    <ng-template #elseBlock>
+                        <div class="joueurProchainMatch float-left">
+                            {{rencontre.rencontre.equipes[0].joueurs[0].nom}}
+                            <span style="font-weight: 100">vs</span>
+                            {{rencontre.rencontre.equipes[1].joueurs[0].nom}}
+                        </div>
+                    </ng-template>
+                </div>
+
+                <div class="txtProchainMatch">
+
+                    <div class="text-center">
+                        <div class="horaireProchainMatch">
+                            <span>
+                                {{splitDate(rencontre.rencontre.date_debut_formatted," ", "",4,"false")}},
+                                {{rencontre.rencontre.tournoi.libelle}} -
+                                {{getPaysByTournoiId(rencontre.rencontre.tournoi.id)}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

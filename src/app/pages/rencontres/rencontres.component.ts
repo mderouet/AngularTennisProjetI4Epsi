@@ -1,34 +1,27 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../../services/request.service";
 import {Config} from "../../config/config";
-import {Joueur} from "../../services/joueur.service";
+import {Rencontres} from "../../services/rencontres.service";
 
 @Component({
-    selector: 'joueurs',
-    templateUrl: '/app/pages/joueur/joueur.html',
-    providers: [RequestService, Config, Joueur],
-    styleUrls:  ['./joueur.component.css']
+    selector: 'rencontres',
+    templateUrl: '/app/pages/rencontres/rencontres.html',
+    providers: [RequestService, Config, Rencontres],
+    // styleUrls:  ['rencontres.component.css']
 })
-export class JoueurComponent implements OnInit {
-    joueurs: [JSON];
-    joueur: string;
-    valueConfig: String;
+export class RencontresComponent implements OnInit {
+    rencontres: [JSON];
 
     constructor(public requestService: RequestService) {
-
     }
 
     ngOnInit() {
-        this.chargerJoueurs();
+        this.chargerRencontres();
     }
 
-  //Charge la liste des joueurs et les données qui sont liés
-  chargerJoueurs() {
-    this.requestService.listJoueur().subscribe((joueurs) => {
-      this.joueurs = joueurs;
-      for(var j in joueurs) {
-        console.log(joueurs[j]);
-      }
-    });
-  }
+    chargerRencontres() {
+        this.requestService.listRencontres().subscribe((rencontres) => {
+            this.rencontres = rencontres;
+        });
+    }
 }

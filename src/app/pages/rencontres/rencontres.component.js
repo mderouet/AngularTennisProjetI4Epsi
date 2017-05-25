@@ -12,34 +12,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var request_service_1 = require("../../services/request.service");
 var config_1 = require("../../config/config");
-var joueur_service_1 = require("../../services/joueur.service");
-var JoueurComponent = (function () {
-    function JoueurComponent(requestService) {
+var rencontres_service_1 = require("../../services/rencontres.service");
+var RencontresComponent = (function () {
+    function RencontresComponent(requestService) {
         this.requestService = requestService;
     }
-    JoueurComponent.prototype.ngOnInit = function () {
-        this.chargerJoueurs();
+    RencontresComponent.prototype.ngOnInit = function () {
+        this.chargerRencontres();
     };
-    //Charge la liste des joueurs et les données qui sont liés
-    JoueurComponent.prototype.chargerJoueurs = function () {
+    RencontresComponent.prototype.chargerRencontres = function () {
         var _this = this;
-        this.requestService.listJoueur().subscribe(function (joueurs) {
-            _this.joueurs = joueurs;
-            for (var j in joueurs) {
-                console.log(joueurs[j]);
-            }
+        this.requestService.listRencontres().subscribe(function (rencontres) {
+            _this.rencontres = rencontres;
         });
     };
-    return JoueurComponent;
+    return RencontresComponent;
 }());
-JoueurComponent = __decorate([
+RencontresComponent = __decorate([
     core_1.Component({
-        selector: 'joueurs',
-        templateUrl: '/app/pages/joueur/joueur.html',
-        providers: [request_service_1.RequestService, config_1.Config, joueur_service_1.Joueur],
-        styleUrls: ['./joueur.component.css']
+        selector: 'rencontres',
+        templateUrl: '/app/pages/rencontres/rencontres.html',
+        providers: [request_service_1.RequestService, config_1.Config, rencontres_service_1.Rencontres],
     }),
     __metadata("design:paramtypes", [request_service_1.RequestService])
-], JoueurComponent);
-exports.JoueurComponent = JoueurComponent;
-//# sourceMappingURL=joueur.component.js.map
+], RencontresComponent);
+exports.RencontresComponent = RencontresComponent;
+//# sourceMappingURL=rencontres.component.js.map

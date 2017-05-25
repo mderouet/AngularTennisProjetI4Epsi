@@ -13,74 +13,49 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var request_service_1 = require("../../services/request.service");
 var config_1 = require("../../config/config");
-var rencontres_service_1 = require("../../services/rencontres.service");
-var HomeComponent = (function () {
-    function HomeComponent(requestService) {
+var resultat_service_1 = require("../../services/resultat.service");
+var ResultatComponent = (function () {
+    function ResultatComponent(requestService) {
         this.requestService = requestService;
     }
-    HomeComponent.prototype.ngOnInit = function () {
+    ResultatComponent.prototype.ngOnInit = function () {
         this.chargerRencontres();
         this.chargerTournois();
-        //A corriger, null pointer pour utiliser jquery
-        //   jQuery('.matchAVenir').slick({
-        //     dots: true,
-        //     infinite: true,
-        //     speed: 300,
-        //     slidesToShow: 1,
-        //   });
     };
-    HomeComponent.prototype.splitDate = function (string, firstSplit, secondSplit, stringNbr, stringNbr2) {
-        var a = string.split(firstSplit);
-        var b = a[stringNbr];
-        if (stringNbr2 == "false") {
-            var c = a[stringNbr];
-            var d = c;
-        }
-        else {
-            if (secondSplit == "false") {
-                var c = a[stringNbr];
-                var d = c;
-            }
-            else {
-                var c = b.split(secondSplit);
-                var d = c[stringNbr2];
-            }
-        }
-        return d;
-    };
-    HomeComponent.prototype.chargerRencontres = function () {
+    ResultatComponent.prototype.chargerRencontres = function () {
         var _this = this;
         this.requestService.listRencontres().subscribe(function (rencontres) {
             _this.rencontres = rencontres;
         });
     };
-    HomeComponent.prototype.chargerTournois = function () {
+    ResultatComponent.prototype.chargerTournois = function () {
         var _this = this;
         this.requestService.listTournois().subscribe(function (tournois) {
             _this.tournois = tournois;
             // console.log(tournois);
         });
     };
-    HomeComponent.prototype.trouveId = function (objet) {
-        return objet.tournoi.id_tournoi == 1;
-    };
-    HomeComponent.prototype.getPaysByTournoiId = function (id, type) {
+    ResultatComponent.prototype.getImgTournoi = function (id) {
         for (var _i = 0, _a = this.tournois; _i < _a.length; _i++) {
             var tournoi = _a[_i];
             if (tournoi["tournoi"].id_tournoi == id) {
-                return tournoi["tournoi"].pays;
+                return tournoi["tournoi"].url_image;
             }
         }
     };
-    return HomeComponent;
+    ResultatComponent.prototype.trouveId = function (objet) {
+        return objet.tournoi.id_tournoi == 1;
+    };
+    return ResultatComponent;
 }());
-HomeComponent = __decorate([
+ResultatComponent = __decorate([
     core_1.Component({
         selector: 'home',
-        templateUrl: '/app/pages/home/home.html',
-        providers: [request_service_1.RequestService, config_1.Config, rencontres_service_1.Rencontres]
+        templateUrl: '/app/pages/resultat/resultat.html',
+        styleUrls: ['./resultat.component.css'],
+        providers: [request_service_1.RequestService, config_1.Config, resultat_service_1.Resultat]
     }),
     __metadata("design:paramtypes", [request_service_1.RequestService])
-], HomeComponent);
-exports.HomeComponent = HomeComponent;
-//# sourceMappingURL=home.component.js.map
+], ResultatComponent);
+exports.ResultatComponent = ResultatComponent;
+//# sourceMappingURL=resultat.component.js.map

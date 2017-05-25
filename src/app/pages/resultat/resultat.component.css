@@ -1,0 +1,19 @@
+#resultatBlock1 {
+    width: 100%;
+    display: inline-flex;
+    flow-direction: row;
+    margin: 20px 0;
+}
+
+.vignetteTitreJoueur {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+.imgVignetteJoueur img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}

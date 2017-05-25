@@ -2,15 +2,16 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../services/request.service';
 import {Config} from "../../config/config";
-import {Rencontres} from "../../services/rencontres.service";
+import {Resultat} from "../../services/resultat.service";
 
 @Component({
     selector: 'home',
-    templateUrl: '/app/pages/home/home.html',
-    providers: [RequestService, Config, Rencontres]
+    templateUrl: '/app/pages/resultat/resultat.html',
+    styleUrls: ['./resultat.component.css'],
+    providers: [RequestService, Config, Resultat]
 })
 
-export class HomeComponent implements OnInit {
+export class ResultatComponent implements OnInit {
     rencontres: [JSON];
     tournois: [JSON];
     argument: any;
@@ -23,35 +24,6 @@ export class HomeComponent implements OnInit {
 
         this.chargerRencontres();
         this.chargerTournois();
-
-
-        //A corriger, null pointer pour utiliser jquery
-        //   jQuery('.matchAVenir').slick({
-        //     dots: true,
-        //     infinite: true,
-        //     speed: 300,
-        //     slidesToShow: 1,
-        //   });
-
-    }
-
-
-    splitDate(string, firstSplit, secondSplit, stringNbr, stringNbr2) {
-        var a = string.split(firstSplit);
-        var b = a[stringNbr];
-        if (stringNbr2 == "false") {
-            var c = a[stringNbr];
-            var d = c;
-        } else {
-            if (secondSplit == "false") {
-                var c = a[stringNbr];
-                var d = c;
-            } else {
-                var c = b.split(secondSplit);
-                var d = c[stringNbr2];
-            }
-        }
-        return d
     }
 
     chargerRencontres() {
@@ -67,16 +39,16 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    trouveId(objet) {
-        return objet.tournoi.id_tournoi == 1
-    }
-
-    getPaysByTournoiId(id,type) {
+    getImgTournoi(id) {
         for (let tournoi of this.tournois) {
             if (tournoi["tournoi"].id_tournoi == id) {
-                return tournoi["tournoi"].pays
+                return tournoi["tournoi"].url_image
             }
         }
+    }
+
+    trouveId(objet) {
+        return objet.tournoi.id_tournoi == 1
     }
 }
 

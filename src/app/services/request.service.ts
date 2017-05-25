@@ -89,11 +89,13 @@ export class RequestService {
             this.http.get(url + 'tournoi/' + id).map(res => res = res.json()));
     }
 
-    // // Liste tous les joueurs
-    // ugo(id: number): Observable<any> {
-    //     return this.getBaseUrl().switchMap((url: any) =>
-    //         this.http.get(url + 'tournoi/'+id).map(res => res = res.json()));
-    // }
+    /*
+     Methodes Articles
+     */
+    // Liste tous les articles
 
-
+    listArticles(): Observable<any> {
+      return this.getBaseUrl().switchMap((url: any) =>
+        this.http.get(url + 'articles').map(res => res = res.json()));
+    }
 }

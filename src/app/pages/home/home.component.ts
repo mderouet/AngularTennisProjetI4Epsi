@@ -11,73 +11,76 @@ import {Rencontres} from "../../services/rencontres.service";
 })
 
 export class HomeComponent implements OnInit {
-    rencontres: [JSON];
-    tournois: [JSON];
-    argument: any;
+  rencontres: [JSON];
+  tournois: [JSON];
+  articles: [JSON];
 
 
-    constructor(public requestService: RequestService) {
+  constructor(public requestService: RequestService) {
+  }
+
+  ngOnInit() {
+
+    this.chargerRencontres();
+    this.chargerTournois();
+    this.chargerArticles();
+
+    //A corriger, null pointer pour utiliser jquery
+    //   jQuery('.matchAVenir').slick({
+    //     dots: true,
+    //     infinite: true,
+    //     speed: 300,
+    //     slidesToShow: 1,
+    //   });
+
+  }
+
+
+  splitDate(string, firstSplit, secondSplit, stringNbr, stringNbr2) {
+    var a = string.split(firstSplit);
+    var b = a[stringNbr];
+    if (stringNbr2 === "false") {
+      var c = a[stringNbr];
+      var d = c;
+    } else {
+      if (secondSplit === "false") {
+        var c = a[stringNbr];
+        var d = c;
+      } else {
+        var c = b.split(secondSplit);
+        var d = c[stringNbr2];
+      }
     }
+    return d
+  }
 
-    ngOnInit() {
+  chargerRencontres() {
+    this.requestService.listRencontres().subscribe((rencontres) => {
+      this.rencontres = rencontres;
+    });
+  }
 
-        this.chargerRencontres();
-        this.chargerTournois();
+  chargerTournois() {
+    this.requestService.listTournois().subscribe((tournois) => {
+      this.tournois = tournois;
+      // console.log(tournois);
+    });
+  }
 
-
-        //A corriger, null pointer pour utiliser jquery
-        //   jQuery('.matchAVenir').slick({
-        //     dots: true,
-        //     infinite: true,
-        //     speed: 300,
-        //     slidesToShow: 1,
-        //   });
-
+  getPaysByTournoiId(id) {
+    for (let tournoi of this.tournois) {
+      if (tournoi["tournoi"].id === id) {
+        return tournoi["tournoi"].pays
+      }
     }
+  }
 
-
-    splitDate(string, firstSplit, secondSplit, stringNbr, stringNbr2) {
-        var a = string.split(firstSplit);
-        var b = a[stringNbr];
-        if (stringNbr2 == "false") {
-            var c = a[stringNbr];
-            var d = c;
-        } else {
-            if (secondSplit == "false") {
-                var c = a[stringNbr];
-                var d = c;
-            } else {
-                var c = b.split(secondSplit);
-                var d = c[stringNbr2];
-            }
-        }
-        return d
-    }
-
-    chargerRencontres() {
-        this.requestService.listRencontres().subscribe((rencontres) => {
-            this.rencontres = rencontres;
-        });
-    }
-
-    chargerTournois() {
-        this.requestService.listTournois().subscribe((tournois) => {
-            this.tournois = tournois;
-            // console.log(tournois);
-        });
-    }
-
-    trouveId(objet) {
-        return objet.tournoi.id_tournoi == 1
-    }
-
-    getPaysByTournoiId(id) {
-        for (let tournoi of this.tournois) {
-            if (tournoi["tournoi"].id_tournoi == id) {
-                return tournoi["tournoi"].pays
-            }
-        }
-    }
+  chargerArticles() {
+    this.requestService.listArticles().subscribe((articles) => {
+      this.articles = articles;
+       console.log(articles);
+    });
+  }
 }
 
 

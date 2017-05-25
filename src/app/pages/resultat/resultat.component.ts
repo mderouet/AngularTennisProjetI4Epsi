@@ -2,13 +2,12 @@
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../services/request.service';
 import {Config} from "../../config/config";
-import {Resultat} from "../../services/resultat.service";
 
 @Component({
     selector: 'home',
     templateUrl: '/app/pages/resultat/resultat.html',
     styleUrls: ['./resultat.component.css'],
-    providers: [RequestService, Config, Resultat]
+    providers: [RequestService, Config]
 })
 
 export class ResultatComponent implements OnInit {

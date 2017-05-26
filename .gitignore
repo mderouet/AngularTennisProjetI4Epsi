@@ -10,3 +10,6 @@ src/**/*.js
 e2e/**/*.js.map
 _test-output
 _temp
+!/src/systemjs.config.extras.js
+!/src/systemjs-angular-loader.js
+!/src/systemjs.config.js

@@ -1,14 +1,14 @@
-//
+
 import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../services/request.service';
 import {Config} from "../../config/config";
 import {Rencontres} from "../../services/rencontres.service";
 
 @Component({
-    selector: 'home',
-    templateUrl: '/app/pages/home/home.html',
-    providers: [RequestService, Config, Rencontres],
-    styleUrls: ['./home.component.css'],
+  selector: 'home',
+  templateUrl: '/app/pages/home/home.html',
+  providers: [RequestService, Config, Rencontres],
+  styleUrls: ['./home.component.css'],
 })
 
 export class HomeComponent implements OnInit {
@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.chargerRencontres();
     this.chargerTournois();
     this.chargerArticles();
@@ -64,7 +63,6 @@ export class HomeComponent implements OnInit {
   chargerTournois() {
     this.requestService.listTournois().subscribe((tournois) => {
       this.tournois = tournois;
-      // console.log(tournois);
     });
   }
 
@@ -79,7 +77,6 @@ export class HomeComponent implements OnInit {
   chargerArticles() {
     this.requestService.listArticles().subscribe((articles) => {
       this.articles = articles;
-       console.log(articles);
     });
   }
 }

@@ -9,23 +9,25 @@ import {ResultatComponent} from './pages/resultat/resultat.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {router} from './app.routes';
 import {HttpModule} from "@angular/http";
+import {ArticleComponent} from "./pages/article/article.component";
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        RouterModule.forRoot(router),
-        HttpModule,
-    ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(router),
+    HttpModule,
+  ],
 
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        JoueurComponent,
-        RencontresComponent,
-        ResultatComponent,
-    ],
-    providers: [{provide: APP_BASE_HREF, useValue: '/'}],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    JoueurComponent,
+    RencontresComponent,
+    ResultatComponent,
+    ArticleComponent,
+  ],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

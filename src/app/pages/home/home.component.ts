@@ -3,36 +3,66 @@ import {Component, OnInit} from '@angular/core';
 import {RequestService} from '../../services/request.service';
 import {Config} from "../../config/config";
 import {Rencontres} from "../../services/rencontres.service";
+import {CacheService} from "../../services/cache.service";
+import {UtilsService} from "../../services/utils.service";
 
 @Component({
   selector: 'home',
   templateUrl: '/app/pages/home/home.html',
-  providers: [RequestService, Config, Rencontres],
+  providers: [RequestService, Config, Rencontres, UtilsService],
   styleUrls: ['./home.component.css'],
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, CacheInterface {
   rencontres: [JSON];
   tournois: [JSON];
   articles: [JSON];
+  matchAvenir: [JSON];
 
-
-  constructor(public requestService: RequestService) {
+  constructor(public requestService: RequestService, public cacheService: CacheService, public utilsService: UtilsService) {
   }
 
   ngOnInit() {
-    this.chargerRencontres();
-    this.chargerTournois();
-    this.chargerArticles();
 
-    //A corriger, null pointer pour utiliser jquery
-    //   jQuery('.matchAVenir').slick({
-    //     dots: true,
-    //     infinite: true,
-    //     speed: 300,
-    //     slidesToShow: 1,
-    //   });
+  this.initCache();
 
+   if(this.utilsService.isEmptyObject(this.cacheService.rencontres)){
+     console.log("chargement recontres HOME PAGE")
+     this.chargerRencontres();
+   }
+    if(this.utilsService.isEmptyObject(this.cacheService.tournois)){
+      console.log("chargement tournois HOME PAGE")
+
+      this.chargerTournois();
+    }
+    if(this.utilsService.isEmptyObject(this.cacheService.articles)){
+      console.log("chargement articles HOME PAGE")
+      this.chargerArticles();
+    }
+
+    this.requestService.prochaineRencontreTournoi().subscribe((rencontre)=>{
+        console.log(rencontre);
+        this.matchAvenir = rencontre;
+      })
+
+  }
+
+  initCache(){
+    if(!this.utilsService.isEmptyObject(this.cacheService.rencontres)){
+      this.rencontres = this.cacheService.rencontres;
+    }
+    if(!this.utilsService.isEmptyObject(this.cacheService.tournois)){
+      this.tournois = this.cacheService.tournois;
+    }
+    if(!this.utilsService.isEmptyObject(this.cacheService.articles)){
+      this.articles = this.cacheService.articles;
+    }
+  }
+
+  clearCache(){
+  this.cacheService.rencontres = null;
+  this.cacheService.tournois = null;
+  this.cacheService.articles = null;
   }
 
 
@@ -56,13 +86,28 @@ export class HomeComponent implements OnInit {
 
   chargerRencontres() {
     this.requestService.listRencontres().subscribe((rencontres) => {
+      // Local value
       this.rencontres = rencontres;
+      // Cache
+      this.cacheService.rencontres = rencontres;
     });
   }
 
   chargerTournois() {
     this.requestService.listTournois().subscribe((tournois) => {
+      // Local value
       this.tournois = tournois;
+      // Cache
+      this.cacheService.tournois = tournois;
+    });
+  }
+
+  chargerArticles() {
+    this.requestService.listArticles().subscribe((articles) => {
+      // Local value
+      this.articles = articles;
+      // Cache
+      this.cacheService.articles = articles;
     });
   }
 
@@ -74,11 +119,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  chargerArticles() {
-    this.requestService.listArticles().subscribe((articles) => {
-      this.articles = articles;
-    });
-  }
 }
 
 

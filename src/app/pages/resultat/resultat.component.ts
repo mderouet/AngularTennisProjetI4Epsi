@@ -3,53 +3,80 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {RequestService} from '../../services/request.service';
 import {Config} from "../../config/config";
+import {UtilsService} from "../../services/utils.service";
+import {CacheService} from "../../services/cache.service";
 
 @Component({
     selector: 'home',
     templateUrl: '/app/pages/resultat/resultat.html',
     styleUrls: ['./resultat.component.css'],
-    providers: [RequestService, Config]
+    providers: [RequestService, Config, UtilsService]
 })
 
-export class ResultatComponent implements OnInit {
+export class ResultatComponent implements OnInit, CacheInterface {
     rencontres: [JSON];
     tournois: [JSON];
-    argument: any;
     private sub: any;
-    id: number;
+    idResultat: number;
 
-    constructor(public requestService: RequestService, private route: ActivatedRoute, private router: Router,) {
+    constructor(public requestService: RequestService, private route: ActivatedRoute, private router: Router,
+                private utilsService: UtilsService,private cacheService: CacheService) {
 
     }
 
     ngOnInit() {
 
+      this.initCache();
+      if(this.utilsService.isEmptyObject(this.cacheService.rencontres)){
+        console.log("chargement rencontres RESULTAT PAGE")
         this.chargerRencontres();
+      }
+      if(this.utilsService.isEmptyObject(this.cacheService.tournois)){
+        console.log("chargement tournois RESULTAT PAGE")
         this.chargerTournois();
+      }
 
         this.sub = this.route.params.subscribe(params => {
-            this.id = +params['id']; // (+) converts string 'id' to a number
-            console.log(this.id);
-            // this.p=Personnes.find(x => x.id == this.id);
+            this.idResultat = +params['id']; // (+) converts string 'id' to a number
         });
     }
 
+  initCache(){
+    if(!this.utilsService.isEmptyObject(this.cacheService.rencontres)){
+      this.rencontres = this.cacheService.rencontres;
+    }
+    if(!this.utilsService.isEmptyObject(this.cacheService.tournois)){
+      this.tournois = this.cacheService.tournois;
+    }
+  }
+
+  clearCache(){
+    this.cacheService.rencontres = null;
+    this.cacheService.tournois = null;
+  }
+
+
     chargerRencontres() {
         this.requestService.listRencontres().subscribe((rencontres) => {
-            this.rencontres = rencontres;
+          // Local value
+          this.rencontres = rencontres;
+          // Cache
+          this.cacheService.rencontres = rencontres;
         });
     }
 
     chargerTournois() {
         this.requestService.listTournois().subscribe((tournois) => {
-            this.tournois = tournois;
-            // console.log(tournois);
+          // Local value
+          this.tournois = tournois;
+          // Cache
+          this.cacheService.tournois = tournois;
         });
     }
 
     getImgTournoi(id) {
         for (let tournoi of this.tournois) {
-            if (tournoi["tournoi"].id_tournoi == id) {
+            if (tournoi["tournoi"].id_tournoi === id) {
                 return tournoi["tournoi"].url_image
             }
         }

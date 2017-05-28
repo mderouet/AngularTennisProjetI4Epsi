@@ -10,6 +10,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {router} from './app.routes';
 import {HttpModule} from "@angular/http";
 import {ArticleComponent} from "./pages/article/article.component";
+import {CacheService} from "./services/cache.service";
 
 @NgModule({
   imports: [
@@ -26,7 +27,7 @@ import {ArticleComponent} from "./pages/article/article.component";
     ResultatComponent,
     ArticleComponent,
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'},CacheService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

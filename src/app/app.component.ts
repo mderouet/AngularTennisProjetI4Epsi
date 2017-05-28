@@ -13,7 +13,7 @@ import {Component} from '@angular/core';
     '<ul class="menu">' +
     '<li><a routerLink="/home">Accueil</a></li>' +
     '<li><a routerLink="/joueurs">Liste Joueurs</a></li>' +
-    '<li><a href="/resultat">Résultats</a></li>' +
+    '<li><a routerLink="/resultat">Résultats</a></li>' +
     '<li><a href="#">Calendrier</a></li>' +
     '<li><a href="#">Actualité</a></li>' +
     '<li><a href="#">Contact</a></li>' +

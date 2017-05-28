@@ -67,16 +67,32 @@ export class RequestService {
       this.http.get(url + 'rencontre').map(res => res = res.json()));
   }
 
-  // Récupére une recontre par id
+  // Récupére une rencontre par id
   showRencontre(id: number): Observable<any> {
     return this.getBaseUrl().switchMap((url: any) =>
       this.http.get(url + 'rencontre/' + id).map(res => res = res.json()));
   }
 
-  // Rencontre à venir d'un tournoi
-  prochaineRencontre(id: number): Observable<any> {
+  // Rencontres à venir d'un tournoi
+  prochainesRencontreParTournoi(id: number): Observable<any> {
     return this.getBaseUrl().switchMap((url: any) =>
       this.http.get(url + '/rencontre?id_tournoi=' + id).map(res => res = res.json()));
+  }
+
+  // Renvoi la prochaine rencontre d'un tournoi
+  prochaineRencontreParTournoi(id: number): Observable<any> {
+    return this.getBaseUrl().switchMap((url: any) =>
+      this.http.get(url + 'rencontre?id_tournoi=' + id + '&next=1').map(res => res = res.json()));
+  }
+
+  // Renvoi la prochaine rencontre du prochain tournoi
+  prochaineRencontreTournoi(): Observable<any> {
+    return this.http.get('http://projet-tennis.ddns.net/tournoi?next=1')
+      .map((res: any)=> res.json())
+      .flatMap((tournoi: any)=>{
+      return this.http.get('http://projet-tennis.ddns.net/rencontre?id_tournoi=' + tournoi.id + '&next=1')
+        .map((res: any) => res.json())
+    });
   }
 
   /*
@@ -107,6 +123,12 @@ export class RequestService {
 
   listArticles(): Observable<any> {
     return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'articles').map(res => res = res.json()));
+      this.http.get(url + 'article').map(res => res = res.json()));
   }
+  // Renvoi un article par
+  showArticle(id: number): Observable<any> {
+    return this.getBaseUrl().switchMap((url: any) =>
+      this.http.get(url + 'article/' + id).map(res => res = res.json()));
+  }
+
 }

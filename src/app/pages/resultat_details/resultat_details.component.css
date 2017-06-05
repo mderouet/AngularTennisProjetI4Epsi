@@ -69,7 +69,7 @@
 }
 
 button {
-    cursor:pointer;
+    cursor: pointer;
     margin: auto;
     display: flex;
     background: #ffeb3b;
@@ -83,7 +83,46 @@ button {
 
 button:hover {
     transition: all 0.3s;
-    color:white;
+    color: white;
     background: #232a35;
-    border:none;
+    border: none;
 }
+
+.heure {
+    float: left;
+}
+
+.infoMatch {
+    width: 100%;
+    /*padding: 0 20px;*/
+    margin: 20px 0;
+}
+
+.nomEquipe {
+    float: right;
+}
+
+.descriptionInfo {
+    padding: 20px;
+    clear: both;
+    background: white;
+    border-left: 5px solid black;
+}
+
+.timeline{
+    padding: 5px 15px;
+    float: left;
+    width: 100%;
+    color: #232a35;
+    font-weight: bold;
+}
+
+.timeline {
+    background: #ffeb3b;
+}
+
+/*.faute {*/
+    /*background: #232a35;*/
+/*}*/
+
+

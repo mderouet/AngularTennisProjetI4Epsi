@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit, CacheInterface {
   rencontres: [JSON];
   tournois: [JSON];
   articles: [JSON];
-  matchAvenir: [JSON];
 
   constructor(public requestService: RequestService, public cacheService: CacheService, public utilsService: UtilsService) {
   }
@@ -39,12 +38,6 @@ export class HomeComponent implements OnInit, CacheInterface {
       console.log("chargement articles HOME PAGE")
       this.chargerArticles();
     }
-
-    this.requestService.prochaineRencontreTournoi().subscribe((rencontre)=>{
-        console.log(rencontre);
-        this.matchAvenir = rencontre;
-      })
-
   }
 
   initCache(){

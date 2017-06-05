@@ -8,6 +8,7 @@ import {JoueurComponent} from './pages/joueur/joueur.component';
 import {RencontresComponent} from './pages/rencontres/rencontres.component';
 import {ResultatComponent} from './pages/resultat/resultat.component';
 import {ArticleComponent} from "./pages/article/article.component";
+import {ResultatDetails} from "./pages/resultat_details/resultat_details.component";
 
 
 export const router: Routes = [
@@ -15,7 +16,7 @@ export const router: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'joueurs', component: JoueurComponent},
   {path: 'rencontres', component: RencontresComponent},
-  {path: 'resultat/:id', component: ResultatComponent},
+  {path: 'resultat_details/:id', component: ResultatDetails},
   {path: 'resultat', component: ResultatComponent},
   {path: 'article/:id', component: ArticleComponent},
 

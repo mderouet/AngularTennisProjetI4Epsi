@@ -130,5 +130,13 @@ export class RequestService {
     return this.getBaseUrl().switchMap((url: any) =>
       this.http.get(url + 'article/' + id).map(res => res = res.json()));
   }
+  /*
+   Methodes Score
+   */
+  showScore(id: number): Observable<any> {
+    return this.getBaseUrl().switchMap((url: any) =>
+      this.http.get(url + 'rencontre/score/' + id).map(res => res = res.json()));
+  }
+
 
 }

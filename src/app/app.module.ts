@@ -11,6 +11,7 @@ import {router} from './app.routes';
 import {HttpModule} from "@angular/http";
 import {ArticleComponent} from "./pages/article/article.component";
 import {CacheService} from "./services/cache.service";
+import {ResultatDetails} from "./pages/resultat_details/resultat_details.component";
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import {CacheService} from "./services/cache.service";
     HomeComponent,
     JoueurComponent,
     RencontresComponent,
+    ResultatDetails,
     ResultatComponent,
     ArticleComponent,
   ],

@@ -1,9 +1,15 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CacheService} from "./services/cache.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {RequestService} from "./services/request.service";
+import {Config} from "./config/config";
 
 
 @Component({
     selector: 'my-app',
-    template: '<header>' +
+  providers: [RequestService, CacheService, Config],
+
+  template: '<header>' +
     '<div class="menuTop">' +
     '<div class="row">' +
     '<div id="imgLogoHeader" class="large-3 medium-2 small-6 columns">' +
@@ -27,9 +33,11 @@ import {Component} from '@angular/core';
     '<div class="matchAVenir">' +
     '<div class="matchs">' +
     '<h2>Match à venir</h2>' +
-    '<h1>Nadal <span style="font-size: 3em">/</span> Djokovic</h1>' +
-    '<h3>Tournois Roland Garros <br/> 12 Mars 2017</h3> ' +
-
+    '<div *ngIf="matchAvenir">' +
+    '<h2>{{matchAvenir[0].rencontre.equipes[0].libelle}} <span style="font-size: 3em">/' +
+    '</span> {{matchAvenir[0].rencontre.equipes[1].libelle}}</h2>' +
+    '<h3>Tournois {{matchAvenir[0].rencontre.tournoi.libelle}} <br/>{{matchAvenir[0].rencontre.date_debut_formatted}}</h3> ' +
+    '</div>' +
     '<span>' +
     '<a href="#">Decouvrir</a>' +
     '</span> ' +
@@ -50,5 +58,22 @@ import {Component} from '@angular/core';
     '<script type="text/javascript" src="assets/js/javascript.js"></script>' +
     '</footer>',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  matchAvenir: [JSON];
+
+  constructor(public requestService: RequestService, private route: ActivatedRoute,
+              private router: Router,                private cacheService: CacheService) {
+
+  }
+
+  ngOnInit() {
+
+    this.requestService.prochaineRencontreTournoi().subscribe((rencontre)=>{
+      this.matchAvenir = rencontre;
+    })
+
+  }
+
+
 }

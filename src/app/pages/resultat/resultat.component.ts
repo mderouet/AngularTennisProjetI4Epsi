@@ -1,6 +1,6 @@
 //
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {RequestService} from '../../services/request.service';
 import {Config} from "../../config/config";
 import {UtilsService} from "../../services/utils.service";
@@ -15,6 +15,7 @@ import {CacheService} from "../../services/cache.service";
 
 export class ResultatComponent implements OnInit, CacheInterface {
     rencontres: [JSON];
+    scoreRencontre: Array<JSON> = [];
     tournois: [JSON];
     private sub: any;
     idResultat: number;
@@ -58,12 +59,46 @@ export class ResultatComponent implements OnInit, CacheInterface {
 
     chargerRencontres() {
         this.requestService.listRencontres().subscribe((rencontres) => {
+          // Id Array
+          var idArrayRencontre = [];
+
           // Local value
           this.rencontres = rencontres;
           // Cache
           this.cacheService.rencontres = rencontres;
+
+          this.rencontres.forEach(function(element) {
+            idArrayRencontre.push(element.rencontre.id_rencontre);
+          });
+          this.chargerScores(idArrayRencontre);
         });
     }
+
+    chargerScores(idRencontres){
+      var count = 0;
+      for(let i = 0; i < idRencontres.length; i++)
+      {
+        this.requestService.showScore(idRencontres[i]).subscribe(
+          score => {
+            count ++;
+            this.scoreRencontre.push(score);
+            if(count === idRencontres.length){
+              this.scoreRencontre.sort(this.sortFunction);
+              console.log(this.scoreRencontre);
+            }
+          }
+        );
+      }
+    }
+
+sortFunction(a, b) {
+  if (a[0].rencontre.id === b[0].rencontre.id) {
+    return 0;
+  }
+  else {
+    return (a[0].rencontre.id < b[0].rencontre.id) ? -1 : 1;
+  }
+}
 
     chargerTournois() {
         this.requestService.listTournois().subscribe((tournois) => {

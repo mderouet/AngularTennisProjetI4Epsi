@@ -26,16 +26,15 @@ export class HomeComponent implements OnInit, CacheInterface {
   this.initCache();
 
    if(this.utilsService.isEmptyObject(this.cacheService.rencontres)){
-     console.log("chargement recontres HOME PAGE")
+     console.log("Chargement recontres HOME PAGE")
      this.chargerRencontres();
    }
     if(this.utilsService.isEmptyObject(this.cacheService.tournois)){
-      console.log("chargement tournois HOME PAGE")
-
+      console.log("Chargement tournois HOME PAGE")
       this.chargerTournois();
     }
     if(this.utilsService.isEmptyObject(this.cacheService.articles)){
-      console.log("chargement articles HOME PAGE")
+      console.log("Chargement articles HOME PAGE")
       this.chargerArticles();
     }
   }

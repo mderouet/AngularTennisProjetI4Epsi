@@ -68,7 +68,8 @@ export class ResultatComponent implements OnInit, CacheInterface {
           this.cacheService.rencontres = rencontres;
 
           this.rencontres.forEach(function(element) {
-            idArrayRencontre.push(element.rencontre.id_rencontre);
+           // TODO
+            // idArrayRencontre.push(element.rencontre.id_rencontre);
           });
           this.chargerScores(idArrayRencontre);
         });

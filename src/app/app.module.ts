@@ -12,6 +12,7 @@ import {HttpModule} from "@angular/http";
 import {ArticleComponent} from "./pages/article/article.component";
 import {CacheService} from "./services/cache.service";
 import {ResultatDetails} from "./pages/resultat_details/resultat_details.component";
+import {ArticlesComponent} from "./pages/articles/articles.component";
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import {ResultatDetails} from "./pages/resultat_details/resultat_details.compone
     ResultatDetails,
     ResultatComponent,
     ArticleComponent,
+    ArticlesComponent,
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'},CacheService],
   bootstrap: [AppComponent]

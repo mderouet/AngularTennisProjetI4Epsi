@@ -20,7 +20,7 @@ import {Config} from "./config/config";
     '<li><a routerLink="/home">Accueil</a></li>' +
     '<li><a routerLink="/joueurs">Liste Joueurs</a></li>' +
     '<li><a routerLink="/resultat">Résultats</a></li>' +
-    '<li><a href="#">Calendrier</a></li>' +
+    '<li><a routerLink="/articles">Articles</a></li>' +
     '<li><a href="#">Actualité</a></li>' +
     '<li><a href="#">Contact</a></li>' +
     '</ul> ' +

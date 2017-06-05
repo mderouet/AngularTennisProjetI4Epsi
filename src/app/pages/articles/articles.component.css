@@ -1,0 +1,8 @@
+.article-full__header {
+  font-size: 28px;
+  font-size: 1.75rem;
+  line-height: 36px;
+  font-family: "Duplicate Light";
+  -webkit-font-smoothing: antialiased;
+  margin-bottom: 30px;
+}

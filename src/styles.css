@@ -22,3 +22,8 @@ ul {
     margin-left: 0;
 }
 
+.alignCenter {
+    display: flex;
+    justify-content: center;
+}
+

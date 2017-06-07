@@ -14,11 +14,29 @@ import {CacheService} from "../../services/cache.service";
 })
 
 export class ResultatComponent implements OnInit, CacheInterface {
-    rencontres: [JSON];
+    rencontres: [any];
     scoreRencontre: Array<JSON> = [];
     tournois: [JSON];
     private sub: any;
     idResultat: number;
+    points: Array<any> = [];
+    nbrPoints = 0;
+    tabAlert: Array<any> = [];
+    tabValeurPointE1 = ["0", "15", "30", "40", "40A"];
+    tabValeurPointE2 = ["0", "15", "30", "40", "40A"];
+    valeurScoreE1 = 0;
+    valeurScoreE2 = 0;
+    valeurJeuE1 = 0;
+    valeurJeuE2 = 0;
+    valeurSetE1 = 0;
+    valeurSetE2 = 0;
+    idEquipe1 = 0;
+    idEquipe2 = 0;
+    typeMatch = "";
+    affichageJeuE1 = [0, 0, 0, 0, 0];
+    affichageJeuE2 = [0, 0, 0, 0, 0];
+    iTab = 0;
+    iTab2 = 0;
 
     constructor(public requestService: RequestService, private route: ActivatedRoute, private router: Router,
                 private utilsService: UtilsService,private cacheService: CacheService) {
@@ -68,8 +86,7 @@ export class ResultatComponent implements OnInit, CacheInterface {
           this.cacheService.rencontres = rencontres;
 
           this.rencontres.forEach(function(element) {
-           // TODO
-            // idArrayRencontre.push(element.rencontre.id_rencontre);
+             idArrayRencontre.push(element.rencontre.id_rencontre);
           });
           this.chargerScores(idArrayRencontre);
         });

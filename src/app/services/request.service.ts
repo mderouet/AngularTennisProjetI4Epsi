@@ -138,5 +138,15 @@ export class RequestService {
       this.http.get(url + 'rencontre/score/' + id).map(res => res = res.json()));
   }
 
+  /*
+   Methodes Alerts
+   */
+  showAlert(id: number): Observable<any> {
+    return this.getBaseUrl().switchMap((url: any) =>
+        this.http.get(url + 'alerte/' + id).map(res => res = res.json()));
+  }
+
+
+
 
 }

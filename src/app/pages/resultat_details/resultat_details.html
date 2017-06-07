@@ -1,23 +1,25 @@
-<section id="resultatBlock1" class="row" *ngIf="rencontres">
+<section id="resultatBlock1" class="row" *ngIf="rencontres.length !=0">
     <div class="resultat">
         <div class="vignetteJoueur1 large-3 small-3 column">
-            <div *ngIf="rencontres[idResultat].rencontre.equipes[0].joueurs.length > 1; else elseBlock">
+            <div *ngIf="rencontres[idResultat]?.rencontre.equipes[0].joueurs.length > 1; else elseBlock">
                 <div class="vignetteTitreJoueur">
                     <span class="textBold">
-                        {{rencontres[idResultat].rencontre.equipes[0].joueurs[0].nom}}
+                        {{rencontres[idResultat]?.rencontre.equipes[0].joueurs[0].nom}}
                     </span>
                     &
                     <span class="textBold">
-                        {{rencontres[idResultat].rencontre.equipes[0].joueurs[1].nom}}
+                        {{rencontres[idResultat]?.rencontre.equipes[0].joueurs[1].nom}}
                     </span>
                 </div>
-                <div class="imgVignetteEquipe">
-                    <img class="imgJoueursEquipe"
-                         src="{{rencontres[idResultat].rencontre.equipes[0].joueurs[0].url_image}}"
-                         alt="image joueur {{rencontres[idResultat].rencontre.equipes[0].joueurs[0].nom}}">
-                    <img class="imgJoueursEquipe"
-                         src="{{rencontres[idResultat].rencontre.equipes[0].joueurs[1].url_image}}"
-                         alt="image joueur {{rencontres[idResultat].rencontre.equipes[0].joueurs[1].nom}}">
+                <div class="alignCenter">
+                    <div class="imgVignetteEquipe">
+                        <img class="imgJoueursEquipe"
+                             src="{{rencontres[idResultat]?.rencontre?.equipes[0]?.joueurs[0]?.url_image}}"
+                             alt="image joueur {{rencontres[idResultat]?.rencontre?.equipes[0]?.joueurs[0]?.nom}}">
+                        <img class="imgJoueursEquipe"
+                             src="{{rencontres[idResultat]?.rencontre?.equipes[0]?.joueurs[1]?.url_image}}"
+                             alt="image joueur {{rencontres[idResultat]?.rencontre.equipes[0]?.joueurs[1]?.nom}}">
+                    </div>
                 </div>
                 <div style="clear:both;"></div>
 
@@ -25,13 +27,15 @@
             <ng-template #elseBlock>
                 <div class="vignetteTitreJoueur">
                     <span class="textBold">
-                        {{rencontres[idResultat].rencontre.equipes[0].joueurs[0].nom}}
+                        {{rencontres[idResultat]?.rencontre.equipes[0]?.joueurs[0]?.nom}}
                     </span>
                 </div>
                 <div class="imgVignetteJoueur">
-                    <img src="{{rencontres[idResultat].rencontre.equipes[0].joueurs[0].url_image}}"
-                         alt="image joueur {{rencontres[idResultat].rencontre.equipes[1].joueurs[0].nom}}">
+                    <img src="{{rencontres[idResultat]?.rencontre?.equipes[0]?.joueurs[0]?.url_image}}"
+                         alt="image joueur {{rencontres[idResultat]?.rencontre?.equipes[1]?.joueurs[0]?.nom}}">
                 </div>
+
+
                 <div style="clear:both;"></div>
 
             </ng-template>
@@ -41,10 +45,10 @@
 
             <div>
                 <div class="textBold text-center">
-                    {{rencontres[idResultat].rencontre.cours_tennis.libelle}}
+                    {{rencontres[idResultat]?.rencontre.cours_tennis.libelle}}
                 </div>
                 <div class="textBold text-center nomTournoiRencontre">
-                    {{rencontres[idResultat].rencontre.tournoi.libelle}}
+                    {{rencontres[idResultat]?.rencontre.tournoi.libelle}}
                 </div>
             </div>
             <div class="separateurResultat"></div>
@@ -52,27 +56,25 @@
                 <div>
                     <div class="ligneSet row">
                         <div class="nomJoueurSet large-7 medium-7 small-7"
-                             *ngIf="rencontres[idResultat].rencontre.equipes[0].joueurs.length > 1; else resultatSimple">
+                             *ngIf="rencontres[idResultat]?.rencontre.equipes[0].joueurs.length > 1; else resultatSimple">
                             <span class="textBold">
-                                {{rencontres[idResultat].rencontre.equipes[0].joueurs[0].nom}}
+                                {{rencontres[idResultat]?.rencontre.equipes[0].joueurs[0].nom}}
                             </span>
                             &
                             <span class="textBold">
-                                {{rencontres[idResultat].rencontre.equipes[0].joueurs[1].nom}}
+                                {{rencontres[idResultat]?.rencontre.equipes[0].joueurs[1].nom}}
                             </span>
                         </div>
                         <ng-template #resultatSimple>
                             <div class="nomJoueurSet large-7 medium-7 small-7">
                                 <span class="textBold">
-                                    {{rencontres[idResultat].rencontre.equipes[0].joueurs[0].nom}}
+                                    {{rencontres[idResultat]?.rencontre.equipes[0].joueurs[0].nom}}
                                 </span>
                             </div>
                         </ng-template>
-                        <div class="setSet large-1 medium-1 small-1">2</div>
-                        <div class="setSet large-1 medium-1 small-1">4</div>
-                        <div class="setSet large-1 medium-1 small-1">5</div>
-                        <div class="setSet large-1 medium-1 small-1"></div>
-                        <div class="setSet large-1 medium-1 small-1"></div>
+                        <div class="setSet large-1 medium-1 small-1" *ngFor="let jeu of this.affichageJeuE1">
+                            {{jeu}}
+                        </div>
                     </div>
                     <div class="descriptionSet row">
                         <div class="nomDescriptionSet large-7 medium-7 small-7">
@@ -86,83 +88,118 @@
                     </div>
                     <div class="ligneSet row">
                         <div class="nomJoueurSet large-7 medium-7 small-7"
-                             *ngIf="rencontres[idResultat].rencontre.equipes[0].joueurs.length > 1; else resultatSimpleJ2">
+                             *ngIf="rencontres[idResultat]?.rencontre.equipes[0].joueurs.length > 1; else resultatSimpleJ2">
                             <span class="textBold">
-                                {{rencontres[idResultat].rencontre.equipes[1].joueurs[0].nom}}
+                                {{rencontres[idResultat]?.rencontre.equipes[1].joueurs[0].nom}}
                             </span>
                             &
                             <span class="textBold">
-                                {{rencontres[idResultat].rencontre.equipes[1].joueurs[1].nom}}
+                                {{rencontres[idResultat]?.rencontre.equipes[1].joueurs[1].nom}}
                             </span>
                         </div>
                         <ng-template #resultatSimpleJ2 class="nomJoueurSet large-7 medium-7 small-7">
                             <div class="nomJoueurSet large-7 medium-7 small-7">
                                 <span class="textBold">
-                                    {{rencontres[idResultat].rencontre.equipes[1].joueurs[0].nom}}
+                                    {{rencontres[idResultat]?.rencontre.equipes[1].joueurs[0].nom}}
                                 </span>
                             </div>
                         </ng-template>
-                        <div class="setSet large-1 medium-1 small-1">1</div>
-                        <div class="setSet large-1 medium-1 small-1">5</div>
-                        <div class="setSet large-1 medium-1 small-1">6</div>
-                        <div class="setSet large-1 medium-1 small-1"></div>
-                        <div class="setSet large-1 medium-1 small-1"></div>
+                        <div class="setSet large-1 medium-1 small-1" *ngFor="let jeu of this.affichageJeuE2">
+                            {{jeu}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="vignetteJoueur2 large-3 small-3 column">
-            <div *ngIf="rencontres[idResultat].rencontre.equipes[1].joueurs.length > 1; else elseBlock2">
+            <div *ngIf="rencontres[idResultat]?.rencontre.equipes[1].joueurs.length > 1; else elseBlock2">
                 <div class="vignetteTitreJoueur">
                     <span class="textBold">
-                        {{rencontres[idResultat].rencontre.equipes[1].joueurs[0].nom}}
+                        {{rencontres[idResultat]?.rencontre.equipes[1].joueurs[0].nom}}
                     </span>
                     &
                     <span class="textBold">
-                        {{rencontres[idResultat].rencontre.equipes[1].joueurs[1].nom}}
+                        {{rencontres[idResultat]?.rencontre.equipes[1].joueurs[1].nom}}
                     </span>
                 </div>
-                <div class="imgVignetteEquipe">
-                    <img class="imgJoueursEquipe"
-                         src="{{rencontres[idResultat].rencontre.equipes[1].joueurs[0].url_image}}"
-                         alt="image joueur {{rencontres[idResultat].rencontre.equipes[0].joueurs[0].nom}}">
-                    <img class="imgJoueursEquipe"
-                         src="{{rencontres[idResultat].rencontre.equipes[1].joueurs[1].url_image}}"
-                         alt="image joueur {{rencontres[idResultat].rencontre.equipes[0].joueurs[1].nom}}">
+                <div class="alignCenter">
+                    <div class="imgVignetteEquipe">
+                        <img class="imgJoueursEquipe"
+                             src="{{rencontres[idResultat]?.rencontre.equipes[1].joueurs[0].url_image}}"
+                             alt="image joueur {{rencontres[idResultat]?.rencontre.equipes[0].joueurs[0].nom}}">
+                        <img class="imgJoueursEquipe"
+                             src="{{rencontres[idResultat]?.rencontre.equipes[1].joueurs[1].url_image}}"
+                             alt="image joueur {{rencontres[idResultat]?.rencontre.equipes[0].joueurs[1].nom}}">
+                    </div>
                 </div>
                 <div style="clear:both;"></div>
             </div>
             <ng-template #elseBlock2>
                 <div class="vignetteTitreJoueur">
                     <span class="textBold">
-                        {{rencontres[idResultat].rencontre.equipes[1].joueurs[0].nom}}
+                        {{rencontres[idResultat]?.rencontre.equipes[1].joueurs[0].nom}}
                     </span>
                 </div>
                 <div class="imgVignetteJoueur">
-                    <img src="{{rencontres[idResultat].rencontre.equipes[1].joueurs[0].url_image}}"
-                         alt="image joueur {{rencontres[idResultat].rencontre.equipes[1].joueurs[0].nom}}">
+                    <img src="{{rencontres[idResultat]?.rencontre.equipes[1].joueurs[0].url_image}}"
+                         alt="image joueur {{rencontres[idResultat]?.rencontre.equipes[1].joueurs[0].nom}}">
                 </div>
                 <div style="clear:both;"></div>
             </ng-template>
         </div>
     </div>
-    <div class="infoMatch" *ngFor="let point of points">
-        <div class="column">
-            <div class="timeline">
-                <div class="heure ">
-                    {{point.heure}}
+    <div class="containerAlert">
+        <div class="infoMatch" *ngFor="let point of points">
+            <div class="column">
+                <div class="timeline">
+                    <div class="heure">
+                        {{point.heure}}
+                    </div>
+                    <div class="nomEquipe">
+                        {{point.equipe}}
+                    </div>
                 </div>
-                <div class="nomEquipe">
-                    {{point.equipe}}
+                <div class="descriptionInfo">
+                    <div class="descriptionInfoPoint">
+                        <div style="float:left;">
+                            <img class="iconAlert" src="../../../assets/img/tennis-player.png">
+                            <strong>Joueur</strong> : {{point.equipe}}
+                        </div>
+                        <div style="float:right">
+                            <img class="iconAlert" src="../../../assets/img/scoreboard.png">
+                            <strong>Score</strong> : {{point.valeur}}
+                        </div>
+                        <div style="clear: both;"></div>
+                        <img class="iconAlert" src="../../../assets/img/action-tennis.png">
+                        <strong>Action gagnante</strong> : {{point.action_gagnante}}
+                    </div>
                 </div>
             </div>
-            <div class="descriptionInfo">
-                <!--class="arbitrage_joueurs {{equipe.joueurs.length=== 1 ? 'solo' : 'duo'}} -->
-                <div class="descriptionInfoPoint">
-                    {{point.equipe}} à marqué par {{point.action_gagnante}} : {{point.valeur}}
+        </div>
+    </div>
+    <div class="containerAlert">
+        <div class="infoAlert" *ngFor="let alert of tabAlert">
+            <div class="column">
+                <div class="timeline">
+                    <div class="heure ">
+                        {{alert.heure}}
+                    </div>
+                    <div class="nomEquipe">
+                        {{alert.nom_joueur}}
+                    </div>
                 </div>
-                <div class="descriptionInfoFaute">
-                    {{point.equipe}} à commit une faute : NOM DE LA FAUTE
+                <div class="descriptionInfo">
+                    <div class="descriptionInfoFaute">
+                        <div style="float:left;">
+                            <img class="iconAlert" src="../../../assets/img/tennis-player.png">
+                            <strong>Joueur</strong> : {{alert.nom_joueur}}
+                        </div>
+                        <div style="float:right">
+                            <img class="iconAlert" src="../../../assets/img/whistle.png">
+                            <strong>Faute</strong> : {{alert.libelle_type_alerte}}
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {RequestService} from '../../services/request.service';
+declare var io;
 
 @Component({
     selector: 'home',
@@ -34,6 +35,7 @@ export class ResultatDetails implements OnInit {
     affichageJeuE2 = [0, 0, 0, 0, 0];
     iTab = 0;
     iTab2 = 0;
+    io:any;
 
 
     constructor(public requestService: RequestService, private route: ActivatedRoute, private router: Router) {
@@ -44,7 +46,18 @@ export class ResultatDetails implements OnInit {
         this.sub = this.route.params.subscribe(params => {
             this.idResultat = +params['id']; // (+) converts string 'id' to a number
             this.chargerRencontres();
+            this.io=io( 'http://192.168.24.78:3003', {'transports': ['websocket', 'polling']});
+            this.io.on('connect', function () {
+                console.log("connect");
+            });
+            this.io.on('newMessage', function () {
+                this.chargerRencontres();
+            });
+
+
         });
+
+
     }
 
     chargerRencontres() {
@@ -75,9 +88,11 @@ export class ResultatDetails implements OnInit {
         this.scoreRencontre.forEach(function (currentRencontre) {
             currentRencontre.rencontre.sets.forEach(function (currentSets) {
                 currentSets.jeux.forEach(function (currentJeux) {
-                    currentJeux.jeu.points.forEach(function (currentPoints) {
-                        self.points.push(currentPoints);
-                    });
+                    for(let currentPoint of currentJeux.jeu.points ){
+                        console.log(currentPoint);
+                        self.points.push(currentPoint);
+
+                    }
                 });
             });
         });

@@ -74,13 +74,19 @@ export class ResultatDetails implements OnInit {
         let self = this;
         this.scoreRencontre.forEach(function (currentRencontre) {
             currentRencontre.rencontre.sets.forEach(function (currentSets) {
+                // console.log(currentRencontre);
                 currentSets.jeux.forEach(function (currentJeux) {
-                    currentJeux.jeu.points.forEach(function (currentPoints) {
-                        self.points.push(currentPoints);
+                    console.log(currentJeux.jeu.points);
+                    currentJeux.jeu.points.forEach(function (z) {
+                        console.log(z)
+                        //self.points.push(z);
+
                     });
                 });
             });
         });
+
+
         self.idEquipe1 = self.scoreRencontre[0].rencontre.equipes[0].id;
         self.idEquipe2 = self.scoreRencontre[0].rencontre.equipes[1].id;
         self.typeMatch = self.scoreRencontre[0].rencontre.type;

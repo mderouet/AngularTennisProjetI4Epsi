@@ -93,11 +93,12 @@
             <div class="row prochainMatch" *ngIf="i <4">
                 <div style="display: flex;align-items: center;">
                     <div class="dateProchainMatch">
-                        <span class="jourProchainMatch">
-                            {{splitDate(rencontre.rencontre.date_debut," ", "-",0,2)}}
-                        </span>
+                        <!-- TODO delete si besoin -->
+                      <!--  <span class="jourProchainMatch">
+                            {{rencontre.rencontre.date_debut}}
+                        </span>-->
                         <span class="moisProchainMatch">
-                            {{splitDate(rencontre.rencontre.date_debut_formatted," ", "",2,"false")}}
+                            {{rencontre.rencontre.date_debut_formatted}}
                         </span>
                     </div>
                     <div class="joueurProchainMatch"

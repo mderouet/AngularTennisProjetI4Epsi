@@ -12,20 +12,10 @@ export class CacheService {
   private _tournois: [JSON] = null;
   private _articles: [JSON] = null;
   private _joueurs: [JSON] = null;
-  private _test: String;
 
   constructor() {
 
   }
-
-  get test(): String {
-    return this._test;
-  }
-
-  set test(value: String) {
-    this._test = value;
-  }
-
 
   get rencontres(): [JSON] {
     return this._rencontres;

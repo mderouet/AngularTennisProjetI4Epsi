@@ -5,6 +5,7 @@ import {RequestService} from '../../services/request.service';
 import {Config} from "../../config/config";
 import {UtilsService} from "../../services/utils.service";
 import {CacheService} from "../../services/cache.service";
+declare var io;
 
 @Component({
     selector: 'home',
@@ -13,7 +14,9 @@ import {CacheService} from "../../services/cache.service";
     providers: [RequestService, Config, UtilsService]
 })
 
-export class ResultatComponent implements OnInit, CacheInterface {
+export class ResultatComponent implements OnInit, CacheInterface, SocketInterface {
+    io: any;
+    idArrayRencontre = [];
     rencontres: [any];
     scoreRencontre: Array<JSON> = [];
     tournois: [JSON];
@@ -37,18 +40,23 @@ export class ResultatComponent implements OnInit, CacheInterface {
     affichageJeuE2 = [0, 0, 0, 0, 0];
     iTab = 0;
     iTab2 = 0;
-
     constructor(public requestService: RequestService, private route: ActivatedRoute, private router: Router,
                 private utilsService: UtilsService,private cacheService: CacheService) {
 
     }
 
     ngOnInit() {
-
       this.initCache();
       if(this.utilsService.isEmptyObject(this.cacheService.rencontres)){
         console.log("chargement rencontres RESULTAT PAGE")
         this.chargerRencontres();
+      }
+      else{
+          for(let element of this.cacheService.rencontres){
+              this.idArrayRencontre.push(element.rencontre.id_rencontre);
+          }
+
+          this.chargerScores(this.idArrayRencontre);
       }
       if(this.utilsService.isEmptyObject(this.cacheService.tournois)){
         console.log("chargement tournois RESULTAT PAGE")
@@ -58,9 +66,24 @@ export class ResultatComponent implements OnInit, CacheInterface {
         this.sub = this.route.params.subscribe(params => {
             this.idResultat = +params['id']; // (+) converts string 'id' to a number
         });
+
+        this.initSocket();
+
+
     }
 
-  initCache(){
+
+    initSocket(){
+        this.io=io( 'http://192.168.24.78:3003', {'transports': ['websocket', 'polling']});
+        this.io.on('connect', function () {
+            console.log("connect");
+        });
+        this.io.on('updateScore', function () {
+            this.chargerRencontres();
+        });
+    };
+
+    initCache(){
     if(!this.utilsService.isEmptyObject(this.cacheService.rencontres)){
       this.rencontres = this.cacheService.rencontres;
     }
@@ -77,18 +100,16 @@ export class ResultatComponent implements OnInit, CacheInterface {
 
     chargerRencontres() {
         this.requestService.listRencontres().subscribe((rencontres) => {
-          // Id Array
-          var idArrayRencontre = [];
 
           // Local value
           this.rencontres = rencontres;
           // Cache
           this.cacheService.rencontres = rencontres;
 
-          this.rencontres.forEach(function(element) {
-             idArrayRencontre.push(element.rencontre.id_rencontre);
-          });
-          this.chargerScores(idArrayRencontre);
+            for(let element of this.rencontres){
+                this.idArrayRencontre.push(element.rencontre.id_rencontre);
+            }
+            this.chargerScores(this.idArrayRencontre);
         });
     }
 
@@ -99,10 +120,10 @@ export class ResultatComponent implements OnInit, CacheInterface {
         this.requestService.showScore(idRencontres[i]).subscribe(
           score => {
             count ++;
+              console.log(score);
             this.scoreRencontre.push(score);
             if(count === idRencontres.length){
               this.scoreRencontre.sort(this.sortFunction);
-              console.log(this.scoreRencontre);
             }
           }
         );

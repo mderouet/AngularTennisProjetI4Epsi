@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit, CacheInterface {
   this.cacheService.articles = null;
   }
 
-
+  //TODO Delete si pas besoin JP
   splitDate(string, firstSplit, secondSplit, stringNbr, stringNbr2) {
     var a = string.split(firstSplit);
     var b = a[stringNbr];
@@ -82,6 +82,7 @@ export class HomeComponent implements OnInit, CacheInterface {
       this.rencontres = rencontres;
       // Cache
       this.cacheService.rencontres = rencontres;
+
     });
   }
 

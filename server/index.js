@@ -39,8 +39,8 @@ io.sockets.on('connection', function(socket){
     socket.on('connect', function(data){
         console.log(data);
     });
-    socket.on('sendMessage', function(){
-        console.log("MessageSend");
-        io.sockets.emit('newMessage');
+    socket.on('sendScore', function(){
+        console.log("Demande de mise à jour du score");
+        io.sockets.emit('updateScore');
     });
 });

@@ -11,7 +11,7 @@ declare var io;
     providers: [RequestService]
 })
 
-export class ResultatDetails implements OnInit {
+export class ResultatDetails implements OnInit, SocketInterface {
     rencontres: Array<any> = [];
     scoreRencontre: [any];
     alerts: [any];
@@ -46,25 +46,28 @@ export class ResultatDetails implements OnInit {
         this.sub = this.route.params.subscribe(params => {
             this.idResultat = +params['id']; // (+) converts string 'id' to a number
             this.chargerRencontres();
-            this.io=io( 'http://192.168.24.78:3003', {'transports': ['websocket', 'polling']});
-            this.io.on('connect', function () {
-                console.log("connect");
-            });
-            this.io.on('newMessage', function () {
-                this.chargerRencontres();
-            });
-
-
         });
 
-
+        this.initSocket();
     }
+
+    initSocket(){
+        this.io=io( 'http://192.168.24.78:3003', {'transports': ['websocket', 'polling']});
+        this.io.on('connect', function () {
+            console.log("connect");
+        });
+        this.io.on('updateScore', function () {
+            this.chargerRencontres();
+        });
+    };
+
+
 
     chargerRencontres() {
         this.requestService.listRencontres().subscribe((rencontres) => {
             // Local value
             //this.rencontres = rencontres;
-
+            console.log("charger rencontres");
             for (let r of rencontres) {
                 this.rencontres[r.rencontre.id_rencontre] = r;
             }
@@ -77,6 +80,8 @@ export class ResultatDetails implements OnInit {
     chargerScore(id: number) {
         this.requestService.showScore(id).subscribe((scoreRencontre) => {
             // Local value
+            console.log("charger score")
+            console.log(scoreRencontre);
             this.scoreRencontre = scoreRencontre;
             this.chargerScoreInfo();
             this.calculScore();
@@ -92,7 +97,6 @@ export class ResultatDetails implements OnInit {
                     for(let currentPoint of currentJeux.jeu.points ){
                         console.log(currentPoint);
                         self.points.push(currentPoint);
-
                     }
 
                 });

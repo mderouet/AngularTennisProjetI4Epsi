@@ -6,7 +6,7 @@
     "build": "tsc -p src/",
     "build:watch": "tsc -p src/ -w",
     "build:e2e": "tsc -p e2e/",
-    "serve": "lite-server -c=bs-config.json",
+    "serve": "tsc && concurrently \"npm run tsc:w\" \"nodemon ./server/index.js\" ",
     "serve:e2e": "lite-server -c=bs-config.e2e.json",
     "prestart": "npm run build",
     "start": "concurrently \"npm run build:watch\" \"npm run serve\"",
@@ -37,7 +37,10 @@
     "rxjs": "5.4.0",
     "slick-carousel": "^1.6.0",
     "systemjs": "0.20.12",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "nodemon": "^1.10.2",
+    "express": "4.10.2",
+    "socket.io": "1.2.0"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.41",

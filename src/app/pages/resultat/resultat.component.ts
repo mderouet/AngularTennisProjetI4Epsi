@@ -16,7 +16,7 @@ declare var io;
 
 export class ResultatComponent implements OnInit, CacheInterface, SocketInterface {
     io: any;
-    idArrayRencontre = [];
+    idArrayRencontre: any = [];
     rencontres: [any];
     scoreRencontre: Array<JSON> = [];
     tournois: [JSON];

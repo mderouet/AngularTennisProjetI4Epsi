@@ -52,7 +52,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
     }
 
     initSocket(){
-        this.io=io( 'http://localhost:3003', {'transports': ['websocket', 'polling']});
+        this.io=io( 'http://angular.warpz.tk', {'transports': ['websocket', 'polling']});
         this.io.on('connect', function () {
             console.log("connect");
         });
@@ -262,8 +262,6 @@ export class ResultatDetails implements OnInit, SocketInterface {
             }
         }
 
-
-        console.log('fin');
         console.log(this.affichageJeuE1);
         console.log(this.affichageJeuE2);
     }

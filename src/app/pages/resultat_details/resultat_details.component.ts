@@ -99,33 +99,15 @@ export class ResultatDetails implements OnInit, SocketInterface {
         for(let currentRencontre of this.scoreRencontre){
             for(let currentSets of currentRencontre.rencontre.sets){
                 for(let currentJeux of currentSets.jeux){
-                    console.log(currentJeux.jeu.points);
                     for (key in currentJeux.jeu.points) {
                         self.points.push(currentJeux.jeu.points[key].point);
                     }
                 }
             }
         }
-
-        /*this.scoreRencontre.forEach(function (currentRencontre) {
-            currentRencontre.rencontre.sets.forEach(function (currentSets) {
-                currentSets.jeux.forEach(function (currentJeux) {
-                    console.log(currentJeux.jeu.points)
-                    for(let currentPoint of currentJeux.jeu.points ){
-                        console.log('ici')
-
-                        /!*console.log(currentPoint);
-                        self.points.push(currentPoint.point);*!/
-                    }
-
-                });
-            });
-        });*/
-
-
-        self.idEquipe1 = self.scoreRencontre[0].rencontre.equipes[0].id;
-        self.idEquipe2 = self.scoreRencontre[0].rencontre.equipes[1].id;
-        self.typeMatch = self.scoreRencontre[0].rencontre.type;
+        this.idEquipe1 = this.scoreRencontre[0].rencontre.equipes[0].equipe.id;
+        this.idEquipe2 = this.scoreRencontre[0].rencontre.equipes[1].equipe.id;
+        this.typeMatch = this.scoreRencontre[0].rencontre.type;
     }
 
     reverseScore() {
@@ -139,10 +121,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
                 //currentJeu.jeu.points.reverse();
             }
         }
-
         console.log(this.scoreRencontre)
-
-
     }
 
 
@@ -153,7 +132,6 @@ export class ResultatDetails implements OnInit, SocketInterface {
             if (point.valeur !== "null") {
                 // if (point.valeur !== "Jeu") {
                 if (point.equipe_id === this.idEquipe1) {
-
                     //Vérif : Est ce que Equipe 1 === 40 ?
                     if (this.tabValeurPointE1[this.valeurScoreE1] === "40") {
                         // console.log("Equipe 1 === 40")
@@ -179,7 +157,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
                                         this.valeurSetE1 = this.valeurSetE1 + 1;
                                         console.log('Match gagné par : ' + this.idEquipe1)
                                     } else {
-                                        // console.log("//Incrémentation Set Equipe 1 & Réinitialisation des Jeu")
+                                        // console.log("//Incrémentation Set Equipe 1 & Réinitialisation des Jeux")
                                         //Incrémentation Set Equipe 1 & Réinitialisation des Jeu
                                         this.iTab += 1;
                                         this.valeurJeuE1 = this.valeurJeuE1 + 1;
@@ -196,7 +174,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
                                         this.valeurSetE1 = this.valeurSetE1 + 1;
                                         console.log('Match gagné par : ' + this.idEquipe1)
                                     } else {
-                                        //Incrémentation Set Equipe 1 & Réinitialisation des Jeu
+                                        //Incrémentation Set Equipe 1 & Réinitialisation des Jeux
                                         this.iTab += 1;
                                         this.valeurJeuE1 = this.valeurJeuE1 + 1;
                                         this.valeurSetE1 = this.valeurSetE1 + 1;
@@ -207,7 +185,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
                                 }
                             }
                             else {
-                                //Inscrémentation Jeu de l'Equipe 1 & Réinitialisation des scores
+                                //Incrémentation Jeu de l'Equipe 1 & Réinitialisation des scores
                                 this.valeurJeuE1 = this.valeurJeuE1 + 1;
                                 this.affichageJeuE1[this.iTab] = this.valeurJeuE1;
                                 this.valeurScoreE1 = 0;
@@ -268,7 +246,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
                                 }
                             }
                             else {
-                                //Inscrémentation Jeu de l'Equipe 1 & Réinitialisation des scores
+                                //Incrémentation Jeu de l'Equipe 1 & Réinitialisation des scores
                                 this.valeurJeuE2 = this.valeurJeuE2 + 1;
                                 this.valeurScoreE2 = 0;
                                 this.valeurScoreE1 = 0;
@@ -281,7 +259,6 @@ export class ResultatDetails implements OnInit, SocketInterface {
                         console.log("Equipe :" + this.idEquipe2 + " - Score : " + this.tabValeurPointE2[this.valeurScoreE2])
                     }
                 }
-                // }
             }
         }
 

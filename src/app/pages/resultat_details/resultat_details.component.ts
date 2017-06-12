@@ -45,35 +45,37 @@ export class ResultatDetails implements OnInit, SocketInterface {
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             this.idResultat = +params['id']; // (+) converts string 'id' to a number
-            this.chargerRencontres();
+            this.chargementRequetes();
         });
 
         this.initSocket();
     }
 
     initSocket(){
-        this.io=io( 'http://192.168.24.78:3003', {'transports': ['websocket', 'polling']});
+        this.io=io( 'http://localhost:3003', {'transports': ['websocket', 'polling']});
         this.io.on('connect', function () {
             console.log("connect");
         });
         this.io.on('updateScore' +
             '', function () {
-            this.chargerRencontres();
+            this.chargementRequetes();
         });
     };
 
 
+    chargementRequetes(){
+      this.chargerRencontres();
+      this.chargerScore(this.idResultat);
+      this.chargerAlerts(this.idResultat);
+    }
 
     chargerRencontres() {
         this.requestService.listRencontres().subscribe((rencontres) => {
             // Local value
-            //this.rencontres = rencontres;
             console.log("charger rencontres");
             for (let r of rencontres) {
                 this.rencontres[r.rencontre.id_rencontre] = r;
             }
-            this.chargerScore(this.idResultat);
-            this.chargerAlerts(this.idResultat);
         });
     }
 
@@ -83,6 +85,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
             console.log("charger score")
             console.log(scoreRencontre);
             this.scoreRencontre = scoreRencontre;
+            console.log(this.scoreRencontre);
             this.chargerScoreInfo();
             this.calculScore();
             // this.reverseScore();

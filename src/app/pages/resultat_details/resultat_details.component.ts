@@ -85,7 +85,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
             this.scoreRencontre = scoreRencontre;
             this.chargerScoreInfo();
             this.calculScore();
-            this.reverseScore();
+            // this.reverseScore();
         });
     };
 

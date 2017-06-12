@@ -94,17 +94,33 @@ export class ResultatDetails implements OnInit, SocketInterface {
 
     chargerScoreInfo() {
         let self = this;
-        this.scoreRencontre.forEach(function (currentRencontre) {
+        var key;
+
+        for(let currentRencontre of this.scoreRencontre){
+            for(let currentSets of currentRencontre.rencontre.sets){
+                for(let currentJeux of currentSets.jeux){
+                    console.log(currentJeux.jeu.points);
+                    for (key in currentJeux.jeu.points) {
+                        self.points.push(currentJeux.jeu.points[key].point);
+                    }
+                }
+            }
+        }
+
+        /*this.scoreRencontre.forEach(function (currentRencontre) {
             currentRencontre.rencontre.sets.forEach(function (currentSets) {
                 currentSets.jeux.forEach(function (currentJeux) {
+                    console.log(currentJeux.jeu.points)
                     for(let currentPoint of currentJeux.jeu.points ){
-                        console.log(currentPoint);
-                        self.points.push(currentPoint);
+                        console.log('ici')
+
+                        /!*console.log(currentPoint);
+                        self.points.push(currentPoint.point);*!/
                     }
 
                 });
             });
-        });
+        });*/
 
 
         self.idEquipe1 = self.scoreRencontre[0].rencontre.equipes[0].id;

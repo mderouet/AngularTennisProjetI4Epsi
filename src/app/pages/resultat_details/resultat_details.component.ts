@@ -43,9 +43,10 @@ export class ResultatDetails implements OnInit, SocketInterface {
     }
 
     ngOnInit() {
+      let self = this;
         this.sub = this.route.params.subscribe(params => {
             this.idResultat = +params['id']; // (+) converts string 'id' to a number
-            this.chargementRequetes();
+            self.chargementRequetes();
         });
 
         this.initSocket();

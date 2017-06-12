@@ -95,6 +95,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
     chargerScoreInfo() {
         let self = this;
         var key;
+        self.points=[];
 
         for(let currentRencontre of this.scoreRencontre){
             for(let currentSets of currentRencontre.rencontre.sets){
@@ -301,6 +302,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
 
     chargerAlertInfo() {
         let self = this;
+        self.tabAlert=[];
         Object.keys(this.alerts).map(function (objectKey, index) {
             var value = self.alerts[objectKey];
             self.tabAlert.push(value);

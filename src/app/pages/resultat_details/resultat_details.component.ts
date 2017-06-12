@@ -56,7 +56,8 @@ export class ResultatDetails implements OnInit, SocketInterface {
         this.io.on('connect', function () {
             console.log("connect");
         });
-        this.io.on('updateScore', function () {
+        this.io.on('updateScore' +
+            '', function () {
             this.chargerRencontres();
         });
     };
@@ -73,7 +74,6 @@ export class ResultatDetails implements OnInit, SocketInterface {
             }
             this.chargerScore(this.idResultat);
             this.chargerAlerts(this.idResultat);
-
         });
     }
 
@@ -85,6 +85,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
             this.scoreRencontre = scoreRencontre;
             this.chargerScoreInfo();
             this.calculScore();
+            this.reverseScore();
         });
     };
 
@@ -92,7 +93,6 @@ export class ResultatDetails implements OnInit, SocketInterface {
         let self = this;
         this.scoreRencontre.forEach(function (currentRencontre) {
             currentRencontre.rencontre.sets.forEach(function (currentSets) {
-                // console.log(currentRencontre);
                 currentSets.jeux.forEach(function (currentJeux) {
                     for(let currentPoint of currentJeux.jeu.points ){
                         console.log(currentPoint);
@@ -108,6 +108,24 @@ export class ResultatDetails implements OnInit, SocketInterface {
         self.idEquipe2 = self.scoreRencontre[0].rencontre.equipes[1].id;
         self.typeMatch = self.scoreRencontre[0].rencontre.type;
     }
+
+    reverseScore() {
+        console.log("reverse");
+        console.log(this.scoreRencontre[0])
+            this.scoreRencontre[0].rencontre.sets.reverse();
+        for(let currentSet of this.scoreRencontre[0].rencontre.sets){
+            currentSet.jeux.reverse();
+            for(let currentJeu of currentSet.jeux){
+                //TODO reverse l'objet points (reverse marche pas sur les objects)
+                //currentJeu.jeu.points.reverse();
+            }
+        }
+
+        console.log(this.scoreRencontre)
+
+
+    }
+
 
     calculScore() {
         console.log('début');

@@ -74,12 +74,14 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
 
 
     initSocket(){
-        this.io=io( 'http://192.168.24.78:3003', {'transports': ['websocket', 'polling']});
+        this.io=io( 'http://angular.warpz.tk', {'transports': ['websocket', 'polling']});
         this.io.on('connect', function () {
             console.log("connect");
         });
+        var self=this;
         this.io.on('updateScore', function () {
-            this.chargerRencontres();
+            console.log('charge');
+            self.chargerRencontres();
         });
     };
 

@@ -5,23 +5,18 @@ var cors = require('cors');
 var socketio = require('socket.io');
 var express = require('express')
 var app = express();
-console.log('avant');
+var port = 3003;
 
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept, Origin, Authorization");
     next();
 });
-    console.log("apres");
     var server = require('http').createServer(app);
     var io = socketio.listen(server, {log:false, origins:'*'});
 
-    //var io = require('socket.io').listen(server);
-    //io = require('socket.io')(server, { origins: '*:*'});
-
-server.listen(3003);
-console.log('Début');
-
+server.listen(port);
+console.log("listening on port : " + port);
 
 app.use("/node_modules", express.static('node_modules'));
 app.use(express.static('./src'));

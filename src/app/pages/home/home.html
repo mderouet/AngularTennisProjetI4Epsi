@@ -125,9 +125,10 @@
                     <div class="text-center">
                         <div class="horaireProchainMatch">
                             <span>
-                                {{splitDate(rencontre.rencontre.date_debut_formatted," ", "",4,"false")}},
+                                {{rencontre.rencontre.date_debut}}
+                            </span>
+                            <span>
                                 {{rencontre.rencontre.tournoi.libelle}} -
-                                {{getPaysByTournoiId(rencontre.rencontre.tournoi.id)}}
                             </span>
                         </div>
                     </div>

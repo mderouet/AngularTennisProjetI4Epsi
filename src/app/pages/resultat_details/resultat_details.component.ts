@@ -53,13 +53,14 @@ export class ResultatDetails implements OnInit, SocketInterface {
     }
 
     initSocket(){
+        let self= this;
         this.io=io( 'http://angular.warpz.tk', {'transports': ['websocket', 'polling']});
         this.io.on('connect', function () {
             console.log("connect");
         });
         this.io.on('updateScore' +
             '', function () {
-            this.chargementRequetes();
+            self.chargementRequetes();
         });
     };
 

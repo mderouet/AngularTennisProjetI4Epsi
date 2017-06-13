@@ -108,6 +108,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
                 }
             }
         }
+        self.points= self.points.reverse();
         this.idEquipe1 = this.scoreRencontre[0].rencontre.equipes[0].equipe.id;
         this.idEquipe2 = this.scoreRencontre[0].rencontre.equipes[1].equipe.id;
         this.typeMatch = this.scoreRencontre[0].rencontre.type;
@@ -284,6 +285,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
             var value = self.alerts[objectKey];
             self.tabAlert.push(value);
         })
+        self.tabAlert=self.tabAlert.reverse();
     }
 }
 

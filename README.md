@@ -6,8 +6,6 @@
 ### Lancement du projet
 ### Tech
 
-Dillinger uses a number of open source projects to work properly:
-
 * [Angular2] - HTML enhanced for web apps!
 * [markdown-it] - Markdown parser done right. Fast and easy to extend.
 * [node.js] - evented I/O for the backend

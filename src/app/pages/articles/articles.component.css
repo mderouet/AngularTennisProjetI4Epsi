@@ -24,7 +24,7 @@ figure img {
     margin: 10px 1%;
 
     width: 100%;
-    color: #000000;
+    color: #232a35;
     text-align: center;
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.6);
@@ -99,7 +99,7 @@ figure img {
 
 .snip1521:hover figcaption,
 .snip1521.hover figcaption {
-    background-color: #000000;
+    background-color: #232a35;
 }
 
 .snip1521:hover .title,

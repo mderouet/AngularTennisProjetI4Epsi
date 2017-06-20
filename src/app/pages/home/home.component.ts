@@ -67,6 +67,8 @@ export class HomeComponent implements OnInit, CacheInterface {
         this.requestService.listRencontres().subscribe((rencontres) => {
             // Local value
             this.rencontres = rencontres;
+            console.log(this.rencontres);
+
             // Cache
             this.cacheService.rencontres = rencontres;
 
@@ -96,9 +98,9 @@ export class HomeComponent implements OnInit, CacheInterface {
             if (tournoi["tournoi"].id === id) {
                 return tournoi["tournoi"].pays
             }
+
         }
+
     }
-
 }
-
 

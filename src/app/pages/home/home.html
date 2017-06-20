@@ -126,8 +126,9 @@
                         <div class="horaireProchainMatch">
                             <span>
                                 {{rencontre.rencontre.heure_debut}},
-                                {{rencontre.rencontre.tournoi.libelle}} -
-                                {{getPaysByTournoiId(rencontre.rencontre.tournoi.id)}}
+                            </span>
+                            <span>
+                                {{rencontre.rencontre.tournoi.libelle}} - {{getPaysByTournoiId(rencontre.rencontre.tournoi.id)}}
                             </span>
                         </div>
                     </div>

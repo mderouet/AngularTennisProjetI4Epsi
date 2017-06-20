@@ -1,85 +1,85 @@
 <section class=" section2">
-    <div >
+    <div>
         <div class="row">
             <div class="large-4 medium-4 small-6 columns blockResultat"
                  *ngFor="let rencontre of rencontres;  let i=index">
-              <a routerLink="/resultat">
-              <div *ngIf=" i<3">
-                    <div *ngIf="rencontre.rencontre.equipes[0].joueurs.length > 1; else elseBlock">
-                        <div class="imgJoueursBy4">
-                            <div class="imgJoueursEquipe1">
-                                <img src="{{rencontre.rencontre.equipes[0].joueurs[0].url_image}}"
-                                     alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[0].nom}}">
-                                <img src="{{rencontre.rencontre.equipes[0].joueurs[1].url_image}}"
-                                     alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[1].nom}}">
+                <a routerLink="/resultat">
+                    <div *ngIf=" i<3">
+                        <div *ngIf="rencontre.rencontre.equipes[0].joueurs.length > 1; else elseBlock">
+                            <div class="imgJoueursBy4">
+                                <div class="imgJoueursEquipe1">
+                                    <img src="{{rencontre.rencontre.equipes[0].joueurs[0].url_image}}"
+                                         alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[0].nom}}">
+                                    <img src="{{rencontre.rencontre.equipes[0].joueurs[1].url_image}}"
+                                         alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[1].nom}}">
+                                </div>
+                                <div class="separationImg"></div>
+                                <div class="imgJoueursEquipe2">
+                                    <img src="{{rencontre.rencontre.equipes[1].joueurs[0].url_image}}"
+                                         alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[0].nom}}">
+                                    <img src="{{rencontre.rencontre.equipes[1].joueurs[1].url_image}}"
+                                         alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[1].nom}}">
+                                </div>
+                                <div style="clear: both"></div>
                             </div>
-                            <div class="separationImg"></div>
-                            <div class="imgJoueursEquipe2">
-                                <img src="{{rencontre.rencontre.equipes[1].joueurs[0].url_image}}"
-                                     alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[0].nom}}">
-                                <img src="{{rencontre.rencontre.equipes[1].joueurs[1].url_image}}"
-                                     alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[1].nom}}">
-                            </div>
-                            <div style="clear: both"></div>
-                        </div>
-                        <div class="captionResultat">
-                            <h2> Résultat </h2>
-                            <h3>
+                            <div class="captionResultat">
+                                <h2> Résultat </h2>
+                                <h3>
                                 <span class="textBold">
                                     {{rencontre.rencontre.equipes[0].joueurs[0].nom}}
                                 </span>
-                                &
-                                <span class="textBold">
+                                    &
+                                    <span class="textBold">
                                     {{rencontre.rencontre.equipes[0].joueurs[1].nom}}
                                 </span>
-                            </h3>
-                            <h3>vs</h3>
-                            <h3>
+                                </h3>
+                                <h3>vs</h3>
+                                <h3>
                                 <span class="textBold">
                                     {{rencontre.rencontre.equipes[1].joueurs[0].nom}}
                                 </span>
-                                &
-                                <span class="textBold">
+                                    &
+                                    <span class="textBold">
                                     {{rencontre.rencontre.equipes[1].joueurs[1].nom}}
                                 </span>
-                            </h3>
-                        </div>
-                    </div>
-
-                    <!--Séparation-->
-
-                    <ng-template #elseBlock>
-                        <div class="imgJoueursBy2">
-                            <div class="imgJoueursEquipe1">
-                                <img src="{{rencontre.rencontre.equipes[0].joueurs[0].url_image}}"
-                                     alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[0].nom}}">
+                                </h3>
                             </div>
-                            <div class="separationImg"></div>
-                            <div class="imgJoueursEquipe2">
-                                <img src="{{rencontre.rencontre.equipes[1].joueurs[0].url_image}}"
-                                     alt="image joueur {{rencontre.rencontre.equipes[1].joueurs[0].nom}}">
-                            </div>
-                            <div style="clear: both"></div>
-
                         </div>
-                        <div class="captionResultat">
-                            <h2> Résultat </h2>
-                            <h3>
+
+                        <!--Séparation-->
+
+                        <ng-template #elseBlock>
+                            <div class="imgJoueursBy2">
+                                <div class="imgJoueursEquipe1">
+                                    <img src="{{rencontre.rencontre.equipes[0].joueurs[0].url_image}}"
+                                         alt="image joueur {{rencontre.rencontre.equipes[0].joueurs[0].nom}}">
+                                </div>
+                                <div class="separationImg"></div>
+                                <div class="imgJoueursEquipe2">
+                                    <img src="{{rencontre.rencontre.equipes[1].joueurs[0].url_image}}"
+                                         alt="image joueur {{rencontre.rencontre.equipes[1].joueurs[0].nom}}">
+                                </div>
+                                <div style="clear: both"></div>
+
+                            </div>
+                            <div class="captionResultat">
+                                <h2> Résultat </h2>
+                                <h3>
                         <span>
                             <span class="textBold"> {{rencontre.rencontre.equipes[0].joueurs[0].nom}}</span>
                          </span>
-                            </h3>
-                            <h3>vs</h3>
-                            <h3>
+                                </h3>
+                                <h3>vs</h3>
+                                <h3>
                         <span>
                             <span class="textBold"> {{rencontre.rencontre.equipes[1].joueurs[0].nom}}</span>
                          </span>
-                            </h3>
-                        </div>
-                    </ng-template>
+                                </h3>
+                            </div>
+                        </ng-template>
 
-                </div>
-              </a>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -94,11 +94,11 @@
                 <div style="display: flex;align-items: center;">
                     <div class="dateProchainMatch">
                         <!-- TODO delete si besoin -->
-                      <!--  <span class="jourProchainMatch">
-                            {{rencontre.rencontre.date_debut}}
-                        </span>-->
+                        <span class="jourProchainMatch">
+                            {{splitDate(rencontre.rencontre.date_debut,' ', 1)}}
+                        </span>
                         <span class="moisProchainMatch">
-                            {{rencontre.rencontre.date_debut}}
+                            {{splitDate(rencontre.rencontre.date_debut,' ', 2)}}
                         </span>
                     </div>
                     <div class="joueurProchainMatch"
@@ -125,7 +125,7 @@
                     <div class="text-center">
                         <div class="horaireProchainMatch">
                             <span>
-                                {{splitDate(rencontre.rencontre.date_debut_formatted," ", "",4,"false")}},
+                                {{rencontre.rencontre.heure_debut}},
                                 {{rencontre.rencontre.tournoi.libelle}} -
                                 {{getPaysByTournoiId(rencontre.rencontre.tournoi.id)}}
                             </span>
@@ -140,46 +140,46 @@
 
         <div>
             <div class="featuredArticle row">
-              <a routerLink="/article/{{articles[0].id}}">
-                <figure class="snip1579">
-                    <img src="{{articles[0].url_image}}" alt="mon image featured"/>
-                    <figcaption>
-                        <h3></h3>
-                        <h5>{{articles[0].titre}}</h5>
-                        <blockquote>
-                            <p>{{articles[0].corps | slice: 0:450}}.....</p>
-                        </blockquote>
-                    </figcaption>
-                    <a href="#"></a>
-                </figure>
-              </a>
+                <a routerLink="/article/{{articles[0].id}}">
+                    <figure class="snip1579">
+                        <img src="{{articles[0].url_image}}" alt="mon image featured"/>
+                        <figcaption>
+                            <h3></h3>
+                            <h5>{{articles[0].titre}}</h5>
+                            <blockquote>
+                                <p>{{articles[0].corps | slice: 0:450}}.....</p>
+                            </blockquote>
+                        </figcaption>
+                        <a href="#"></a>
+                    </figure>
+                </a>
             </div>
             <div class="row article">
-              <div class="large-4 medium-4 small-4 imgArticle">
-                <a routerLink="/article/{{articles[1].id}}">
-                <img src="{{articles[1].url_image}}" alt="article 1">
-                </a>
+                <div class="large-4 medium-4 small-4 imgArticle">
+                    <a routerLink="/article/{{articles[1].id}}">
+                        <img src="{{articles[1].url_image}}" alt="article 1">
+                    </a>
                 </div>
                 <div class="large-8 medium-8 small-8 columns descriptionArticle">
-                  <a routerLink="/article/{{articles[1].id}}">
-                    <h3>{{articles[1].titre}}</h3>
-                    <h5>{{articles[1].corps | slice: 0:150}}</h5>
-                  </a>
+                    <a routerLink="/article/{{articles[1].id}}">
+                        <h3>{{articles[1].titre}}</h3>
+                        <h5>{{articles[1].corps | slice: 0:150}}</h5>
+                    </a>
                 </div>
 
             </div>
             <div class="row article">
 
-              <div class="large-4 medium-4 small-4">
-                <a routerLink="/article/{{articles[2].id}}">
-                    <img src="{{articles[2].url_image}}" alt="article 1">
-                </a>
+                <div class="large-4 medium-4 small-4">
+                    <a routerLink="/article/{{articles[2].id}}">
+                        <img src="{{articles[2].url_image}}" alt="article 1">
+                    </a>
                 </div>
                 <div class="large-8 medium-8 small-8 columns">
-                  <a routerLink="/article/{{articles[2].id}}">
-                  <h3>{{articles[2].titre}}</h3>
-                    <h5>{{articles[2].corps | slice: 0:150}}</h5>
-                  </a>
+                    <a routerLink="/article/{{articles[2].id}}">
+                        <h3>{{articles[2].titre}}</h3>
+                        <h5>{{articles[2].corps | slice: 0:150}}</h5>
+                    </a>
                 </div>
 
             </div>

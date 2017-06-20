@@ -11,3 +11,7 @@
     top: 50%;
     margin-top: -150px;
 }
+
+.imgArticle img {
+    object-fit: cover;
+}

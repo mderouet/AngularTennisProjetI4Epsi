@@ -1,9 +1,14 @@
-<div *ngIf="article">
-<div *ngFor="let art of generateArray(article)">
-  <h2>{{art.titre}}</h2>
+<div *ngIf="article" class="articleDetail">
+    <div *ngFor="let art of generateArray(article)" class="row column">
+        <h1>{{art.titre}}</h1>
 
-  <h3><img src ="{{art.url_image}}"></h3>
+        <div class="imgArticle">
+            <img src="{{art.url_image}}">
+        </div>
+        <div class="articleTxt">
+            {{art.corps}}
+        </div>
 
-  <h4>{{art.corps}}</h4>
-</div>
+
+    </div>
 </div>

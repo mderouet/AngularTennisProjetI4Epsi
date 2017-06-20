@@ -1,43 +1,12 @@
-<div *ngIf="articles" class="large-8 medium-6 small-12 columns">
+<div *ngIf="articles" class="row">
 
-    <div class="row article">
-      <div class="large-4 medium-4 small-4 imgArticle">
-        <a routerLink="/article/{{articles[0].id}}">
-          <img src="{{articles[0].url_image}}" alt="article 1">
-        </a>
-      </div>
-      <div class="large-8 medium-8 small-8 columns descriptionArticle">
-        <a routerLink="/article/{{articles[0].id}}">
-          <h3>{{articles[0].titre}}</h3>
-          <h5>{{articles[0].corps | slice: 0:150}}</h5>
-        </a>
-      </div>
-      <div class="row article">
-        <div class="large-4 medium-4 small-4 imgArticle">
-          <a routerLink="/article/{{articles[1].id}}">
-            <img src="{{articles[1].url_image}}" alt="article 1">
-          </a>
+    <div class="article column medium-6 small-6 " *ngFor="let article of articles; let i = index;">
+        <!--<div ngIf="i ">-->
+            <div class="imgArticle">
+                <a routerLink="/article/{{articles[0].id}}">
+                    <img src="{{article.url_image}}" alt="{{article.titre}}">
+                </a>
+            </div>
         </div>
-        <div class="large-8 medium-8 small-8 columns descriptionArticle">
-          <a routerLink="/article/{{articles[1].id}}">
-            <h3>{{articles[1].titre}}</h3>
-            <h5>{{articles[1].corps | slice: 0:150}}</h5>
-          </a>
-        </div>
-
-        <div class="row article">
-          <div class="large-4 medium-4 small-4 imgArticle">
-            <a routerLink="/article/{{articles[2].id}}">
-              <img src="{{articles[2].url_image}}" alt="article 1">
-            </a>
-          </div>
-          <div class="large-8 medium-8 small-8 columns descriptionArticle">
-            <a routerLink="/article/{{articles[2].id}}">
-              <h3>{{articles[2].titre}}</h3>
-              <h5>{{articles[2].corps | slice: 0:150}}</h5>
-            </a>
-          </div>
-
-    </div>
-  </div>
+    <!--</div>-->
 </div>

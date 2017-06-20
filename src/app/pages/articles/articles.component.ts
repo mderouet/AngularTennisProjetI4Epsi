@@ -10,7 +10,6 @@ import {UtilsService} from "../../services/utils.service";
   templateUrl: '/app/pages/articles/articles.html',
   providers: [RequestService, Config, UtilsService],
   styleUrls: ['./articles.component.css'],
-
 })
 
 export class ArticlesComponent implements OnInit, CacheInterface {

@@ -1,8 +1,35 @@
 .article-full__header {
-  font-size: 28px;
-  font-size: 1.75rem;
-  line-height: 36px;
-  font-family: "Duplicate Light";
-  -webkit-font-smoothing: antialiased;
-  margin-bottom: 30px;
+    font-size: 28px;
+    font-size: 1.75rem;
+    line-height: 36px;
+    font-family: "Duplicate Light";
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 30px;
+}
+
+.articleDetail {
+    max-width: 90%;
+    display: block;
+    margin: 20px auto;
+}
+
+.articleDetail h1 {
+    text-transform: uppercase;
+    background: #232a35;
+    color: white;
+    font-size: 2rem;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.articleDetail img {
+    max-height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.articleDetail .articleTxt {
+    background: white;
+    padding: 20px;
 }

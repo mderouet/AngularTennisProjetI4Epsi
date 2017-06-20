@@ -1,12 +1,12 @@
 <div *ngIf="articles" class="row">
-
     <div class="article column medium-6 small-6 " *ngFor="let article of articles; let i = index;">
-        <!--<div ngIf="i ">-->
-            <div class="imgArticle">
-                <a routerLink="/article/{{articles[0].id}}">
-                    <img src="{{article.url_image}}" alt="{{article.titre}}">
-                </a>
-            </div>
-        </div>
-    <!--</div>-->
+        <figure class="snip1521 ">
+            <img src="{{article.url_image}}" alt="{{article.titre}}"/>
+            <figcaption>
+                <h3 class="title">{{article.titre}}</h3>
+                <h3 class="hover">Lire l'article</h3>
+            </figcaption>
+            <a href="/article/{{articles[0].id}}"></a>
+        </figure>
+    </div>
 </div>

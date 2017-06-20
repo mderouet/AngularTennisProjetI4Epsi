@@ -7,8 +7,127 @@
     margin-bottom: 30px;
 }
 
-.imgArticle img {
+figure {
+    height: 300px;
+}
+
+figure img {
     height: 300px;
     object-fit: cover;
     width: 100%;
+}
+
+.snip1521 {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+
+    width: 100%;
+    color: #000000;
+    text-align: center;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.article h3 {
+    padding-right: 0px;
+}
+
+.snip1521 * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+
+.snip1521 img {
+    vertical-align: top;
+    max-width: 100%;
+    backface-visibility: hidden;
+}
+
+.snip1521 figcaption {
+    position: absolute;
+    background-color: #fff;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    padding: 5px 20px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    line-height: 1.1em;
+    overflow: hidden;
+    /*height: 44px;*/
+    width: 70%;
+}
+
+.snip1521 h3 {
+    text-transform: uppercase;
+    font-size: 0.9em;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.snip1521 h3.hover {
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.snip1521 .hover {
+    display: none;
+}
+
+.snip1521:hover .hover {
+    display: block;
+}
+
+.snip1521 a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.snip1521:hover > img,
+.snip1521.hover > img {
+    opacity: 0;
+}
+
+.snip1521:hover figcaption,
+.snip1521.hover figcaption {
+    background-color: #000000;
+}
+
+.snip1521:hover .title,
+.snip1521.hover .title {
+    -webkit-transform: translateY(-150%);
+    transform: translateY(-150%);
+}
+
+.snip1521:hover .hover,
+.snip1521.hover .hover {
+    -webkit-transform: translateY(-150%);
+    transform: translateY(-150%);
+}
+
+.snip1521 h3.title {
+    display: block;
+}
+
+.snip1521:hover h3.title {
+    display: none;
+}
+
+.snip1521:hover .hover {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    margin: 15px 0;
+}
+
+.snip1521:hover > img {
+    opacity: 0.2;
 }

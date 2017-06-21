@@ -1,10 +1,11 @@
 //
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {RequestService} from '../../services/request.service';
 import {Config} from "../../config/config";
 import {UtilsService} from "../../services/utils.service";
 import {CacheService} from "../../services/cache.service";
+
 declare var io;
 
 @Component({
@@ -180,7 +181,6 @@ sortFunction(a, b) {
     getScoreByRencontre(idRencontre){
       for (var obj of this.resumeRencontre) {
         for (var resume of obj) {
-          console.log(resume.score);
           return(resume.score);
         }
       }
@@ -194,5 +194,7 @@ sortFunction(a, b) {
         }
     }
 }
+
+
 
 

@@ -13,6 +13,7 @@ declare var io;
 
 export class ResultatDetails implements OnInit, SocketInterface {
     rencontres: Array<any> = [];
+    rencontreDetail: Array<any> = [];
     scoreRencontre: [any];
     alerts: [any];
     private sub: any;
@@ -69,8 +70,16 @@ export class ResultatDetails implements OnInit, SocketInterface {
       this.chargerRencontres();
       this.chargerScore(this.idResultat);
       this.chargerAlerts(this.idResultat);
+      this.chargerResume(this.idResultat);
+
     }
 
+  chargerResume(idRencontre){
+      this.requestService.resumeRencontre(idRencontre).subscribe(
+        resumeRencontreDetail => {
+          this.rencontreDetail = resumeRencontreDetail;
+        });
+  }
 
     chargerRencontres() {
         this.requestService.listRencontres().subscribe((rencontres) => {
@@ -288,6 +297,15 @@ export class ResultatDetails implements OnInit, SocketInterface {
         })
         self.tabAlert=self.tabAlert.reverse();
     }
+
+  getScoreByRencontre(idRencontre){
+    for (var obj of this.rencontreDetail) {
+      for (var resume of obj) {
+        return(resume.score);
+      }
+    }
+  }
+
 }
 
 

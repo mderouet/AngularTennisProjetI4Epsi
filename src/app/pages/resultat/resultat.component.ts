@@ -46,7 +46,7 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
                 private utilsService: UtilsService,private cacheService: CacheService) {
 
     }
-
+  
     ngOnInit() {
       this.initCache();
       if(this.utilsService.isEmptyObject(this.cacheService.rencontres)){
@@ -131,6 +131,7 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
             if(temporaryResume.length === idRencontres.length - 1)
             {
               this.resumeRencontre = temporaryResume;
+              this.getScoreByRencontre(5);
             }
           });
       }
@@ -180,8 +181,8 @@ sortFunction(a, b) {
 
     getScoreByRencontre(idRencontre){
       for (var obj of this.resumeRencontre) {
-        for (var resume of obj) {
-          return(resume.score);
+        for (var resume of obj.rencontre) {
+          return resume.score;
         }
       }
     }

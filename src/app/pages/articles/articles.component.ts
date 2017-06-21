@@ -29,7 +29,6 @@ export class ArticlesComponent implements OnInit, CacheInterface {
       console.log("Chargement articles HOME PAGE")
       this.chargerArticles();
     }
-    console.log(this.articles);
   }
 
   chargerArticles() {

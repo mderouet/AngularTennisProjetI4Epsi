@@ -124,19 +124,6 @@ export class ResultatDetails implements OnInit, SocketInterface {
         this.typeMatch = this.scoreRencontre[0].rencontre.type;
     }
 
-    reverseScore() {
-        console.log("reverse");
-        console.log(this.scoreRencontre[0])
-            this.scoreRencontre[0].rencontre.sets.reverse();
-        for(let currentSet of this.scoreRencontre[0].rencontre.sets){
-            currentSet.jeux.reverse();
-            for(let currentJeu of currentSet.jeux){
-                //TODO reverse l'objet points (reverse marche pas sur les objects)
-                //currentJeu.jeu.points.reverse();
-            }
-        }
-        console.log(this.scoreRencontre)
-    }
 
 
     calculScore() {
@@ -297,15 +284,6 @@ export class ResultatDetails implements OnInit, SocketInterface {
         })
         self.tabAlert=self.tabAlert.reverse();
     }
-
-  getScoreByRencontre(idRencontre){
-    for (var obj of this.rencontreDetail) {
-      for (var resume of obj) {
-        return(resume.score);
-      }
-    }
-  }
-
 }
 
 

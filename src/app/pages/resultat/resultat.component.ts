@@ -19,27 +19,28 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
     idArrayRencontre: any = [];
     rencontres: [any];
     scoreRencontre: Array<JSON> = [];
+    resumeRencontre: Array<any> = [];
     tournois: [JSON];
-    private sub: any;
-    idResultat: number;
-    points: Array<any> = [];
-    nbrPoints = 0;
-    tabAlert: Array<any> = [];
-    tabValeurPointE1 = ["0", "15", "30", "40", "40A"];
-    tabValeurPointE2 = ["0", "15", "30", "40", "40A"];
-    valeurScoreE1 = 0;
-    valeurScoreE2 = 0;
-    valeurJeuE1 = 0;
-    valeurJeuE2 = 0;
-    valeurSetE1 = 0;
-    valeurSetE2 = 0;
-    idEquipe1 = 0;
-    idEquipe2 = 0;
-    typeMatch = "";
-    affichageJeuE1 = [0, 0, 0, 0, 0];
-    affichageJeuE2 = [0, 0, 0, 0, 0];
-    iTab = 0;
-    iTab2 = 0;
+      private sub: any;
+      idResultat: number;
+      points: Array<any> = [];
+      nbrPoints = 0;
+      tabAlert: Array<any> = [];
+      tabValeurPointE1 = ["0", "15", "30", "40", "40A"];
+      tabValeurPointE2 = ["0", "15", "30", "40", "40A"];
+      valeurScoreE1 = 0;
+      valeurScoreE2 = 0;
+      valeurJeuE1 = 0;
+      valeurJeuE2 = 0;
+      valeurSetE1 = 0;
+      valeurSetE2 = 0;
+      idEquipe1 = 0;
+      idEquipe2 = 0;
+      typeMatch = "";
+      affichageJeuE1 = [0, 0, 0, 0, 0];
+      affichageJeuE2 = [0, 0, 0, 0, 0];
+      iTab = 0;
+      iTab2 = 0;
     constructor(public requestService: RequestService, private route: ActivatedRoute, private router: Router,
                 private utilsService: UtilsService,private cacheService: CacheService) {
 
@@ -49,6 +50,7 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
       this.initCache();
       if(this.utilsService.isEmptyObject(this.cacheService.rencontres)){
         console.log("chargement rencontres RESULTAT PAGE")
+
         this.chargerRencontres();
       }
       else{
@@ -67,11 +69,11 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
             this.idResultat = +params['id']; // (+) converts string 'id' to a number
         });
 
+
         this.initSocket();
 
 
     }
-
 
     initSocket(){
         this.io=io( 'http://angular.warpz.tk', {'transports': ['websocket', 'polling']});
@@ -102,17 +104,35 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
 
     chargerRencontres() {
         this.requestService.listRencontres().subscribe((rencontres) => {
-
           // Local value
           this.rencontres = rencontres;
+
           // Cache
           this.cacheService.rencontres = rencontres;
 
             for(let element of this.rencontres){
                 this.idArrayRencontre.push(element.rencontre.id_rencontre);
             }
+            this.chargerResume(this.idArrayRencontre);
             this.chargerScores(this.idArrayRencontre);
+
         });
+    }
+
+    chargerResume(idRencontres){
+     var temporaryResume = [];
+
+      for(let i = 0; i < idRencontres.length; i++)
+      {
+        this.requestService.resumeRencontre(idRencontres[i]).subscribe(
+          resumeCurrentRencontre => {
+            temporaryResume.push(resumeCurrentRencontre);
+            if(temporaryResume.length === idRencontres.length - 1)
+            {
+              this.resumeRencontre = temporaryResume;
+            }
+          });
+      }
     }
 
     chargerScores(idRencontres){
@@ -122,7 +142,6 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
         this.requestService.showScore(idRencontres[i]).subscribe(
           score => {
             count ++;
-              console.log(score);
             this.scoreRencontre.push(score);
             if(count === idRencontres.length){
               this.scoreRencontre.sort(this.sortFunction);
@@ -150,12 +169,21 @@ sortFunction(a, b) {
         });
     }
 
-    getImgTournoi(id) {
+    getImgTournoi(idTournoi) {
         for (let tournoi of this.tournois) {
-            if (tournoi["tournoi"].id_tournoi === id) {
+            if (tournoi["tournoi"].id_tournoi === idTournoi) {
                 return tournoi["tournoi"].url_image
             }
         }
+    }
+
+    getScoreByRencontre(idRencontre){
+      for (var obj of this.resumeRencontre) {
+        for (var resume of obj) {
+          console.log(resume.score);
+          return(resume.score);
+        }
+      }
     }
 
     getAllRencontresFinished() {

@@ -71,6 +71,7 @@ export class ResultatDetails implements OnInit, SocketInterface {
       this.chargerAlerts(this.idResultat);
     }
 
+
     chargerRencontres() {
         this.requestService.listRencontres().subscribe((rencontres) => {
             // Local value

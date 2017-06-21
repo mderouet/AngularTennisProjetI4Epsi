@@ -1,6 +1,6 @@
 <section id="resultatBlock1" class="row" *ngFor="let resultat of rencontres">
     <!--[ngStyle]="{'background-image':'url(' + rencontre.rencontre.equipes[0].joueurs[0].nom+ ')'}"-->
-    <div class="resultat" *ngIf="resultat.rencontre.date_debut != null">
+    <div class="resultat" *ngIf="resultat.rencontre.date_debut != null && resultat.rencontre.equipes[0].joueurs[0] && resultat.rencontre.equipes[1].joueurs[1] && resultat.rencontre.equipes[0].joueurs[1] && resultat.rencontre.equipes[1].joueurs[0]">
         <div class="vignetteJoueur1 large-3 small-3 column">
             <div *ngIf="resultat.rencontre.equipes[0].joueurs.length > 1; else elseBlock">
                 <div class="vignetteTitreJoueur">
@@ -155,3 +155,10 @@
         </div>
     </div>
 </section>
+
+<div *ngFor="let score of getScoreByRencontre(5)">
+  <div *ngFor="let jeux of score">
+  {{jeux.equipe_id_1.keys}}
+    {{jeux.equipe_id_2.keys}}
+
+</div>

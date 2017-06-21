@@ -5,7 +5,7 @@ var cors = require('cors');
 var socketio = require('socket.io');
 var express = require('express')
 var app = express();
-var port = 3004;
+var port = 3005;
 
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

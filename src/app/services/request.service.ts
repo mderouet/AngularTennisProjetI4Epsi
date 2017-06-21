@@ -133,9 +133,16 @@ export class RequestService {
   /*
    Methodes Score
    */
+
+  // Récupérer score d'une rencontre
   showScore(id: number): Observable<any> {
     return this.getBaseUrl().switchMap((url: any) =>
       this.http.get(url + 'rencontre/score/' + id).map(res => res = res.json()));
+  }
+  // Récupérer le résumé d'une rencontre
+  resumeRencontre(id: number): Observable<any> {
+    return this.getBaseUrl().switchMap((url: any) =>
+      this.http.get(url + '/rencontre/resume/' + id).map(res => res = res.json()));
   }
 
   /*

@@ -48,12 +48,13 @@ export class ResultatDetails implements OnInit, SocketInterface {
         let self= this;
         this.io=io( 'http://projet-tennis.ddns.net', {'transports': ['websocket', 'polling']});
         this.io.on('connect', function () {
-          self.utilsService.log("[CONNECTION] socketIO /resultat_details/{id}")
+          self.utilsService.log("[SOCKETIO] Connection /resultat_details/{id}")
 
         });
         this.io.on('updateScore' +
             '', function () {
-            self.chargementRequetes();
+          self.utilsService.log("[SOCKETIO] Rechargement score /resultat_details/{id}")
+          self.chargementRequetes();
         });
     };
 

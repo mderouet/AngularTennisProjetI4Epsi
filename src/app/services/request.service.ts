@@ -87,10 +87,10 @@ export class RequestService {
 
   // Renvoi la prochaine rencontre du prochain tournoi
   prochaineRencontreTournoi(): Observable<any> {
-    return this.http.get('http://projet-tennis.ddns.net/tournoi?next=1')
+    return this.http.get('http://projet-tennis.ddns.net:3000/tournoi?next=1')
       .map((res: any)=> res.json())
       .flatMap((tournoi: any)=>{
-      return this.http.get('http://projet-tennis.ddns.net/rencontre?id_tournoi=' + tournoi.id + '&next=1')
+      return this.http.get('http://projet-tennis.ddns.net:3000/rencontre?id_tournoi=' + tournoi.id + '&next=1')
         .map((res: any) => res.json())
     });
   }

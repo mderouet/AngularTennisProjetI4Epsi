@@ -72,7 +72,7 @@
                                 </span>
                             </div>
                         </ng-template>
-                      <div class="setSet large-1 medium-1 small-1" *ngFor="let score of rencontreDetail.rencontre">
+                      <div class="setSet large-1 medium-1 small-1" *ngFor="let score of getScoreByRencontre(idResultat)">
                         <div>{{score.Jeux.equipe_1.nbr | json}}</div>
                       </div>
                     </div>
@@ -104,7 +104,9 @@
                                 </span>
                             </div>
                         </ng-template>
-
+                      <div class="setSet large-1 medium-1 small-1" *ngFor="let score of getScoreByRencontre(idResultat)">
+                        <div>{{score.Jeux.equipe_2.nbr | json}}</div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -120,6 +122,7 @@
                         {{rencontres[idResultat]?.rencontre.equipes[1].joueurs[1].nom}}
                     </span>
                 </div>
+
                 <div class="alignCenter">
                     <div class="imgVignetteEquipe">
                         <img class="imgJoueursEquipe"
@@ -204,4 +207,3 @@
     </div>
 </section>
 
-{{rencontreDetail | json}}

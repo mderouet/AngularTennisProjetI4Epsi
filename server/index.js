@@ -3,7 +3,7 @@
 var http = require('http');
 var cors = require('cors');
 var socketio = require('socket.io');
-var express = require('express')
+var express = require('express');
 var app = express();
 var port = 3005;
 
@@ -24,7 +24,7 @@ app.use(express.static('./src'));
 app.options('*', cors());
 app.get('*', function(req, res) {
     res.sendfile('./src/index.html')
-})
+});
 
 /*
 io.origins('*:*');

@@ -8,7 +8,7 @@ import {UtilsService} from "../../services/utils.service";
 @Component({
   selector: 'articles',
   templateUrl: '/app/pages/articles/articles.html',
-  providers: [RequestService, Config, UtilsService],
+  providers: [RequestService, Config],
   styleUrls: ['./articles.component.css'],
 })
 
@@ -17,7 +17,7 @@ export class ArticlesComponent implements OnInit, CacheInterface {
   articles: [JSON];
 
   constructor(public requestService: RequestService, private route: ActivatedRoute,
-              private router: Router, private cacheService: CacheService, public utilsService: UtilsService) {
+              private router: Router, private cacheService: CacheService, private utilsService: UtilsService) {
 
   }
 
@@ -26,7 +26,7 @@ export class ArticlesComponent implements OnInit, CacheInterface {
     this.initCache();
 
     if(this.utilsService.isEmptyObject(this.cacheService.articles)){
-      console.log("Chargement articles HOME PAGE")
+      this.utilsService.log("[CHARGEMENT] articles /articles");
       this.chargerArticles();
     }
   }

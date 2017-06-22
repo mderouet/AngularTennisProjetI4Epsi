@@ -8,7 +8,7 @@ import {CacheService} from "../../services/cache.service";
 @Component({
   selector: 'joueurs',
   templateUrl: '/app/pages/joueur/joueur.html',
-  providers: [RequestService, Config, Joueur, UtilsService],
+  providers: [RequestService, Config, Joueur],
   styleUrls:  ['./joueur.component.css']
 })
 export class JoueurComponent implements OnInit, CacheInterface {
@@ -24,7 +24,7 @@ export class JoueurComponent implements OnInit, CacheInterface {
     this.initCache();
 
     if(this.utilsService.isEmptyObject(this.cacheService.joueurs)){
-      console.log("chargement joueurs JOUEURS PAGE")
+      this.utilsService.log("[CHARGEMENT] joueurs /joueurs");
       this.chargerJoueurs();
     }
   }

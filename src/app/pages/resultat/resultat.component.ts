@@ -3,8 +3,9 @@ import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {RequestService} from '../../services/request.service';
 import {Config} from "../../config/config";
-import {UtilsService} from "../../services/utils.service";
 import {CacheService} from "../../services/cache.service";
+import {UtilsService} from "../../services/utils.service";
+
 
 declare var io;
 
@@ -12,45 +13,29 @@ declare var io;
     selector: 'home',
     templateUrl: '/app/pages/resultat/resultat.html',
     styleUrls: ['./resultat.component.css'],
-    providers: [RequestService, Config, UtilsService]
+    providers: [RequestService, Config]
 })
 
 export class ResultatComponent implements OnInit, CacheInterface, SocketInterface {
     io: any;
     idArrayRencontre: any = [];
     rencontres: [any];
-    scoreRencontre: Array<JSON> = [];
     resumeRencontre: Array<any> = [];
     tournois: [JSON];
       private sub: any;
       idResultat: number;
       points: Array<any> = [];
-      nbrPoints = 0;
       tabAlert: Array<any> = [];
-      tabValeurPointE1 = ["0", "15", "30", "40", "40A"];
-      tabValeurPointE2 = ["0", "15", "30", "40", "40A"];
-      valeurScoreE1 = 0;
-      valeurScoreE2 = 0;
-      valeurJeuE1 = 0;
-      valeurJeuE2 = 0;
-      valeurSetE1 = 0;
-      valeurSetE2 = 0;
-      idEquipe1 = 0;
-      idEquipe2 = 0;
-      typeMatch = "";
-      affichageJeuE1 = [0, 0, 0, 0, 0];
-      affichageJeuE2 = [0, 0, 0, 0, 0];
-      iTab = 0;
-      iTab2 = 0;
+
     constructor(public requestService: RequestService, private route: ActivatedRoute, private router: Router,
                 private utilsService: UtilsService,private cacheService: CacheService) {
 
     }
-  
+
     ngOnInit() {
       this.initCache();
+      // Chargement des rencontres dans le cas ou elle ne le serait pas déja
       if(this.utilsService.isEmptyObject(this.cacheService.rencontres)){
-        console.log("chargement rencontres RESULTAT PAGE")
 
         this.chargerRencontres();
       }
@@ -58,11 +43,12 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
           for(let element of this.cacheService.rencontres){
               this.idArrayRencontre.push(element.rencontre.id_rencontre);
           }
-
-          this.chargerScores(this.idArrayRencontre);
+          // Les scores sont dans tous les cas rechargés
+          this.chargerResume(this.idArrayRencontre);
       }
       if(this.utilsService.isEmptyObject(this.cacheService.tournois)){
-        console.log("chargement tournois RESULTAT PAGE")
+        this.utilsService.log("[CHARGEMENT] tournois /resultat");
+
         this.chargerTournois();
       }
 
@@ -70,21 +56,18 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
             this.idResultat = +params['id']; // (+) converts string 'id' to a number
         });
 
-
         this.initSocket();
-
-
     }
 
     initSocket(){
-        this.io=io( 'http://angular.warpz.tk', {'transports': ['websocket', 'polling']});
+        this.io=io( 'http://projet-tennis.ddns.net', {'transports': ['websocket', 'polling']});
         this.io.on('connect', function () {
             console.log("connect");
         });
         var self=this;
         this.io.on('updateScore', function () {
-            console.log('charge');
-            self.chargerRencontres();
+          self.utilsService.log("[CONNECTION] socketIO /resultat_details/{id}");
+          self.chargerRencontres();
         });
     };
 
@@ -104,7 +87,9 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
 
 
     chargerRencontres() {
-        this.requestService.listRencontres().subscribe((rencontres) => {
+      this.utilsService.log("[CHARGEMENT] rencontres /resultat");
+
+      this.requestService.listRencontres().subscribe((rencontres) => {
           // Local value
           this.rencontres = rencontres;
 
@@ -114,14 +99,15 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
             for(let element of this.rencontres){
                 this.idArrayRencontre.push(element.rencontre.id_rencontre);
             }
-            this.chargerResume(this.idArrayRencontre);
-            this.chargerScores(this.idArrayRencontre);
 
+          this.chargerResume(this.idArrayRencontre);
         });
     }
 
     chargerResume(idRencontres){
-     var temporaryResume = [];
+      this.utilsService.log("[CHARGEMENT] resultats /resultat");
+
+      var temporaryResume = [];
 
       for(let i = 0; i < idRencontres.length; i++)
       {
@@ -136,31 +122,6 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
           });
       }
     }
-
-    chargerScores(idRencontres){
-      var count = 0;
-      for(let i = 0; i < idRencontres.length; i++)
-      {
-        this.requestService.showScore(idRencontres[i]).subscribe(
-          score => {
-            count ++;
-            this.scoreRencontre.push(score);
-            if(count === idRencontres.length){
-              this.scoreRencontre.sort(this.sortFunction);
-            }
-          }
-        );
-      }
-    }
-
-sortFunction(a, b) {
-  if (a[0].rencontre.id === b[0].rencontre.id) {
-    return 0;
-  }
-  else {
-    return (a[0].rencontre.id < b[0].rencontre.id) ? -1 : 1;
-  }
-}
 
     chargerTournois() {
         this.requestService.listTournois().subscribe((tournois) => {
@@ -182,7 +143,10 @@ sortFunction(a, b) {
     getScoreByRencontre(idRencontre){
       for (var obj of this.resumeRencontre) {
         for (var resume of obj.rencontre) {
-          return resume.score;
+         if(resume.id === idRencontre)
+         {
+           return resume.score;
+         }
         }
       }
     }

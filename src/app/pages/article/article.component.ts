@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {RequestService} from "../../services/request.service";
 import {Config} from "../../config/config";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CacheService} from "../../services/cache.service";
 
 @Component({
   selector: 'articles',
@@ -18,7 +17,7 @@ export class ArticleComponent implements OnInit {
   private idArticle: number;
   private article: [JSON];
   constructor(public requestService: RequestService, private route: ActivatedRoute,
-              private router: Router,                private cacheService: CacheService) {
+              private router: Router) {
 
   }
 
@@ -26,12 +25,10 @@ export class ArticleComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
       this.idArticle = +params['id']; // (+) converts string 'id' to a number
-      console.log(this.idArticle);
     });
 
     this.requestService.showArticle(this.idArticle).subscribe((article) => {
       this.article = article;
-      console.log(this.article);
     });
 
   }

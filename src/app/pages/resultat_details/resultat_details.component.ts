@@ -87,7 +87,6 @@ export class ResultatDetails implements OnInit, SocketInterface {
     chargerRencontres() {
         this.requestService.listRencontres().subscribe((rencontres) => {
             // Local value
-            console.log("charger rencontres");
             for (let r of rencontres) {
                 this.rencontres[r.rencontre.id_rencontre] = r;
             }

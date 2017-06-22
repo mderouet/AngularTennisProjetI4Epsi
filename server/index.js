@@ -5,6 +5,7 @@ var cors = require('cors');
 var socketio = require('socket.io');
 var express = require('express');
 var app = express();
+// TODO NE PAS CHANGER LE PORT 3005 est utilisé sur le reverse proxy en PROD
 var port = 3005;
 
 app.all('*', function(req, res, next) {

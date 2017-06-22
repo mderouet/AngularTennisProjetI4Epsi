@@ -62,10 +62,9 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
     initSocket(){
         this.io=io( 'http://projet-tennis.ddns.net', {'transports': ['websocket', 'polling']});
         this.io.on('connect', function () {
-            console.log("connect");
           self.utilsService.log("[SOCKETIO] Connection /resultat");
-
         });
+
         var self=this;
         this.io.on('updateScore', function () {
           self.utilsService.log("[SOCKETIO] Rechargement score /resultat")

@@ -13,7 +13,7 @@ import {Config} from "./config/config";
     '<div class="menuTop">' +
     '<div class="row">' +
     '<div id="imgLogoHeader" class="large-3 medium-2 small-6 columns">' +
-    '<img src="assets/img/logo.png">' +
+    '<a routerLink="/home"><img src="assets/img/logo2.png"></a>' +
     '</div>' +
     '<div class="large-9 medium-10 small-6 columns">' +
     '<ul class="menu">' +
@@ -21,8 +21,8 @@ import {Config} from "./config/config";
     '<li><a routerLink="/joueurs">Liste Joueurs</a></li>' +
     '<li><a routerLink="/resultat">Résultats</a></li>' +
     '<li><a routerLink="/articles">Articles</a></li>' +
-    '<li><a href="#">Actualité</a></li>' +
-    '<li><a href="#">Contact</a></li>' +
+    '<li><a routerLink="/home" fragment="actualite">Actualité</a></li>' +
+    '<li><a routerLink="/home#contact">Contact</a></li>' +
     '</ul> ' +
     '</div> ' +
     '</div>' +

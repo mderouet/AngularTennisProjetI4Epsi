@@ -21,8 +21,6 @@ import {Config} from "./config/config";
     '<li><a routerLink="/joueurs">Liste Joueurs</a></li>' +
     '<li><a routerLink="/resultat">Résultats</a></li>' +
     '<li><a routerLink="/articles">Articles</a></li>' +
-    '<li><a routerLink="/home" fragment="actualite">Actualité</a></li>' +
-    '<li><a routerLink="/home#contact">Contact</a></li>' +
     '</ul> ' +
     '</div> ' +
     '</div>' +

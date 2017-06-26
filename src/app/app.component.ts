@@ -52,7 +52,7 @@ import {Config} from "./config/config";
     '<router-outlet></router-outlet>' +
     '<footer><div id="copyright">Copyright© 2017 - Make Tennis Great Again</div> <div id="mentionLegale">' +
     ' <a href="#">Mention Légale</a></div>' +
-    '<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>' +
+    '<script type="text/javascript" src="assets/js/assjquery-3.1.1.min.js"></script>' +
     '<script type="text/javascript" src="assets/slickjs/js/slick.min.js"></script>' +
     '<script type="text/javascript" src="assets/foundation/js/foundation.min.js"></script>' +
     '<script type="text/javascript" src="assets/js/javascript.js"></script>' +

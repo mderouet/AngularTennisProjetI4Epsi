@@ -13,12 +13,14 @@ import {ArticleComponent} from "./pages/article/article.component";
 import {CacheService} from "./services/cache.service";
 import {ResultatDetails} from "./pages/resultat_details/resultat_details.component";
 import {ArticlesComponent} from "./pages/articles/articles.component";
+import {UtilsService} from "./services/utils.service";
 
 @NgModule({
   imports: [
     BrowserModule,
     RouterModule.forRoot(router),
     HttpModule,
+
   ],
 
   declarations: [
@@ -31,7 +33,7 @@ import {ArticlesComponent} from "./pages/articles/articles.component";
     ArticleComponent,
     ArticlesComponent,
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'},CacheService],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'},CacheService,UtilsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

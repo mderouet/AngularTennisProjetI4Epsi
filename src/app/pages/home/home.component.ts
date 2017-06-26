@@ -16,8 +16,10 @@ export class HomeComponent implements OnInit, CacheInterface {
     rencontres: [JSON];
     tournois: [JSON];
     articles: [JSON];
+  prochainesRencontres : Array<any> = [];
 
-    constructor(public requestService: RequestService, public cacheService: CacheService, public utilsService: UtilsService) {
+
+  constructor(public requestService: RequestService, public cacheService: CacheService, public utilsService: UtilsService) {
     }
 
     ngOnInit() {
@@ -25,17 +27,23 @@ export class HomeComponent implements OnInit, CacheInterface {
         this.initCache();
 
         if (this.utilsService.isEmptyObject(this.cacheService.rencontres)) {
-            console.log("Chargement recontres HOME PAGE")
-            this.chargerRencontres();
+          this.utilsService.log("[CHARGEMENT] rencontres /home");
+
+          this.chargerRencontres();
         }
         if (this.utilsService.isEmptyObject(this.cacheService.tournois)) {
-            console.log("Chargement tournois HOME PAGE")
+          this.utilsService.log("[CHARGEMENT] tournois /home");
             this.chargerTournois();
         }
         if (this.utilsService.isEmptyObject(this.cacheService.articles)) {
-            console.log("Chargement articles HOME PAGE")
+          this.utilsService.log("[CHARGEMENT] articles /home");
             this.chargerArticles();
         }
+
+      // 4 prochaines rencontres à venir pour le prochain tournoi
+      this.requestService.prochainesRencontreTournoi().subscribe((prochainesRencontres) => {
+        this.prochainesRencontres = prochainesRencontres;
+      })
     }
 
     initCache() {
@@ -67,8 +75,6 @@ export class HomeComponent implements OnInit, CacheInterface {
         this.requestService.listRencontres().subscribe((rencontres) => {
             // Local value
             this.rencontres = rencontres;
-            console.log(this.rencontres);
-
             // Cache
             this.cacheService.rencontres = rencontres;
 

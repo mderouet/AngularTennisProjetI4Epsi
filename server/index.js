@@ -3,9 +3,10 @@
 var http = require('http');
 var cors = require('cors');
 var socketio = require('socket.io');
-var express = require('express')
+var express = require('express');
 var app = express();
-var port = 3004;
+// TODO NE PAS CHANGER LE PORT 3005 est utilisé sur le reverse proxy en PROD
+var port = 3005;
 
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -24,7 +25,7 @@ app.use(express.static('./src'));
 app.options('*', cors());
 app.get('*', function(req, res) {
     res.sendfile('./src/index.html')
-})
+});
 
 /*
 io.origins('*:*');

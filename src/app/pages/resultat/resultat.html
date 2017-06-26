@@ -1,6 +1,6 @@
 <section id="resultatBlock1" class="row" *ngFor="let resultat of rencontres">
     <!--[ngStyle]="{'background-image':'url(' + rencontre.rencontre.equipes[0].joueurs[0].nom+ ')'}"-->
-    <div class="resultat" *ngIf="resultat.rencontre.date_debut != null">
+    <div class="resultat" *ngIf="resultat.rencontre.date_debut != null && resultat.rencontre.equipes[0].joueurs[0] && resultat.rencontre.equipes[1].joueurs[0]">
         <div class="vignetteJoueur1 large-3 small-3 column">
             <div *ngIf="resultat.rencontre.equipes[0].joueurs.length > 1; else elseBlock">
                 <div class="vignetteTitreJoueur">
@@ -71,23 +71,23 @@
                                 </span>
                             </div>
                         </ng-template>
-                        <div class="setSet large-1 medium-1 small-1">2</div>
-                        <div class="setSet large-1 medium-1 small-1">4</div>
-                        <div class="setSet large-1 medium-1 small-1">5</div>
-                        <div class="setSet large-1 medium-1 small-1"></div>
-                        <div class="setSet large-1 medium-1 small-1"></div>
+                      <div class="setSet large-1 medium-1 small-1" *ngFor="let score of getScoreByRencontre(resultat.rencontre.id_rencontre)">
+                        <div>{{score.Jeux.equipe_1.nbr | json}}</div>
+                      </div>
                     </div>
                     <div class="descriptionSet row">
                         <div class="nomDescriptionSet large-7 medium-7 small-7">
                             vainqueur :
                         </div>
+
                         <div class="setSet large-1 medium-1 small-1">1</div>
                         <div class="setSet large-1 medium-1 small-1">2</div>
                         <div class="setSet large-1 medium-1 small-1">3</div>
                         <div class="setSet large-1 medium-1 small-1">4</div>
                         <div class="setSet large-1 medium-1 small-1">5</div>
                     </div>
-                    <div class="ligneSet row">
+
+                  <div class="ligneSet row">
                         <div class="nomJoueurSet large-7 medium-7 small-7"
                              *ngIf="resultat.rencontre.equipes[0].joueurs.length > 1; else resultatSimpleJ2">
                             <span class="textBold">
@@ -105,11 +105,9 @@
                                 </span>
                             </div>
                         </ng-template>
-                        <div class="setSet large-1 medium-1 small-1">1</div>
-                        <div class="setSet large-1 medium-1 small-1">5</div>
-                        <div class="setSet large-1 medium-1 small-1">6</div>
-                        <div class="setSet large-1 medium-1 small-1"></div>
-                        <div class="setSet large-1 medium-1 small-1"></div>
+                      <div class="setSet large-1 medium-1 small-1" *ngFor="let score of getScoreByRencontre(resultat.rencontre.id_rencontre)">
+                        <div>{{score.Jeux.equipe_2.nbr | json}}</div>
+                      </div>
                     </div>
                 </div>
                 <div routerLink="/resultat_details/{{resultat.rencontre.id_rencontre}}">

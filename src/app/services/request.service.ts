@@ -12,7 +12,7 @@ import {Observable} from "rxjs";
 export class RequestService {
   conf: Config;
   result: Object;
-
+  url: String = "http://projet-tennis.ddns.net:3000/";
   constructor(public http: Http, config: Config) {
     this.conf = config;
   }
@@ -21,7 +21,7 @@ export class RequestService {
    Get base url of API
    */
   getBaseUrl() {
-    return this.conf.getConfiguration('apiBaseUrl');
+    return this.url;
   }
 
   /*
@@ -30,14 +30,13 @@ export class RequestService {
 
   // Liste tous les joueurs
   listJoueur(): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'joueur').map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl()+ 'joueur').map(res => res = res.json());
   }
 
   // Récupére un joueur par ID
   showJoueur(id: number): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'joueur/' + id).map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'joueur/' + id).map(res => res = res.json());
+
   }
 
   /*
@@ -46,14 +45,12 @@ export class RequestService {
 
   // Liste tous les arbitres
   listArbitre(): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'arbitre').map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'arbitre').map(res => res = res.json());
   }
 
   // Récupére un arbitre par ID
   showArbitre(id: number): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'arbitre/' + id).map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'arbitre/' + id).map(res => res = res.json());
   }
 
 
@@ -63,34 +60,30 @@ export class RequestService {
 
   // Liste tous les arbitres
   listRencontres(): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'rencontre').map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'rencontre').map(res => res = res.json());
   }
 
   // Récupére une rencontre par id
   showRencontre(id: number): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'rencontre/' + id).map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'rencontre/' + id).map(res => res = res.json());
   }
 
   // Rencontres à venir d'un tournoi
   prochainesRencontreParTournoi(id: number): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + '/rencontre?id_tournoi=' + id).map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + '/rencontre?id_tournoi=' + id).map(res => res = res.json());
   }
 
   // Renvoi la prochaine rencontre d'un tournoi
   prochaineRencontreParTournoi(id: number): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'rencontre?id_tournoi=' + id + '&next=1').map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'rencontre?id_tournoi=' + id + '&next=1').map(res => res = res.json());
   }
 
   // Renvoi la prochaine rencontre du prochain tournoi
   prochaineRencontreTournoi(): Observable<any> {
-    return this.http.get('http://projet-tennis.ddns.net:3000/tournoi?next=1')
+    return this.http.get(this.getBaseUrl()+'tournoi?next=1')
       .map((res: any)=> res.json())
       .flatMap((tournoi: any)=>{
-      return this.http.get('http://projet-tennis.ddns.net:3000/rencontre?id_tournoi=' + tournoi.id + '&next=1')
+      return this.http.get(this.getBaseUrl()+'rencontre?id_tournoi=' + tournoi.id + '&next=1')
         .map((res: any) => res.json())
     });
   }
@@ -101,19 +94,16 @@ export class RequestService {
 
   // Liste tous les tournois
   listTournois(): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'tournoi').map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'tournoi').map(res => res = res.json());
   }
   // Récupére un tournoi par ID
   showTournoi(id: number): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'tournoi/' + id).map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'tournoi/' + id).map(res => res = res.json());
   }
 
   // Récupére le prochain tournoi (date)
   prochainTournoi(): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'tournoi?next=1').map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'tournoi?next=1').map(res => res = res.json());
   }
 
   /*
@@ -122,13 +112,11 @@ export class RequestService {
   // Liste tous les articles
 
   listArticles(): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'article').map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'article').map(res => res = res.json());
   }
   // Renvoi un article par
   showArticle(id: number): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'article/' + id).map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'article/' + id).map(res => res = res.json());
   }
   /*
    Methodes Score
@@ -136,21 +124,18 @@ export class RequestService {
 
   // Récupérer score d'une rencontre
   showScore(id: number): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + 'rencontre/score/' + id).map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + 'rencontre/score/' + id).map(res => res = res.json());
   }
   // Récupérer le résumé d'une rencontre
   resumeRencontre(id: number): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-      this.http.get(url + '/rencontre/resume/' + id).map(res => res = res.json()));
+    return this.http.get(this.getBaseUrl() + '/rencontre/resume/' + id).map(res => res = res.json());
   }
 
   /*
    Methodes Alerts
    */
   showAlert(id: number): Observable<any> {
-    return this.getBaseUrl().switchMap((url: any) =>
-        this.http.get(url + 'alerte/' + id).map(res => res = res.json()));
+     return this.http.get(this.getBaseUrl() + 'alerte/' + id).map(res => res = res.json());
   }
 
 

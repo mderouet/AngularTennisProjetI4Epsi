@@ -15,12 +15,6 @@ export class Config {
   constructor(http: Http) {
     this.http = http;
   }
-  getConfiguration(key): Observable<any> {
-    return this.http.get('./app/config/development.json').map(res => {
-      this.result = res.json();
-      return this.result[key];
-    });
-  }
 }
 
 

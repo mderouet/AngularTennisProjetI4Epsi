@@ -38,9 +38,9 @@ import {Config} from "./config/config";
     '</span> {{matchAvenir[0].rencontre.equipes[1].libelle}}</h2>' +
     '<h3>Tournois {{matchAvenir[0].rencontre.tournoi.libelle}} <br/>{{matchAvenir[0].rencontre.date_debut_formatted}}</h3> ' +
     '</div>' +
-    '<span>' +
+    '<div>' +
     '<a href="#">Decouvrir</a>' +
-    '</span> ' +
+    '</div> ' +
     '<div> ' +
     '</div> ' +
     '</div> ' +

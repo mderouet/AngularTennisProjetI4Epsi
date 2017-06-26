@@ -40,8 +40,6 @@ header {
 
 #imgLogoHeader img {
     max-height: 50px;
-    background: white;
-
 }
 
 .menuTop .menu {
@@ -116,9 +114,9 @@ header {
 }
 
 .captionResultat {
-
     background: #232a35;
     padding: 10px 30px;
+    min-height: 120px;
 }
 
 .captionResultat h2 {
@@ -134,6 +132,11 @@ header {
     font-weight: 400;
     margin-bottom: 0px;
     display: inline-block;
+}
+
+.matchs h2 span {
+    position: relative;
+    top: 30px;
 }
 
 .txtResultat {

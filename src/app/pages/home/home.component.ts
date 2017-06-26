@@ -16,8 +16,10 @@ export class HomeComponent implements OnInit, CacheInterface {
     rencontres: [JSON];
     tournois: [JSON];
     articles: [JSON];
+  prochainesRencontres : Array<any> = [];
 
-    constructor(public requestService: RequestService, public cacheService: CacheService, public utilsService: UtilsService) {
+
+  constructor(public requestService: RequestService, public cacheService: CacheService, public utilsService: UtilsService) {
     }
 
     ngOnInit() {
@@ -37,6 +39,11 @@ export class HomeComponent implements OnInit, CacheInterface {
           this.utilsService.log("[CHARGEMENT] articles /home");
             this.chargerArticles();
         }
+
+      // 4 prochaines rencontres à venir pour le prochain tournoi
+      this.requestService.prochainesRencontreTournoi().subscribe((prochainesRencontres) => {
+        this.prochainesRencontres = prochainesRencontres;
+      })
     }
 
     initCache() {

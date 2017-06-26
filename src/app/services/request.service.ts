@@ -83,9 +83,18 @@ export class RequestService {
     return this.http.get(this.getBaseUrl()+'tournoi?next=1')
       .map((res: any)=> res.json())
       .flatMap((tournoi: any)=>{
-      return this.http.get(this.getBaseUrl()+'rencontre?id_tournoi=' + tournoi.id + '&next=1')
+      return this.http.get(this.getBaseUrl()+'rencontre/tournoi/' + tournoi.id + '/next/1')
         .map((res: any) => res.json())
     });
+  }
+  // Renvoi les 4 prochaines rencontres du prochain tournoi
+  prochainesRencontreTournoi(): Observable<any> {
+    return this.http.get(this.getBaseUrl()+'tournoi?next=1')
+      .map((res: any)=> res.json())
+      .flatMap((tournoi: any)=>{
+        return this.http.get(this.getBaseUrl()+'rencontre/tournoi/' + tournoi.id + '/next/4')
+          .map((res: any) => res.json())
+      });
   }
 
   /*

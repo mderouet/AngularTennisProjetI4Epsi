@@ -40,6 +40,7 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
         this.chargerRencontres();
       }
       else{
+        this.idArrayRencontre = [];
           for(let element of this.cacheService.rencontres){
               this.idArrayRencontre.push(element.rencontre.id_rencontre);
           }
@@ -97,7 +98,7 @@ export class ResultatComponent implements OnInit, CacheInterface, SocketInterfac
 
           // Cache
           this.cacheService.rencontres = rencontres;
-
+            this.idArrayRencontre = [];
             for(let element of this.rencontres){
                 this.idArrayRencontre.push(element.rencontre.id_rencontre);
             }
